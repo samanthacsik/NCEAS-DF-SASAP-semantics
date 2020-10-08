@@ -37,3 +37,8 @@ vignettes/*.pdf
 
 # R Environment Variables
 .Renviron
+
+#--------------------------------------------
+# files in gitignore
+#--------------------------------------------
+data/queries/query2020-10-08/xml/*
