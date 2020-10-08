@@ -20,7 +20,7 @@ Scripts are numbered in the order they are to be run.
 ### Repository Structure
 
 ```
-NCEAS-DF-Semantics-Project
+NCEAS-DF-SASAP-semantics
   |_code
   |_data
   |_figures
