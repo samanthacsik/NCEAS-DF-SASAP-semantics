@@ -5,7 +5,7 @@
 
 ### Overview
 
-Semantic annotations can help to improve data discoverablity within the State of Alaska's Salmon and People (SASAP) data portal. A current need is to evaluate metadata across the SASAP's data archive for commonly used (and perhaps "semantically important") terms, which may provide useful for constructing a salmon-specific ontology.
+Semantic annotations can help to improve data discoverablity within the State of Alaska's Salmon and People (SASAP) [data portal](https://knb.ecoinformatics.org/projects/SASAP/Data). A current need is to evaluate metadata across the SASAP's data archive for commonly used (and perhaps "semantically important") terms, which may provide useful for constructing a salmon-specific ontology.
 
 This repository provides code for:
 
