@@ -41,4 +41,4 @@ vignettes/*.pdf
 #--------------------------------------------
 # files in gitignore
 #--------------------------------------------
-data/queries/query2020-10-08/xml/*
+data/queries/query2020-10-09/xml/*
