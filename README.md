@@ -41,7 +41,7 @@ NCEAS-DF-SASAP-semantics
 
 * `0_libraries.R`: packages required in subsequent scripts
 * `0_functions.R`: custom functions for data wrangling & plotting; information regarding function purpose and arguments is included in the script 
-* `1_query_download_metadata.R`: uses solr query to extract package identifiers; use `eatocsv` package to parse associated xml files to tidy attribute information (including semantic annotations, if applicable)
+* `1_query_download_metadata.R`: uses solr query to extract package identifiers; uses `eatocsv` package to parse associated xml files and tidy attribute information (including semantic annotations, if applicable)
 * `2_unnest_terms.R`: unnest (i.e. separate) titles, keywords, abstracts & attribute information into individual words, bigrams, and trigrams; data are saved as .csv files to `data/unnested_terms/*`
 * `3_filterStopWords_term_counts.R`: filter out stop words and count number of occurrances of unnested terms; data are saved as .csv files to `data/filtered_term_counts/*`
 * `4_plot_term_frequencies.R` : plot most common terms across each metadata field 
