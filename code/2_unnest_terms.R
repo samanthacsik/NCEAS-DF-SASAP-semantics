@@ -3,7 +3,7 @@
 # date created: "2020-10-08"
 # date edited: "2020-10-08"
 # R version: 3.6.3
-# input: "data/queries/fullQuery_titleKeywordsAbstract2020-09-15.csv" & "data/attributes_query_eatocsv/extracted_attributes/fullQuery2020-09-13_attributes.csv" 
+# input: "data/queries/query2020-10-09/*"
 # output: "data/text_mining/unnested_tokens/*"
 
 ##########################################################################################
@@ -29,7 +29,7 @@ source(here::here("code", "0_functions.R"))
 # Upload data
 ##############################
 
-solr_query <- read_csv(here::here("data", "queries", "query2020-10-09", "fullQuery_semAnnotations2020-10-09.csv"))
+solr_query <- read_csv(here::here("data", "queries", "query2020-10-09", "fullQuery_semAnnotations2020-10-09_solr.csv"))
 attributes <- read_csv(here::here("data", "queries", "query2020-10-09", "fullQuery_semAnnotations2020-10-09_attributes.csv"))
 
 ##############################
@@ -101,14 +101,31 @@ for (row in 1:nrow(aLaD_fields)) {
 # print all unnested dfs as .csv files
 ##########################################################################################
 
-# get list of new dfs
-df_list <- mget(ls(pattern = "unnested_"))
+# get lists of new filterCounts dfs
+indiv_list <- mget(ls(pattern = glob2rx("unnested_*Indiv*")))
+bigram_list <- mget(ls(pattern = glob2rx("unnested_*Bigram*")))
+trigram_list <- mget(ls(pattern = glob2rx("unnested_*Trigram*")))
 
-# function to write as .csv files
-output_csv <- function(data, names){
-  write_csv(data, here::here("data", "unnested_tokens", paste0(names, ".csv")))
+# save indiv terms
+for (i in 1:length(indiv_list)){
+  data <- indiv_list[[i]]
+  names <- names(indiv_list)[i]
+  file_path <- "data/unnested_terms/indiv"
+  output_csv(data, names, file_path)
 }
 
-# write each df as .csv file
-list(data = df_list, names = names(df_list)) %>%
-  purrr::pmap(output_csv)
+# save bigram terms
+for (i in 1:length(bigram_list)){
+  data <- bigram_list[[i]]
+  names <- names(bigram_list)[i]
+  file_path <- "data/unnested_terms/bigrams"
+  output_csv(data, names, file_path)
+}
+
+# save trigram terms
+for (i in 1:length(trigram_list)){
+  data <- trigram_list[[i]]
+  names <- names(trigram_list)[i]
+  file_path <- "data/unnested_terms/trigrams"
+  output_csv(data, names, file_path)
+}
