@@ -73,10 +73,10 @@ NCEAS-DF-SASAP-semantics
 #### `data/unnested_terms/*`
 * `identifier`: unique persistent identifier assigned to each ADC data package (in most cases, this is a DOI)
 * `author`: first author of data package (if available)
-* `word1/word2/word3`: individual tokens (i.e. words); the number of columns populated will depend on whether terms are being split into individual words (col: `word`), bigrams (cols: `word1`, `word2`), or trigrams (cols: `word1`, `word2`, `word3`)
+* `word1/word2/word3`: individual tokens (i.e. words); the number of columns populated will depend on whether terms are being split into individual words (col: `word1`), bigrams (cols: `word1`, `word2`), or trigrams (cols: `word1`, `word2`, `word3`)
 
 #### `data/filtered_term_counts/*`
-* `word1/word2/word3`: individual tokens (i.e. words) with stop words removed (see `tidytext::stop_words()`); the number of columns populated will depend on whether terms are being split into individual words (col: `word`), bigrams (cols: `word1`, `word2`), or trigrams (cols: `word1`, `word2`, `word3`)
+* `word1/word2/word3`: individual tokens (i.e. words) with stop words removed (see `tidytext::stop_words()`); the number of columns populated will depend on whether terms are being split into individual words (col: `word1`), bigrams (cols: `word1`, `word2`), or trigrams (cols: `word1`, `word2`, `word3`)
 * `n`: # of occurrances across SASAP corpus
 * `unique_ids`: # of unique identifiers that term occurs in 
 * `unique_authors`: # of unique authors that have used that term (NOTE: many SASAP data packages do not have an author listed, so this is not super informative...)
