@@ -13,8 +13,6 @@
 # this script: 
 # (a) wrangles data to prepare for plotting (i.e. combines tokens into single col) 
 # (b) plots term frequencies arranged by Counts 
-# (c) plots term frequencies arranged alphabetically
-# there are A LOT of pdfs generated, and not all are readable (i.e. pdf dimensions need to be expanded for some) -- use the functions below to regenerate and re-save any particular plots as needed
 
 ##########################################################################################
 # General Setup
@@ -45,14 +43,17 @@ for(i in 1:length(all_files)){
   # 1) simplify indiv df names
   # 2) combine bigrams into single column for plotting
   # 3) combine trigrams into single column for plotting
+  # 4) remove excess objects from global environment
 ##########################################################################################
 
 ##############################
 # 1) simplify indiv df names
 ##############################
 
+# get list of indiv dfs
 indiv_list <- mget(ls(pattern = glob2rx("indiv/*")))
 
+# resave with simplified names
 for(i in 1:length(indiv_list)){
   object <- indiv_list[[i]]
   name <- names(indiv_list)[i]
@@ -93,19 +94,19 @@ for(i in 1:length(trigram_list)){
   combine_trigrams(object = object, object_name = name)
 }
 
-##########################################################################################
-# (b) Create token frequency plots (arranged by Counts)
-  # 1) create separate plots
-  # 2) combine plots into single, multi-panel plot using the patchwork package
-##########################################################################################
-
 ##############################
-# clean up global environment by removing old objects (e.g. "indiv/...", "bigram/...", "trigram/...")
+# 4) clean up global environment by removing old objects (e.g. "indiv/...", "bigram/...", "trigram/...")
 ##############################
 
 rm(list = ls(pattern =  glob2rx("indiv/*")))
 rm(list = ls(pattern =  glob2rx("bigrams/*")))
 rm(list = ls(pattern =  glob2rx("trigrams/*")))
+
+##########################################################################################
+# (b) Create token frequency plots (arranged by Counts)
+  # 1) create separate plots
+  # 2) combine plots into  multi-panel plots using the patchwork package
+##########################################################################################
 
 ##############################
 # 1) create plots & save to global environment
