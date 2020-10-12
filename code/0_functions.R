@@ -212,3 +212,91 @@ filterCount_trigramTerms <- function(file_path, file_name) {
 output_csv <- function(data, names, file_path){
   write_csv(data, here::here(file_path, paste0(names, ".csv")))
 }
+
+#-----------------------------
+# used in script: "4_plot_term_frequencies.R"
+# function to import filtered token count dfs generated in script 3 
+  # takes arguments:
+    # file_name: name of .csv file located at "data/filtered_term_counts/*"
+#-----------------------------
+
+import_filteredTermCounts <- function(file_name) {
+  
+  # create object name
+  object_name <- tools::file_path_sans_ext(all_files[i])
+  print(object_name)
+  object_name <- gsub("2020.*", "", object_name) 
+  print(object_name)
+  object_name <- gsub("filteredCounts_", "", object_name)
+  print(object_name)
+  
+  # read in data
+  my_file <- read_csv(here::here("data","filtered_term_counts", file_name)) 
+  
+  # save as object_name
+  assign(object_name, my_file, envir = .GlobalEnv)
+}
+
+#-----------------------------
+# used in script: "4_plot_term_frequencies.R"
+# function to combine separate term columns for bigram or trigram dfs into single "token" column
+  # takes arguments:
+    # object: *BigramTokens or *TrigramTokens object in global environment, as class `data.frame`
+    # object_name: *BigramTokens or *TrigramTokens object name from global environment, as class `character`
+#-----------------------------
+
+######  bigrams ###### 
+combine_bigrams <- function(object, object_name){
+  
+  # unite separate token cols
+  new_table <- object %>%
+    unite(col = token, word1, word2, sep = " ")
+  
+  # updated existing objects
+  assign(object_name, new_table, envir = .GlobalEnv) 
+}
+
+###### trigrams ###### 
+combine_trigrams <- function(object, object_name){
+  
+  # unite separate token cols
+  new_table <- object %>%
+    unite(col = token, word1, word2, word3, sep = " ")
+  
+  # updated existing objects
+  assign(object_name, new_table, envir = .GlobalEnv) 
+}
+
+#-----------------------------
+# used in script: "4_plot_term_frequencies.R"
+# function to create frequency plots, where terms are arranged by Counts
+  # takes arguments:
+    # tokens_df: *Tokens object in global environment which has had ngrams combined into a single column, as class `data.frame`
+    # df_name: *Tokens object name in global environment which has had ngrams combined into a single column, as class `character`
+#-----------------------------
+
+create_frequencyByCount_plot <- function(tokens_df, df_name) {
+  
+  # generate plot object name
+  plotObjectName <- gsub("Tokens", "_plot", df_name)
+  print(plotObjectName)
+  
+  # create plot that displays 50 most frequent terms
+  freq_plot <- tokens_df %>%
+    head(50) %>%
+    mutate(token = reorder(token, n)) %>%
+    rename(Counts = n) %>%
+    ggplot(aes(token, Counts)) +
+    geom_col() +
+    ggtitle(df_name) +
+    xlab(NULL) +
+    scale_y_continuous(expand = c(0,0)) +
+    coord_flip() +
+    theme_linedraw()
+  
+  plot(freq_plot)
+  
+  # assign to object name in global environment
+  assign(plotObjectName, freq_plot, envir = .GlobalEnv)
+}
+
