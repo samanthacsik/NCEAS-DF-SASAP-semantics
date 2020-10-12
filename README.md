@@ -9,7 +9,7 @@ Semantic annotations can help to improve data discoverablity within the State of
 
 This repository provides code for:
 
-  * querying SASAP corpus for specific metadata fields (titles, keywords, abstracts, and entity- & attribute-level information) -- LAST QUERIED ON 2020-10-09
+  * querying the SASAP corpus for specific metadata fields (titles, keywords, abstracts, and entity- & attribute-level information) -- LAST QUERIED ON 2020-10-09
   * text mining and data wrangling necessary for extracting commonly used terms across various metadata fields
   * visualizing term frequencies
 
@@ -48,10 +48,38 @@ NCEAS-DF-SASAP-semantics
 
 ### Data
 
+#### `data/queries/query2020-10-09/fullQuery_semAnnotations2020-10-09_solr.csv`
+* `identifier`: unique persistent identifier assigned to each ADC data package (in most cases, this is a DOI)
+* `rightsHolder`: rights holder for corresponding data package
+* `abstract`: data package abstract
+* `keywords`: data package keywords
+* `title`: data package title
+* `project`: name of corresponding project (corresponds to portal name)
+* `author`: first author (firstName lastName)
+* `attribute`: data package attribute(s) and their corresponding attribute definitions (if available)
+
+#### `data/queries/query2020-10-09/fullQuery_semAnnotations2020-10-09_attributes.csv`
+* `identifier`: unique persistent identifier assigned to each ADC data package (in most cases, this is a DOI)
+* `entityName`: name of dataTable (or otherEnity)
+* `attributeName`: The name of an attribute, as listed in a .csv file
+* `attributeLabel`: A descriptive label that can be used to display the name of an attribute
+* `attributeDefinition`: Longer description of the attribute, including the required context for interpreting the `attributeName`
+* `attributeUnit`: Unit string for affiliated attribute
+* `propertyURI`: predicate URI (if annotation exists)
+* `valueURI`: object URI (if annotation exists)
+* `viewURL`: URL of ADC data package
+* `query_datetime_utc`: date/time of query
+
 #### `data/unnested_terms/*`
 * `identifier`: unique persistent identifier assigned to each ADC data package (in most cases, this is a DOI)
 * `author`: first author of data package (if available)
-* `word1/word2/word3`: 
+* `word1/word2/word3`: individual tokens (i.e. words); the number of columns populated will depend on whether terms are being split into individual words (col: `word`), bigrams (cols: `word1`, `word2`), or trigrams (cols: `word1`, `word2`, `word3`)
+
+#### `data/filtered_term_counts/*`
+* `word1/word2/word3`: individual tokens (i.e. words) with stop words removed (see `tidytext::stop_words()`); the number of columns populated will depend on whether terms are being split into individual words (col: `word`), bigrams (cols: `word1`, `word2`), or trigrams (cols: `word1`, `word2`, `word3`)
+* `n`: # of occurrances across SASAP corpus
+* `unique_ids`: # of unique identifiers that term occurs in 
+* `unique_authors`: # of unique authors that have used that term (NOTE: many SASAP data packages do not have an author listed, so this is not super informative...)
 
 ### Software
 
