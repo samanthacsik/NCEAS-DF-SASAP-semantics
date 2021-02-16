@@ -1,3 +1,4 @@
+# title: Remove stop words and calculate term frequncies
 # author: "Sam Csik"
 # date created: "2020-10-09"
 # date edited: "2020-10-12"
