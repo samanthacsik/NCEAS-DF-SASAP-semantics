@@ -35,7 +35,8 @@ source(here::here("code", "05a_exploring_attributes.R"))
 fishCounts <- attributes %>% 
   filter(str_detect(attributeDefinition, "(?i)the species ratio") |
          str_detect(attributeDefinition, "(?i)harvested in") |
-         str_detect(attributeDefinition, "(?i)number of fish in"))
+         str_detect(attributeDefinition, "(?i)number of fish in") |
+         attributeName %in% c("Chum", "Coho", "Chinook", "Pink", "Sockeye", "Total"))
 
 ##########################################################################################
 # determine appropriate valueURIs
@@ -71,11 +72,41 @@ counts <- fishCounts %>%
          assigned_propertyURI = rep(""),
          notes = rep("fish counts (by region)"))
 
+#############################
+# number fish harvested
+#############################
+
+numFishHarvested <- fishCounts %>% 
+  filter(attributeName %in% c("Chum", "Coho", "Chinook", "Pink", "Sockeye", "Total"),
+         attributeUnit == "number",
+         attributeDefinition != "total number of permit holders from that resident type") %>% 
+  mutate(assigned_valueURI = rep(""),
+         assigned_propertyURI = rep(""),
+         notes = rep("number of fish harvested"))
+
+# ---- clean up repeats for BristolBay.cscv ----
+
+numFishHarvested_BB <- numFishHarvested %>% filter(entityName == "BristolBay.csv") %>% distinct()
+numFishHarvested_rest <- numFishHarvested %>% filter(entityName != "BristolBay.csv")
+numFishHarvested_CLEANED <- rbind(numFishHarvested_BB, numFishHarvested_rest) # USE THIS ONE
+
+# ----------------------------------------------
+
+#############################
+# fish biomass
+#############################
+
+biomassFishHarvested <- fishCounts %>% 
+  filter(attributeUnit == "thousandsOfTonnes") %>% 
+  mutate(assigned_valueURI = rep(""),
+         assigned_propertyURI = rep(""),
+         notes = rep("biomass of fish harvested"))
+
 ##########################################################################################
 # combine and ensure no duplicates
 ##########################################################################################
 
-all_fishCounts_atts <- rbind(annual_harvested, species_ratio, counts)
+all_fishCounts_atts <- rbind(annual_harvested, species_ratio, counts, numFishHarvested_CLEANED, biomassFishHarvested)
 
 remainder <- anti_join(fishCounts, all_fishCounts_atts)
 
@@ -85,6 +116,4 @@ all_fishCounts_distinct <- all_fishCounts_atts %>% select(-assigned_valueURI, -a
 isTRUE(length(all_fishCounts$attributeName) == length(all_fishCounts_distinct$attributeName))
 
 # clean up global environment
-rm(annual_harvested, species_ratio, counts, remainder, all_fishCounts, all_fishCounts_distinct, fishCounts)
-
-
+rm(annual_harvested, species_ratio, counts, remainder, all_fishCounts, all_fishCounts_distinct, fishCounts, numFishHarvested, numFishHarvested_BB, numFishHarvested_rest, numFishHarvested_CLEANED, biomassFishHarvested)

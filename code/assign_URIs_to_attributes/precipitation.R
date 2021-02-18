@@ -93,4 +93,4 @@ all_precipitation_distinct <- all_precipitation_atts %>% select(-assigned_valueU
 isTRUE(length(all_precipitation$attributeName) == length(all_precipitation_distinct$attributeName))
 
 # clean up global environment
-rm(monthly_total_precip, quarterly_mean_precip, annual_mean_precipitation, tempA, tempB, tempC, tempD, all_precipitation, all_precipitation_distinct, remainder)
+rm(precipitation, monthly_total_precip, quarterly_mean_precip, annual_mean_precipitation, tempA, tempB, tempC, tempD, all_precipitation, all_precipitation_distinct, remainder)

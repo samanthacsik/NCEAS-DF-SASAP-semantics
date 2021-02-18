@@ -68,25 +68,25 @@ stream_temp <- temp %>%
 
 max_stream_temp <- temp %>% 
   filter(attributeName == "max_temp") %>% 
-  mutate(assigned_valueURI = rep("create new semantic term"),
+  mutate(assigned_valueURI = rep(""),
          assigned_propertyURI = rep(""),
          notes = rep("MAX stream temp"))
 
 min_stream_temp <- temp %>% 
   filter(attributeName == "min_temp") %>% 
-  mutate(assigned_valueURI = rep("create new semantic term"),
+  mutate(assigned_valueURI = rep(""),
          assigned_propertyURI = rep(""),
          notes = rep("MIN stream temp"))
 
 mean_stream_temp <- temp %>% 
   filter(attributeName == "mean_temp") %>% 
-  mutate(assigned_valueURI = rep("create new semantic term"),
+  mutate(assigned_valueURI = rep(""),
          assigned_propertyURI = rep(""),
          notes = rep("AVERAGE stream temp"))
 
 stream_temp_TBD <- temp %>%
   filter(attributeName %in% c("Hobo_Sonde", "ABS_diff")) %>% 
-  mutate(assigned_valueURI = rep("create new semantic term"),
+  mutate(assigned_valueURI = rep(""),
          assigned_propertyURI = rep(""),
          notes = rep("difference between different instrument temperature meausurements"))
 

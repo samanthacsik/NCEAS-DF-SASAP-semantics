@@ -11,6 +11,8 @@
 ##########################################################################################
 
 # Identifying attributes related to "dates"
+# NOTE: any dates related to permits or licenses will be sorted in the 'permits.R' script
+# 76 unsorted attributes remaining
 
 ##########################################################################################
 # General Setup
@@ -36,6 +38,11 @@ dates <- attributes %>%
   filter(str_detect(attributeName, "(?i)date") |
          str_detect(attributeName, "(?i)year"))
 
+times <- attributes %>% 
+  filter(str_detect(attributeName, "(?i)time"))
+
+dates_times <- rbind(dates, times)
+
 ##########################################################################################
 # determine appropriate valueURIs
 ##########################################################################################
@@ -44,39 +51,124 @@ dates <- attributes %>%
 # brood year
 #############################
 
-brood_year <- dates %>% 
-  filter(attributeName %in% c("BroodYear")) %>% 
+brood_year <- dates_times %>% 
+  filter(attributeName %in% c("BroodYear", "Year Brood") |
+         attributeDefinition %in% c("Brood year")) %>% 
   mutate(assigned_valueURI = rep(""),
          assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
          notes = rep("brood year; ASSIGN URI FOR YEAR??"))
 
 #############################
+# commercial harvest year
+#############################
+
+commHarvestYear <- dates_times %>% 
+  filter(attributeDefinition %in% c("Year commercial harvest data was collected", "year of salmon harvest") |
+         attributeName %in% c("OperationYear")) %>% 
+  mutate(assigned_valueURI = rep(""),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         notes = rep("year of commecial harvest"))
+
+# ---- clean up repeats for BristolBay.cscv ----
+
+commHarvestYear_BB <- commHarvestYear %>% filter(entityName == "BristolBay.csv") %>% distinct()
+commHarvestYear_rest <- commHarvestYear %>% filter(entityName != "BristolBay.csv")
+commHarvestYear_CLEANED <- rbind(commHarvestYear_BB, commHarvestYear_rest) # USE THIS ONE
+
+# ----------------------------------------------
+
+#############################
+# sample year
+#############################
+
+sample_year <- dates_times %>% 
+  filter(attributeName %in% c("sampleYear", "SAMPLE_YEAR", "periodyear", "data_file_year", "subs_year") |
+         attributeDefinition %in% c("year of observation", "Year of observation", "year of study", "Year of the survey",
+                                    "Year of harvest", "year of harvest",
+                                    "Year that abundance data are from", "Year that data are from", "observation year",
+                                    "year sample was taken", "year the data corresponds to", 
+                                    "Year measurements were taken", "year measurements were taken",
+                                    "Year data were collected", "Year surveyed", 
+                                    "Year in which the survey/escapement project was", 
+                                    "The year the salmon escapement data was taken", 
+                                    "The year the data was sampled", "The year in which the escapement occurred.",
+                                    "The year for which the estimated value applies.")) %>% 
+  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/ECSO_00002050"),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         notes = rep("year of measurement"))
+
+#############################
+# sample time
+#############################
+
+sample_time <- dates_times %>% 
+  filter(attributeName %in% c("sampleTime", "sondeTime_ADT", "HoboTime_ADT") |
+         attributeDefinition %in% c("The time the survey was conducted, if available.")) %>% 
+  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/ECSO_00002040"),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         notes = rep("time of measurement"))
+
+#############################
 # date
 #############################
 
-date <- dates %>% 
-  filter(attributeName %in% c("Date", "sampleDate")) %>% 
+date <- dates_times %>% 
+  filter(attributeName %in% c("Date", "sampleDate", "SampleDate", "SAMPLE_DATE", "sample_date", 
+                              "Count Date", "catch_date", "yearmonth", "SW_DATE") |
+         attributeDefinition %in% c("Date the survey/escapement project was conducted."))%>% 
   mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/ECSO_00002051"),
          assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
-         notes = rep("general date of measurement"))
+         notes = rep("date (of measurement)"))
 
 #############################
 # issue date of license
 #############################
 
-license_issue_date <- dates %>% 
+license_issue_date <- dates_times %>% 
   filter(attributeLabel %in% c("License Issue Date")) %>% 
   mutate(assigned_valueURI = rep(""),
          assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
          notes = rep("issue date of license"))
 
+#############################
+# number of years (duration or project/sample/etc)
+#############################
+
+numYears <- dates_times %>% 
+  filter(attributeDefinition %in% c("Number of years data was collected at the site", 
+                                    "number of years project was ongoing", "number of years the data covers",
+                                    "The number of years of data collected")) %>% 
+  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/ECSO_00001636"),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         notes = rep("number of years"))
+
+#############################
+# start date of data collection
+#############################
+
+startDate <- dates_times %>% 
+  filter(attributeName %in% c("start_date", "Initial_date")) %>% 
+  mutate(assigned_valueURI = rep(""),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         notes = rep("start date of data collection"))
+
+#############################
+# end date of data collection
+#############################
+
+endDate <- dates_times %>% 
+  filter(attributeName %in% c("End_date")) %>% 
+  mutate(assigned_valueURI = rep(""),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         notes = rep("end date of data collection"))
+
 ##########################################################################################
 # combine and ensure no duplicates
 ##########################################################################################
 
-all_date_atts <- rbind(brood_year, date, license_issue_date)
+all_date_atts <- rbind(brood_year, commHarvestYear_CLEANED, date, license_issue_date, sample_time, sample_year, numYears, startDate, endDate)
 
-remainder <- anti_join(dates, all_date_atts)
+remainder <- anti_join(dates_times, all_date_atts)
 
 # check that there are no duplicates
 all_dates <- all_date_atts %>% select(-assigned_valueURI,-assigned_propertyURI, -notes)
@@ -84,4 +176,4 @@ all_dates_distinct <- all_date_atts %>% select(-assigned_valueURI, -assigned_pro
 isTRUE(length(all_dates$attributeName) == length(all_dates_distinct$attributeName))
 
 # clean up global environment
-rm(dates, all_dates, all_dates_distinct)
+rm(dates, brood_year, commHarvestYear, commHarvestYear_BB, commHarvestYear_rest, commHarvestYear_CLEANED, date, license_issue_date, sample_time, sample_year, numYears, startDate, endDate, remainder, all_dates, all_dates_distinct)

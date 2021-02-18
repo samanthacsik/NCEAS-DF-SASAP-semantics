@@ -86,5 +86,5 @@ all_escapement_distinct <- all_escapement_atts %>% select(-assigned_valueURI, -a
 isTRUE(length(all_escapement$attributeName) == length(all_escapement_distinct$attributeName))
 
 # clean up global environment
-rm(escapement, total_escapement, annual_escapement, daily_escapement, all_escapement, all_escapement_distinct, remainder)
+rm(escapement, annual_escapement, daily_escapement, all_escapement, all_escapement_distinct, remainder)
 
