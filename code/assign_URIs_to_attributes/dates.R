@@ -121,7 +121,7 @@ date <- dates_times %>%
          notes = rep("date (of measurement)"))
 
 #############################
-# issue date of license
+# issue date of license -- SEPARATED THESE OUT TO REMOVE THEM (THESE ARE SORTED IN 'permits.R')
 #############################
 
 license_issue_date <- dates_times %>% 
@@ -166,7 +166,7 @@ endDate <- dates_times %>%
 # combine and ensure no duplicates
 ##########################################################################################
 
-all_date_atts <- rbind(brood_year, commHarvestYear_CLEANED, date, license_issue_date, sample_time, sample_year, numYears, startDate, endDate)
+all_date_atts <- rbind(brood_year, commHarvestYear_CLEANED, date, sample_time, sample_year, numYears, startDate, endDate)
 
 remainder <- anti_join(dates_times, all_date_atts)
 

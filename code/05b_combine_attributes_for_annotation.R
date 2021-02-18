@@ -55,7 +55,8 @@ SASAP_attributes_distinct <- SASAP_attributes %>% select(-assigned_valueURI, -as
 isTRUE(length(SASAP_attributes_test$attributeName) == length(SASAP_attributes_distinct$attributeName))
 
 # if need to find repeats
-repeats <- get_dupes()
+repeats <- get_dupes(SASAP_attributes_test)
 
 ########
 master_list_remainder <- anti_join(attributes, SASAP_attributes)
+
