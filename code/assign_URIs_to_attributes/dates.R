@@ -140,7 +140,7 @@ numYears <- dates_times %>%
                                     "The number of years of data collected")) %>% 
   mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/ECSO_00001636"),
          assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
-         notes = rep("number of years"))
+         notes = rep("number of years (data was collected)"))
 
 #############################
 # start date of data collection
