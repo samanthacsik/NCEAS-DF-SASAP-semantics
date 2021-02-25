@@ -35,7 +35,8 @@ source(here::here("code", "05a_exploring_attributes.R"))
 escapement <- attributes %>% 
   filter(str_detect(attributeDefinition, "(?i)escapement value") |
          str_detect(attributeDefinition, "(?i)annual escapement") |
-         str_detect(attributeDefinition, "(?i)number of fish escaping upstream"))
+         str_detect(attributeDefinition, "(?i)number of fish escaping upstream") |
+         attributeName == "COUNT")
 
 ##########################################################################################
 # determine appropriate valueURIs
@@ -67,7 +68,8 @@ annual_escapement <- escapement %>%
 #############################
 
 daily_escapement <- escapement %>% 
-  filter(str_detect(attributeDefinition, "(?i)number of fish escaping upstream")) %>% 
+  filter(str_detect(attributeDefinition, "(?i)number of fish escaping upstream") |
+         attributeName == "COUNT") %>% 
   mutate(assigned_valueURI = rep(""),
          assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
          notes = rep("daily escapement counts")) 

@@ -62,7 +62,7 @@ stream_temp <- temp %>%
                                     "Stream temperature, measured in degrees Celsius",
                                     "temperature measured") |
            attributeName %in% c("HoboTemp", "sondeTemp")) %>% 
-  mutate(assigned_valueURI = rep("create new semantic term"),
+  mutate(assigned_valueURI = rep(""),
          assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
          notes = rep("stream temp; ECSO has term for 'river temp' but not 'stream'"))
 
