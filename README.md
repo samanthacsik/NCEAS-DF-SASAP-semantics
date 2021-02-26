@@ -7,18 +7,21 @@ README needs to be updated 2021-02-23
 
 ### Overview
 
-Visit the State of Alaska's Salmon and People (SASAP) data portal [here](https://knb.ecoinformatics.org/projects/SASAP/Data)
+Visit the State of Alaska's Salmon and People (SASAP) data portal [here](https://knb.ecoinformatics.org/projects/SASAP/Data).
 
 This repository provides code for:
 
-  * querying the SASAP corpus for package, entity, and attribute-level data (titles, keywords, abstracts, entities,  attribute) 
+(a) basic text analysis of SASAP metadata records, including:
+  * querying the SASAP corpus for package, entity, and attribute-level data (titles, keywords, abstracts, entities, attributes) 
   * text mining and data wrangling necessary for extracting commonly used terms across various metadata fields; visualizing term frequencies
+
+(b) planning to semantically annotate the SASAP corpus by:
   * grouping similar attributes and assigning term URIs where possible (primarily from the [Ecosystem Ontology, ECSO](https://bioportal.bioontology.org/ontologies/ECSO/?p=summary))
   * noting which attributes need newly-defined ontological terms for annotation
 
 ### Getting Started
 
-Scripts are numbered in the order of data processing workflow. Required packages (`00_libraries.R`) and custom functions (`00_functions.R`) are sourced into each script for streamlining setup and reducing clutter. Processed data are saved as .csv files in `data`, so it is not necessary to rerun code unless using an updated query.
+Scripts are numbered in the order of: data processing workflow. Required packages (`00_libraries.R`) and custom functions (`00_functions.R`) are sourced into each script for streamlining setup and reducing clutter. Processed data are saved as .csv files in `data`, so it is not necessary to rerun code unless using an updated query.
 
 ### Repository Structure
 
@@ -49,8 +52,10 @@ NCEAS-DF-SASAP-semantics
 * `02_unnest_terms.R`: unnest (i.e. separate) titles, keywords, abstracts & attribute information into individual words, bigrams, and trigrams; data are saved as .csv files to `data/unnested_terms/*`
 * `03_filterStopWords_term_counts.R`: filter out stop words and count number of occurrances of unnested terms; data are saved as .csv files to `data/filtered_term_counts/*`
 * `04_plot_term_frequencies.R` : plot most common terms across each metadata field 
-* `05a_exploring_attributes.R` :
-* `05b_combine_attributes_for_annotation.R`:
+* `05a_exploring_attributes.R` : not much here, delete or combine with script 05b 
+* `05b_combine_attributes_for_annotation.R`: combine all sorted attributes groups that have been assigned term URIs or otherwise noted as needing a new term developed
+
+**NOTE:** `code/assing_URIs_to_attributes` contains all the scripts which are sourced into `05b_combine_attributes_for_annotation.R`; these scripts are where attributes have been grouped together and assigned term URIs (or noted that a new term URI is needed)
 
 ### Data
 
