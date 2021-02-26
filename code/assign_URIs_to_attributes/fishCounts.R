@@ -51,8 +51,11 @@ fishCounts <- attributes %>%
 
 annual_harvested <- fishCounts %>% 
   filter(str_detect(attributeDefinition, "(?i)harvested in")) %>% 
-  mutate(assigned_valueURI = rep(""),
-         assigned_propertyURI = rep(""),
+  mutate(assigned_valueURI = rep("tbd"),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         prefName = rep("tbd"),
+         ontoName = rep("tbd"),
+         grouping = rep("annual_harvest"),
          notes = rep("number of salmon (by species) harvested annually"))
 
 #############################
@@ -61,8 +64,11 @@ annual_harvested <- fishCounts %>%
 
 species_ratio <- fishCounts %>% 
   filter(str_detect(attributeDefinition, "(?i)the species ratio")) %>% 
-  mutate(assigned_valueURI = rep(""),
-         assigned_propertyURI = rep(""),
+  mutate(assigned_valueURI = rep("tbd"),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         prefName = rep("tbd"),
+         ontoName = rep("tbd"),
+         grouping = rep("species_ratio"),
          notes = rep("species ratio"))
 
 #############################
@@ -71,8 +77,11 @@ species_ratio <- fishCounts %>%
 #!!!! needs to be divided up
 counts_by_region <- fishCounts %>% 
   filter(str_detect(attributeDefinition, "(?i)number of fish in")) %>% 
-  mutate(assigned_valueURI = rep(""),
-         assigned_propertyURI = rep(""),
+  mutate(assigned_valueURI = rep("tbd"),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         prefName = rep("tbd"),
+         ontoName = rep("tbd"),
+         grouping = rep("counts_by_region"),
          notes = rep("fish counts (by region)"))
 
 #############################
@@ -83,8 +92,11 @@ numFishHarvested_byRegion <- fishCounts %>%
   filter(attributeName %in% c("Chum", "Coho", "Chinook", "Pink", "Sockeye"), # included 'Total' but should break out
          attributeUnit == "number",
          attributeDefinition != "total number of permit holders from that resident type") %>% 
-  mutate(assigned_valueURI = rep(""),
-         assigned_propertyURI = rep(""),
+  mutate(assigned_valueURI = rep("tbd"),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         prefName = rep("tbd"),
+         ontoName = rep("tbd"),
+         grouping = rep("numFishHarvested_byRegion"),
          notes = rep("number of fish harvested by year"))
 
 # ---- clean up repeats for BristolBay.cscv ----
@@ -109,8 +121,11 @@ numFishHarvested_byRegion_CLEANED <- rbind(numFishHarvested_byRegion_BB, numFish
 
 biomassFishHarvested <- fishCounts %>% 
   filter(attributeUnit == "thousandsOfTonnes") %>% 
-  mutate(assigned_valueURI = rep(""),
-         assigned_propertyURI = rep(""),
+  mutate(assigned_valueURI = rep("tbd"),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         prefName = rep("tbd"),
+         ontoName = rep("tbd"),
+         grouping = rep("biomassFishHarvested"),
          notes = rep("biomass of fish harvested by year"))
 
 #############################
@@ -120,8 +135,11 @@ biomassFishHarvested <- fishCounts %>%
 fishBiomass_byRegion <- fishCounts %>% 
   filter(attributeUnit == "tonne",
          attributeName != "TOTAL") %>% 
-  mutate(assigned_valueURI = rep(""),
-         assigned_propertyURI = rep(""),
+  mutate(assigned_valueURI = rep("tbd"),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         prefName = rep("tbd"),
+         ontoName = rep("tbd"),
+         grouping = rep("fishBiomass_byRegion"),
          notes = rep("biomass of fish, by region and year"))
 
 #############################
@@ -131,8 +149,11 @@ fishBiomass_byRegion <- fishCounts %>%
 total_fishBiomass <- fishCounts %>% 
   filter(attributeUnit == "tonne",
          attributeName == "TOTAL") %>% 
-  mutate(assigned_valueURI = rep(""),
-         assigned_propertyURI = rep(""),
+  mutate(assigned_valueURI = rep("tbd"),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         prefName = rep("tbd"),
+         ontoName = rep("tbd"),
+         grouping = rep("total_fishBiomass"),
          notes = rep("total fish biomass (across regions) by year"))
 
 
@@ -145,8 +166,8 @@ all_fishCounts_atts <- rbind(annual_harvested, species_ratio, counts_by_region, 
 remainder <- anti_join(fishCounts, all_fishCounts_atts)
 
 # check that there are no duplicates
-all_fishCounts <- all_fishCounts_atts %>% select(-assigned_valueURI,-assigned_propertyURI, -notes)
-all_fishCounts_distinct <- all_fishCounts_atts %>% select(-assigned_valueURI, -assigned_propertyURI, -notes) %>% distinct()
+all_fishCounts <- all_fishCounts_atts %>% select(-assigned_valueURI,-assigned_propertyURI, -prefName, -ontoName, -grouping, -notes)
+all_fishCounts_distinct <- all_fishCounts_atts %>% select(-assigned_valueURI, -assigned_propertyURI, -prefName, -ontoName, -grouping, -notes) %>% distinct()
 isTRUE(length(all_fishCounts$attributeName) == length(all_fishCounts_distinct$attributeName))
 
 # clean up global environment

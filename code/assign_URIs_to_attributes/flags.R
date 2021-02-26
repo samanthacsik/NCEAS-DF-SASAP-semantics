@@ -43,22 +43,25 @@ flags <- attributes %>%
 # flags (all)
 #############################
 
-flags_all <- flags %>% 
+data_quality_flags <- flags %>% 
   mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/ECSO_00001720"),
          assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         prefName = rep("data quality flag"),
+         ontoName = rep("The Ecosystem Ontology"),
+         grouping = rep("data_quality_flags"),
          notes = rep("data quality flag"))
 
 ##########################################################################################
 # combine and ensure no duplicates
 ##########################################################################################
 
-all_flag_atts <- rbind(flags_all)
+all_flag_atts <- rbind(data_quality_flags)
 
 remainder <- anti_join(flags, all_flag_atts)
 
 # check that there are no duplicates
-all_flags <- all_flag_atts %>% select(-assigned_valueURI,-assigned_propertyURI, -notes)
-all_flags_distinct <- all_flag_atts %>% select(-assigned_valueURI, -assigned_propertyURI, -notes) %>% distinct()
+all_flags <- all_flag_atts %>% select(-assigned_valueURI,-assigned_propertyURI, -prefName, -ontoName, -grouping, -notes)
+all_flags_distinct <- all_flag_atts %>% select(-assigned_valueURI, -assigned_propertyURI, -prefName, -ontoName, -grouping, -notes) %>% distinct()
 isTRUE(length(all_flags$attributeName) == length(all_flags_distinct$attributeName))
 
 # clean up global environment

@@ -45,8 +45,11 @@ recruits <- attributes %>%
 
 total_recruits <- recruits %>% 
   filter(attributeName %in% c("TotalRecruits", "Recruits")) %>% 
-  mutate(assigned_valueURI = rep("create new semantic term"),
+  mutate(assigned_valueURI = rep("tbd"),
          assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         prefName = rep("tbd"),
+         ontoName = rep("tbd"),
+         grouping = rep("total_recruits"),
          notes = rep("total number of recruits (across age classes)"))
 
 #############################
@@ -55,8 +58,11 @@ total_recruits <- recruits %>%
 
 num_recruits_per_spawner <- recruits %>% 
   filter(attributeName == "spawner") %>% 
-  mutate(assigned_valueURI = rep("create new semantic term"),
+  mutate(assigned_valueURI = rep("tbd"),
          assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         prefName = rep("tbd"),
+         ontoName = rep("tbd"),
+         grouping = rep("num_recruits_per_spawner"),
          notes = rep("number of recruits per spawner"))
 
 #############################
@@ -73,8 +79,11 @@ tempC <- recruits %>%
   filter(str_detect(attributeDefinition, "(?i)number of total age"))
 
 num_recruits_by_ageClass <- rbind(tempA, tempB, tempC) %>% 
-  mutate(assigned_valueURI = rep("create new semantic term"),
+  mutate(assigned_valueURI = rep("tbd"),
          assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         prefName = rep("tbd"),
+         ontoName = rep("tbd"),
+         grouping = rep("num_recruits_by_ageClass"),
          notes = rep("number of recruits per age class"))
 
 ##########################################################################################
@@ -86,8 +95,8 @@ all_recruit_atts <- rbind(total_recruits, num_recruits_per_spawner, num_recruits
 remainder <- anti_join(recruits, all_recruit_atts)
 
 # check that there are no duplicates
-all_recruits <- all_recruit_atts %>% select(-assigned_valueURI, - assigned_propertyURI, -notes)
-all_recruits_distinct <- all_recruit_atts %>% select(-assigned_valueURI, - assigned_propertyURI, -notes) %>% distinct()
+all_recruits <- all_recruit_atts %>% select(-assigned_valueURI, - assigned_propertyURI, -prefName, -ontoName, -grouping, -notes)
+all_recruits_distinct <- all_recruit_atts %>% select(-assigned_valueURI, - assigned_propertyURI, -prefName, -ontoName, -grouping, -notes) %>% distinct()
 isTRUE(length(all_recruits$attributeName) == length(all_recruits_distinct$attributeName))
 
 # clean up global environment

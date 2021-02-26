@@ -45,8 +45,11 @@ random_ids <- attributes %>%
 
 AKOATS_id <- random_ids %>% 
   filter(attributeName %in% c("AKOATS_ID")) %>% 
-  mutate(assigned_valueURI = rep(""),
-         assigned_propertyURI = rep(""),
+  mutate(assigned_valueURI = rep("tbd"),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         prefName = rep("tbd"),
+         ontoName = rep("tbd"),
+         grouping = rep("AKOATS_id"),
          notes = rep("unique UAA Alaska Center for Conservation Science identifier"))
 
 ##########################################################################################
@@ -58,8 +61,8 @@ all_randomID_atts <- rbind(AKOATS_id)
 remainder <- anti_join(random_ids, all_randomID_atts)
 
 # check that there are no duplicates
-all_randomIDs <- all_randomID_atts %>% select(-assigned_valueURI, - assigned_propertyURI, -notes)
-all_randomIDs_distinct <- all_randomID_atts %>% select(-assigned_valueURI, - assigned_propertyURI, -notes) %>% distinct()
+all_randomIDs <- all_randomID_atts %>% select(-assigned_valueURI, - assigned_propertyURI, -prefName, -ontoName, -grouping, -notes)
+all_randomIDs_distinct <- all_randomID_atts %>% select(-assigned_valueURI, - assigned_propertyURI, -prefName, -ontoName, -grouping, -notes) %>% distinct()
 isTRUE(length(all_randomIDs$attributeName) == length(all_randomIDs_distinct$attributeName))
 
 # clean up global environment

@@ -52,8 +52,8 @@ all_area_atts <- rbind()
 remainder <- anti_join(area, all_area_atts)
 
 # check that there are no duplicates
-all_area <- all_area_atts %>% select(-assigned_valueURI, - assigned_propertyURI, -notes)
-all_area_distinct <- all_area_atts %>% select(-assigned_valueURI, - assigned_propertyURI, -notes) %>% distinct()
+all_area <- all_area_atts %>% select(-assigned_valueURI, - assigned_propertyURI, -prefName, -ontoName, -grouping, -notes)
+all_area_distinct <- all_area_atts %>% select(-assigned_valueURI, - assigned_propertyURI, -prefName, -ontoName, -grouping, -notes) %>% distinct()
 isTRUE(length(all_area$attributeName) == length(all_area_distinct$attributeName))
 
 # clean up global environment

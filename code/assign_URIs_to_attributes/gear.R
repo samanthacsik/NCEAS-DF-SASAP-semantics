@@ -47,8 +47,11 @@ gear <- attributes %>%
 ADFGgearCode <- gear %>% 
   filter(str_detect(attributeDefinition, "(?i)ADFG") |
          attributeName %in% c("gear_type")) %>% 
-  mutate(assigned_valueURI = rep(""),
-         assigned_propertyURI = rep(""),
+  mutate(assigned_valueURI = rep("tbd"),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         prefName = rep("tbd"),
+         ontoName = rep("tbd"),
+         grouping = rep("ADFGgearCode"),
          notes = rep("ADFG gear code")) 
 
 #############################
@@ -57,8 +60,11 @@ ADFGgearCode <- gear %>%
 
 gearCode <- gear %>% 
   filter(attributeName %in% c("RecGear", "RelGear")) %>% 
-  mutate(assigned_valueURI = rep(""),
-         assigned_propertyURI = rep(""),
+  mutate(assigned_valueURI = rep("tbd"),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         prefName = rep("tbd"),
+         ontoName = rep("tbd"),
+         grouping = rep("gearCode"),
          notes = rep("gear code (defined in metadata)")) 
 
 #############################
@@ -68,8 +74,11 @@ gearCode <- gear %>%
 gearType <- gear %>% 
   filter(attributeName %in% c("gear", "Gear", "GEAR", "Gear_Type_Name", "GearType", "gearTypeID"),
          attributeDefinition != "Name of gear defined by ADFG gear code") %>% 
-  mutate(assigned_valueURI = rep(""),
-         assigned_propertyURI = rep(""),
+  mutate(assigned_valueURI = rep("tbd"),
+         assigned_propertyURI = rep("tbd"),
+         prefName = rep("tbd"),
+         ontoName = rep("tbd"),
+         grouping = rep("gearType"),
          notes = rep("fishing/sampling gear")) 
 
 ##########################################################################################
@@ -81,8 +90,8 @@ all_gear_atts <- rbind(ADFGgearCode, gearCode, gearType)
 remainder <- anti_join(gear, all_gear_atts)
 
 # check that there are no duplicates
-all_gear <- all_gear_atts %>% select(-assigned_valueURI, -assigned_propertyURI, - notes)
-all_gear_distinct <- all_gear_atts %>% select(-assigned_valueURI, -assigned_propertyURI, - notes) %>% distinct()
+all_gear <- all_gear_atts %>% select(-assigned_valueURI, -assigned_propertyURI, -prefName, -ontoName, -grouping, -notes)
+all_gear_distinct <- all_gear_atts %>% select(-assigned_valueURI, -assigned_propertyURI, -prefName, -ontoName, -grouping, -notes) %>% distinct()
 isTRUE(length(all_gear$attributeName) == length(all_gear_distinct$attributeName))
 
 # clean up global environment

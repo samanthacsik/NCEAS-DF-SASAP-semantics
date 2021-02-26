@@ -46,14 +46,20 @@ agency <- attributes %>%
 
 agency_name <- agency %>% 
   filter(attributeName %in% c("Agency", "AGENCY", "agency_cd", "SourceName", "IncidentAgency", "AGY_SHORT_NAME", "RelAgency")) %>% 
-  mutate(assigned_valueURI = rep(""),
-         assigned_propertyURI = rep(""),
+  mutate(assigned_valueURI = rep("tbd"),
+         assigned_propertyURI = rep("tbd"),
+         prefName = rep("tbd"),
+         ontoName = rep("tbd"),
+         grouping = rep("agency_name"),
          notes = rep("agency name"))
 
 agency_code <- agency %>% 
   filter(attributeName %in% c("AGY_NUM")) %>% 
-  mutate(assigned_valueURI = rep(""),
-         assigned_propertyURI = rep(""),
+  mutate(assigned_valueURI = rep("tbd"),
+         assigned_propertyURI = rep("tbd"),
+         prefName = rep("tbd"),
+         ontoName = rep("tbd"),
+         grouping = rep("agency_code"),
          notes = rep("numeric identifier of agency"))
 
 #############################
@@ -62,8 +68,11 @@ agency_code <- agency %>%
 
 contact_person <- agency %>% 
   filter(attributeName %in% c("Contact_person")) %>% 
-  mutate(assigned_valueURI = rep(""),
-         assigned_propertyURI = rep(""),
+  mutate(assigned_valueURI = rep("tbd"),
+         assigned_propertyURI = rep("tbd"),
+         prefName = rep("tbd"),
+         ontoName = rep("tbd"),
+         grouping = rep("contact_person"),
          notes = rep("contact person at agency"))
 
 #############################
@@ -72,8 +81,11 @@ contact_person <- agency %>%
 
 contact_email <- agency %>% 
   filter(attributeName %in% c("Contact_email")) %>% 
-  mutate(assigned_valueURI = rep(""),
-         assigned_propertyURI = rep(""),
+  mutate(assigned_valueURI = rep("tbd"),
+         assigned_propertyURI = rep("tbd"),
+         prefName = rep("tbd"),
+         ontoName = rep("tbd"),
+         grouping = rep("contact_email"),
          notes = rep("contact email at agency"))
 
 #############################
@@ -82,8 +94,11 @@ contact_email <- agency %>%
 
 contact_telephone <- agency %>% 
   filter(attributeName %in% c("Contact_telephone")) %>% 
-  mutate(assigned_valueURI = rep(""),
-         assigned_propertyURI = rep(""),
+  mutate(assigned_valueURI = rep("tbd"),
+         assigned_propertyURI = rep("tbd"),
+         prefName = rep("tbd"),
+         ontoName = rep("tbd"),
+         grouping = rep("contact_telephone"),
          notes = rep("contact phone number at agency"))
 
 #############################
@@ -92,8 +107,11 @@ contact_telephone <- agency %>%
 
 agency_hyperlink <- agency %>% 
   filter(attributeName %in% c("Link")) %>% 
-  mutate(assigned_valueURI = rep(""),
-         assigned_propertyURI = rep(""),
+  mutate(assigned_valueURI = rep("tbd"),
+         assigned_propertyURI = rep("tbd"),
+         prefName = rep("tbd"),
+         ontoName = rep("tbd"),
+         grouping = rep("agency_hyperlink"),
          notes = rep("agency hyperlink"))
 
 ##########################################################################################
@@ -105,8 +123,8 @@ all_agency_atts <- rbind(agency_name, agency_code, contact_person, contact_email
 remainder <- anti_join(agency, all_agency_atts)
 
 # check that there are no duplicates
-all_agency <- all_agency_atts %>% select(-assigned_valueURI, -assigned_propertyURI, - notes)
-all_agency_distinct <- all_agency_atts %>% select(-assigned_valueURI, -assigned_propertyURI, - notes) %>% distinct()
+all_agency <- all_agency_atts %>% select(-assigned_valueURI, -assigned_propertyURI, -prefName, -ontoName, -grouping, -notes)
+all_agency_distinct <- all_agency_atts %>% select(-assigned_valueURI, -assigned_propertyURI, -prefName, -ontoName, -grouping, -notes) %>% distinct()
 isTRUE(length(all_agency$attributeName) == length(all_agency_distinct$attributeName))
 
 # clean up global environment

@@ -48,8 +48,11 @@ sample_info <- attributes %>%
 
 fishSampleID <- sample_info %>% 
   filter(attributeDefinition %in% c("Numeric value assigned to a sample taken from a fish on a particular date")) %>% 
-  mutate(assigned_valueURI = rep(""),
-         assigned_propertyURI = rep(""),
+  mutate(assigned_valueURI = rep("tbd"),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         prefName = rep("tbd"),
+         ontoName = rep("tbd"),
+         grouping = rep("fishSampleID"),
          notes = rep("fish sample identifier"))
 
 #############################
@@ -58,8 +61,11 @@ fishSampleID <- sample_info %>%
 
 location <- sample_info %>% 
   filter(str_detect(attributeName, "(?i)location")) %>% 
-  mutate(assigned_valueURI = rep(""),
-         assigned_propertyURI = rep(""),
+  mutate(assigned_valueURI = rep("tbd"),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         prefName = rep("tbd"),
+         ontoName = rep("tbd"),
+         grouping = rep("location"),
          notes = rep("location where sample was collected"))
 
 ##########################################################################################
@@ -71,8 +77,8 @@ all_sample_atts <- rbind(fishSampleID, location)
 remainder <- anti_join(sample_info, all_sample_atts)
 
 # check that there are no duplicates
-all_sample <- all_sample_atts %>% select(-assigned_valueURI, - assigned_propertyURI, -notes)
-all_sample_distinct <- all_sample_atts %>% select(-assigned_valueURI, - assigned_propertyURI, -notes) %>% distinct()
+all_sample <- all_sample_atts %>% select(-assigned_valueURI, - assigned_propertyURI, -prefName, -ontoName, -grouping, -notes)
+all_sample_distinct <- all_sample_atts %>% select(-assigned_valueURI, - assigned_propertyURI, -prefName, -ontoName, -grouping, -notes) %>% distinct()
 isTRUE(length(all_sample$attributeName) == length(all_sample_distinct$attributeName))
 
 # clean up global environment

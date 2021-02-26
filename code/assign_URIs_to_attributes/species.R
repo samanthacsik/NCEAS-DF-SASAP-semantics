@@ -49,7 +49,10 @@ species <- attributes %>%
 sci_name <- species %>% 
   filter(str_detect(attributeDefinition, "(?i)scientific name")) %>% 
   mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/ECSO_00002735"),
-         assigned_propertyURI = rep(""),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         prefName = rep("species name"),
+         ontoName = rep("The Ecosystem Ontology"),
+         grouping = rep("sci_name"),
          notes = rep("scientific name/taxonomic classification"))
 
 #############################
@@ -58,14 +61,20 @@ sci_name <- species %>%
 
 tempA <- species %>%  
   filter(str_detect(attributeName, "(?i)code")) %>% 
-  mutate(assigned_valueURI = rep("create new semantic term"),
-         assigned_propertyURI = rep(""),
+  mutate(assigned_valueURI = rep("tbd"),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         prefName = rep("tbd"),
+         ontoName = rep("tbd"),
+         grouping = rep("ADFG_species_code"),
          notes = rep("ADFG species code"))
 
 tempB <- species %>%  
   filter(attributeName == "Species_ID") %>% 
-  mutate(assigned_valueURI = rep("create new semantic term"),
-         assigned_propertyURI = rep(""),
+  mutate(assigned_valueURI = rep("tbd"),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         prefName = rep("tbd"),
+         ontoName = rep("tbd"),
+         grouping = rep("ADFG_species_code"),
          notes = rep("ADFG species code"))
 
 ADFG_species_code <- rbind(tempA, tempB) 
@@ -77,7 +86,10 @@ ADFG_species_code <- rbind(tempA, tempB)
 species_code <- species %>% 
   filter(attributeName%in% c("SpeciesNo")) %>% 
   mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/ECSO_00002490"),
-         assigned_propertyURI = rep(""),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         prefName = rep("species code"),
+         ontoName = rep("The Ecosystem Ontology"),
+         grouping = rep("species_code"),
          notes = rep("species code (not ADFG)"))
 
 #############################
@@ -90,7 +102,10 @@ common_name <- species %>%
                                     "species of stock", "Species valued", "Commonly used name of fish being counted.",
                                     "Species of the tagged fish", "Species of fish being counted")) %>%
   mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/ECSO_00000313"),
-         assigned_propertyURI = rep(""),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         prefName = rep("Species"),
+         ontoName = rep("The Ecosystem Ontology"),
+         grouping = rep("common_name"),
          notes = rep("common name -- identity"))
 
 #############################
@@ -100,8 +115,11 @@ common_name <- species %>%
 common_name_product <- species %>% 
   filter(entityName == "Total_wholesale.csv",
          attributeName %in% c("SpeciesName", "SpeciesGroup")) %>% 
-  mutate(assigned_valueURI = rep("create new semantic term"),
-         assigned_propertyURI = rep(""),
+  mutate(assigned_valueURI = rep("tbd"),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         prefName = rep("tbd"),
+         ontoName = rep("tbd"),
+         grouping = rep("common_name_product"),
          notes = rep("common name - fish as a product"))
 
 #############################
@@ -110,8 +128,11 @@ common_name_product <- species %>%
 
 subGenus <- species %>% 
   filter(str_detect(attributeDefinition, "(?i)sub-genus")) %>% 
-  mutate(assigned_valueURI = rep("create new semantic term"),
-         assigned_propertyURI = rep(""),
+  mutate(assigned_valueURI = rep("tbd"),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         prefName = rep("tbd"),
+         ontoName = rep("tbd"),
+         grouping = rep("subGenus"),
          notes = rep("subGenus"))
 
 ##########################################################################################
@@ -123,8 +144,8 @@ all_species_atts <- rbind(sci_name, ADFG_species_code, species_code, common_name
 remainder <- anti_join(species, all_species_atts)
 
 # check that there are no duplicates
-all_spp <- all_species_atts %>% select(-assigned_valueURI,-assigned_propertyURI, -notes)
-all_spp_distinct <- all_species_atts %>% select(-assigned_valueURI, -assigned_propertyURI, -notes) %>% distinct()
+all_spp <- all_species_atts %>% select(-assigned_valueURI,-assigned_propertyURI, -prefName, -ontoName, -grouping, -notes)
+all_spp_distinct <- all_species_atts %>% select(-assigned_valueURI, -assigned_propertyURI, -prefName, -ontoName, -gropuing, -notes) %>% distinct()
 isTRUE(length(all_spp$attributeName) == length(all_spp_distinct$attributeName))
 
 # clean up global environment

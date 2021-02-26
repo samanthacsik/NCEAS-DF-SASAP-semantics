@@ -49,8 +49,11 @@ unique_identifiers <- unique(temp$identifier)
 avg_air_temp <- temp %>%
   filter(identifier == "doi:10.5063/F1MK6B60") %>% 
   mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/ECSO_00001225"),
-         assigned_propertyURI = rep(""),
-         notes = rep("AVERAGE air temperature"))
+         assigned_propertyURI = rep("tbd"),
+         prefName = rep("Air Temperature"),
+         ontoName = rep("The Ecosystem Ontology"),
+         grouping = rep("avg_air_temp"),
+         notes = rep("AVERAGE air temperature; propertyURI = containsMeanMeasurementsOfType?"))
 
 #############################
 # stream temperature 
@@ -62,32 +65,47 @@ stream_temp <- temp %>%
                                     "Stream temperature, measured in degrees Celsius",
                                     "temperature measured") |
            attributeName %in% c("HoboTemp", "sondeTemp")) %>% 
-  mutate(assigned_valueURI = rep(""),
+  mutate(assigned_valueURI = rep("tbd"),
          assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         prefName = rep("tbd"),
+         ontoName = rep("tbd"),
+         grouping = rep("stream_temp"),
          notes = rep("stream temp; ECSO has term for 'river temp' but not 'stream'"))
 
 max_stream_temp <- temp %>% 
   filter(attributeName == "max_temp") %>% 
-  mutate(assigned_valueURI = rep(""),
-         assigned_propertyURI = rep(""),
-         notes = rep("MAX stream temp"))
+  mutate(assigned_valueURI = rep("tbd"),
+         assigned_propertyURI = rep("tbd"),
+         prefName = rep("tbd"),
+         ontoName = rep("tbd"),
+         grouping = rep("max_stream_temp"),
+         notes = rep("MAX stream temp; propertyURI = containsMaximumMeasurementsOfType?"))
 
 min_stream_temp <- temp %>% 
   filter(attributeName == "min_temp") %>% 
-  mutate(assigned_valueURI = rep(""),
-         assigned_propertyURI = rep(""),
-         notes = rep("MIN stream temp"))
+  mutate(assigned_valueURI = rep("tbd"),
+         assigned_propertyURI = rep("tbd"),
+         prefName = rep("tbd"),
+         ontoName = rep("tbd"),
+         grouping = rep("min_stream_temp"),
+         notes = rep("MIN stream temp; propertyURI = containsMinimumnMeasurementsOfType?"))
 
 mean_stream_temp <- temp %>% 
   filter(attributeName == "mean_temp") %>% 
-  mutate(assigned_valueURI = rep(""),
-         assigned_propertyURI = rep(""),
-         notes = rep("AVERAGE stream temp"))
+  mutate(assigned_valueURI = rep("tbd"),
+         assigned_propertyURI = rep("tbd"),
+         prefName = rep("tbd"),
+         ontoName = rep("tbd"),
+         grouping = rep("mean_stream_temp"),
+         notes = rep("AVERAGE stream temp; propertyURI = containsAverageMeasurementsOfType?"))
 
 stream_temp_TBD <- temp %>%
   filter(attributeName %in% c("Hobo_Sonde", "ABS_diff")) %>% 
-  mutate(assigned_valueURI = rep(""),
-         assigned_propertyURI = rep(""),
+  mutate(assigned_valueURI = rep("tbd"),
+         assigned_propertyURI = rep("tbd"),
+         prefName = rep("tbd"),
+         ontoName = rep("tbd"),
+         grouping = rep("stream_temp_TBD"),
          notes = rep("difference between different instrument temperature meausurements"))
 
 ##########################################################################################
@@ -99,8 +117,8 @@ all_temp_atts <- rbind(avg_air_temp, stream_temp, max_stream_temp, min_stream_te
 remainder <- anti_join(temp, all_temp_atts)
 
 # check that there are no duplicates
-all_temp <- all_temp_atts %>% select(-assigned_valueURI, -assigned_propertyURI, -notes)
-all_temp_distinct <- all_temp_atts %>% select(-assigned_valueURI, -assigned_propertyURI, -notes) %>% distinct()
+all_temp <- all_temp_atts %>% select(-assigned_valueURI, -assigned_propertyURI, -prefName, -ontoName, -grouping, -notes)
+all_temp_distinct <- all_temp_atts %>% select(-assigned_valueURI, -assigned_propertyURI, -prefName, -ontoName, -grouping, -notes) %>% distinct()
 isTRUE(length(all_temp$attributeName) == length(all_temp_distinct$attributeName))
 
 # clean up global environment

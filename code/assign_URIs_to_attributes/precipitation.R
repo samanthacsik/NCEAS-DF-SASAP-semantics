@@ -52,10 +52,13 @@ tempB <- precipitation %>%
 monthly_total_precip <- rbind(tempA, tempB) %>% 
   mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/ECSO_00001237"),
          assigned_propertyURI = rep(""),
-         notes = rep("monthly total precipitation"))
+         prefName = rep("Precipitation Volume"),
+         ontoName = rep("The Ecosystem Ontology"),
+         grouping = rep("monthly_total_precip"),
+         notes = rep("monthly total precipitation; propertyURI = containsSumMeasurementOfType?"))
 
 #############################
-# quarlerly mean preciptiation
+# quarterly mean precipitation
 #############################
 
 tempC <- precipitation %>% 
@@ -66,8 +69,11 @@ tempD <- precipitation %>%
 
 quarterly_mean_precip <- rbind(tempC, tempD) %>% 
   mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/ECSO_00001237"),
-         assigned_propertyURI = rep(""),
-         notes = rep("quarterly mean precipitation"))
+         assigned_propertyURI = rep("tbd"),
+         prefName = rep("Precipitation Volume"),
+         ontoName = rep("The Ecosystem Ontology"),
+         grouping = rep("quarterly_mean_precip"),
+         notes = rep("quarterly mean precipitation; propertyURI = containsMeanMeasurementsOfType?"))
 
 #############################
 # annual mean preciptiation
@@ -76,8 +82,11 @@ quarterly_mean_precip <- rbind(tempC, tempD) %>%
 annual_mean_precipitation <- precipitation %>% 
   filter(entityName %in% c("precip_regional_yearly_wide.csv", "precip_hucs_yearly_wide.csv")) %>% 
   mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/ECSO_00001237"),
-         assigned_propertyURI = rep(""),
-         notes = rep("annual mean precipitation"))
+         assigned_propertyURI = rep("tbd"),
+         prefName = rep("Precipitation Volume"),
+         ontoName = rep("The Ecosystem Ontology"),
+         grouping = rep("annual_mean_precipitation"),
+         notes = rep("annual mean precipitation; propertyURI = containsMeanMeasurementsOfType?"))
 
 ##########################################################################################
 # combine and ensure no duplicates
@@ -88,8 +97,8 @@ all_precipitation_atts <- rbind(monthly_total_precip, quarterly_mean_precip, ann
 remainder <- anti_join(precipitation, all_precipitation_atts)
 
 # check that there are no duplicates
-all_precipitation <- all_precipitation_atts %>% select(-assigned_valueURI, - assigned_propertyURI, -notes)
-all_precipitation_distinct <- all_precipitation_atts %>% select(-assigned_valueURI, - assigned_propertyURI, -notes) %>% distinct()
+all_precipitation <- all_precipitation_atts %>% select(-assigned_valueURI, - assigned_propertyURI, -prefName, -ontoName, -grouping, -notes)
+all_precipitation_distinct <- all_precipitation_atts %>% select(-assigned_valueURI, - assigned_propertyURI, -prefName, -ontoName, -grouping, -notes) %>% distinct()
 isTRUE(length(all_precipitation$attributeName) == length(all_precipitation_distinct$attributeName))
 
 # clean up global environment

@@ -43,3 +43,5 @@ vignettes/*.pdf
 #--------------------------------------------
 data/queries/query2020-10-09/xml/*
 .Rproj.user
+data/sorted_attributes/manual_fish_length_assignments/SASAP_length_data/*
+data/MonitoringResources/*
