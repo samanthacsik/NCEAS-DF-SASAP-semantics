@@ -25,21 +25,21 @@ Scripts are numbered in the order of data processing workflow. Required packages
 ```
 NCEAS-DF-SASAP-semantics
   |_code
-    |_assign_URIs_to_attributes
+  |  |_assign_URIs_to_attributes
   |_data
-   |_queries
-    |_query2020-10-09
-     |_xml
-   |_unnested_terms
-    |_indiv
-    |_bigrams
-    |_trigrams
-   |_filtered_term_counts
-    |_indiv
-    |_bigrams
-    |_trigrams
+  | |_queries
+  | | |_query2020-10-09
+  | |  |_xml
+  | |_unnested_terms
+  | | |_indiv
+  | | |_bigrams
+  | | |_trigrams
+  | |_filtered_term_counts
+  |  |_indiv
+  |  |_bigrams
+  |  |_trigrams
   |_figures
-    |_term_frequencies
+  |  |_term_frequencies
 ```
 ### Code
 
