@@ -1,5 +1,7 @@
 # NCEAS-DF-SASAP-semantics
 
+README needs to be updated 2021-02-23
+
 * **Contributors:** Samantha Csik
 * **Contact:** scsik@nceas.ucsb.edu
 
@@ -16,7 +18,7 @@ This repository provides code for:
 
 ### Getting Started
 
-Scripts are numbered in the order of data processing workflow. Required packages (`0_0libraries.R`) and custom functions (`00_functions.R`) are sourced into each script for streamlining setup and reducing clutter. Processed data are saved as .csv files in `data`, so it is not necessary to rerun code unless using an updated query.
+Scripts are numbered in the order of data processing workflow. Required packages (`00_libraries.R`) and custom functions (`00_functions.R`) are sourced into each script for streamlining setup and reducing clutter. Processed data are saved as .csv files in `data`, so it is not necessary to rerun code unless using an updated query.
 
 ### Repository Structure
 
