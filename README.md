@@ -1,7 +1,5 @@
 # NCEAS-DF-SASAP-semantics
 
-README needs to be updated 2021-02-23
-
 * **Contributors:** Samantha Csik
 * **Contact:** scsik@nceas.ucsb.edu
 
@@ -41,6 +39,7 @@ NCEAS-DF-SASAP-semantics
   |  |_indiv
   |  |_bigrams
   |  |_trigrams
+  | |_sorted_attributes
   |_figures
   |  |_term_frequencies
 ```
@@ -55,9 +54,25 @@ NCEAS-DF-SASAP-semantics
 * `05a_exploring_attributes.R` : not much here, delete or combine with script 05b 
 * `05b_combine_attributes_for_annotation.R`: combine all sorted attributes groups that have been assigned term URIs or otherwise noted as needing a new term developed
 
-**NOTE:** `code/assing_URIs_to_attributes` contains all the scripts which are sourced into `05b_combine_attributes_for_annotation.R`; these scripts are where attributes have been grouped together and assigned term URIs (or noted that a new term URI is needed)
+**NOTE:** `code/assigning_URIs_to_attributes` contains all the scripts which are sourced into `05b_combine_attributes_for_annotation.R`; these scripts are where attributes have been grouped together and assigned term URIs (or noted that a new term URI is needed)
 
 ### Data
+
+#### `data/sorted_attributes/SASAP_attributes_sorted.csv`
+* `identifier`: unique persistent identifier assigned to each ADC data package
+* `entityName`: name of dataTable (or otherEnity)
+* `attributeName`: The name of an attribute, as listed in a .csv file
+* `attributeLabel`: A descriptive label that can be used to display the name of an attribute
+* `attributeDefinition`: Longer description of the attribute, including the required context for interpreting the `attributeName`
+* `attributeUnit`: Unit string for affiliated attribute
+* `viewURL`: URL of ADC data package
+* `query_datetime_utc`: date/time of query
+* `assigned_valueURI`: term URI that will be used to semantically annotate that attribute
+* `assigned_propertyURI`: property URI that will be applied to the semantic annotation of that attribute
+* `prefName`: the name that does/will appear as 'Preferred Name' in the ontology
+* `ontoName`: the name of the ontology that the semantic term belongs to or will be added to
+* `grouping`: attribute with matching 'grouping' term will be assigned the same term URI; these match with scripts contained in `code/assigning_URIs_to_attributes` and the `SASAP attribute groupings` Google Sheet
+* `notes`: any additional notes
 
 #### `data/queries/query2020-10-09/fullQuery_semAnnotations2020-10-09_solr.csv`
 * `identifier`: unique persistent identifier assigned to each ADC data package (in most cases, this is a DOI)
