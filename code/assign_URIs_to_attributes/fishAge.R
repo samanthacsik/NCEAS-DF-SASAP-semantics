@@ -98,7 +98,7 @@ errorAgeDescription <- age %>%
   filter(attributeDefinition == "Description of age error: Otolith, Inverted, Regenerated, Illegible, Missing, Reabsorbed, Wrong Species, or Not Preferred") %>% 
   mutate(assigned_valueURI = rep("tbd"),
          assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
-         prefName = rep("tdd"),
+         prefName = rep("tbd"),
          ontoName = rep("tbd"),
          grouping = rep("errorAgeDescription"),
          notes = rep("description of error in salmon age"))
@@ -114,7 +114,7 @@ circuliDist <- age %>%
          prefName = rep("tbd"),
          ontoName = rep("tbd"),
          grouping = rep("circuliDist"),
-         notes = rep("distance between scale circuli"))
+         notes = rep("distance between scale circuli; growth rate"))
 
 ##########################################################################################
 # combine and ensure no duplicates

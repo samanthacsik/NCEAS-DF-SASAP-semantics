@@ -17,12 +17,13 @@
       # doi:10.5063/F1GH9G79
       # doi:10.5063/F1NK3C9X
       # doi:10.5063/F1R20ZN2
+# 4) query for SASAP 'Communities' and 'Waterbodies'
 
 ##############################
 # Load packages
 ##############################
 
-source(here::here("code", "0_libraries.R"))
+source(here::here("code", "00_libraries.R"))
 
 ##############################
 # set nodes & get token
@@ -34,6 +35,7 @@ options(dataone_test_token = "...")
 # nodes
 cn <- CNode("PROD")
 knb_mn <- getMNode(cn, 'urn:node:KNB')
+client <- D1Client("PROD") # for part 4
 
 ##########################################################################################
 # 1) query KNB for the SASAP collection (only the most recent published version) for identifiers, titles, keywords, abstracts, and attribute info
@@ -87,3 +89,59 @@ print(paste0(file_prefix, "_attributes.csv created"))
 
 # import data to view
 extracted_attributes <- read_csv(here::here("data", "queries", "query2020-10-09", "fullQuery_semAnnotations2020-10-09_attributes.csv"))
+
+
+#-----------------------------------------------------------------------------------------------------------
+
+##########################################################################################
+# 4) query for SASAP 'Communities' and 'Waterbodies' (I believe these search across the same field(s))
+##########################################################################################
+
+# library(dataone)
+client <- D1Client("PROD")
+sasap_sites <- query(client@cn,
+                     list(
+                       q = 'project:"State of Alaska\'s Salmon and People"+AND+-obsoletedBy:*+AND+formatType:METADATA',
+                       fl="id,site,project",
+                       rows="150"
+                     ), as = "data.frame")
+
+# write_csv(sasap_sites, here::here("data", "queries", "query_SASAPSites_2021-04-08", "query_SASAPSites_2021-04-08.csv"))
+
+##############################
+# get cleaned list of 'site's
+##############################
+
+# save as different object for now
+test <- sasap_sites
+
+# initialize empty df
+df <- data.frame(sites_sep = as.character())
+
+for(i in 1:length(test$site)){
+  
+  print(i)
+  
+  for(j in 1:length(test$site[i][[1]])){
+    x <- test$site[i][[1]][[j]]
+    temp_df <- data.frame(sites_sep = x)
+    df <- rbind(df, temp_df)
+  }
+  
+}
+
+##############################
+# save as .csv
+##############################
+
+# write_csv(df, here::here("data", "queries", "query_SASAPSites_2021-04-08", "query_SASAPSites_CLEANED_2021-04-08.csv"))
+
+doublecheck <- read_csv(here::here("data", "queries", "query_SASAPSites_2021-04-08", "query_SASAPSites_CLEANED_2021-04-08.csv"))
+
+
+
+
+
+
+
+

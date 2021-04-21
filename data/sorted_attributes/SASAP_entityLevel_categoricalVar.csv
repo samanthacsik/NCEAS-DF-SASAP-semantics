@@ -1,0 +1,110 @@
+﻿identifier,entityName,attributeName,observations
+doi:10.5063/F1542KVC,HighSeas_tag_recovery_database.csv,Species,"chum, sockeye, pink, coho, chinook, steelhead"
+doi:10.5063/F15T3HRG,ASL_formatted_BristolBay.csv,Species,"sockeye, chinook, chum, coho, pink, unknown"
+doi:10.5063/F15T3HRG,ASL_formatted_BristolBay.csv,Sex,"male, female, unknown"
+doi:10.5063/F15T3HRG,ASL_formatted_BristolBay.csv,Length.Measurement.Type,"mid-eye to fork of tail, tip of snout to fork of tail, post orbit to fork of tail"
+doi:10.5063/F18K77BT,ASL_formatted_EastSideChinook.csv,Species,chinook
+doi:10.5063/F18K77BT,ASL_formatted_EastSideChinook.csv,Sex,"male, female"
+doi:10.5063/F18K77BT,ASL_formatted_EastSideChinook.csv,SASAP.Region,Cook Inlet
+doi:10.5063/F18K77BT,ASL_formatted_EastSideChinook.csv,Length.Measurement.Type,mid-eye to fork of tail
+doi:10.5063/F18K77BT,ASL_formatted_EastSideChinook.csv,Location,East Side
+doi:10.5063/F18K77BT,ASL_formatted_EastSideChinook.csv,Gear,set net
+doi:10.5063/F18K77BT,ASL_formatted_EastSideChinook.csv,ASLProjectType,commercial catch
+doi:10.5063/F11R6NSS,ASL_formatted_SoutheastSupplement.csv,Species,chinook
+doi:10.5063/F11R6NSS,ASL_formatted_SoutheastSupplement.csv,SASAP.Region,Southeast
+doi:10.5063/F11R6NSS,ASL_formatted_SoutheastSupplement.csv,ASLProjectType,escapement
+doi:10.5063/F12N50JP,Hatchery_releases.csv,SASAPRegion,"Southeast, Copper River, Cook Inlet, Prince William Sound, Kodiak, Kuskokwim, Norton Sound, Bristol Bay, Yukon, Alaska Peninsula and Aleutian Islands, Kotzebue"
+doi:10.5063/F12N50JP,Hatchery_releases.csv,Species,"chinook, coho, chum, pink, sockeye, steelhead"
+doi:10.5063/F12N50JP,Hatchery_releases.csv,Stage,"smolt, fed fry, fingerling, emergent fry, persmolt, zygote, adult, catchable"
+doi:10.5063/F1ZW1J78,sockeye_scale_data.csv,sex,"female, male"
+doi:10.5063/F1FF3QMV,PWS_CopperRiver.csv,area,"Prince William Sound, Copper River, Bering River, Yakutat"
+doi:10.5063/F1FF3QMV,PWS_CopperRiver.csv,species,"sockeye, chum, coho, chinook"
+doi:10.5063/F1FF3QMV,PWS_CopperRiver.csv,sex,"male, female, unknown"
+doi:10.5063/F1FF3QMV,PWS_CopperRiver.csv,project_type,"escapement, commercial catch, personal use, subsistence catch, brood stock, hatchery cost recovery, sport fish, test fish, unknown, brood excess"
+doi:10.5063/F1FF3QMV,PWS_CopperRiver.csv,gear,"weir, trap, purse seine, carcass, handpicked/mixed/unknown, drft gillnet, gillnet, beach seine, set gillnet, fish wheel, dip net"
+doi:10.5063/F1FF3QMV,PWS_CopperRiver.csv,length_measurement_type,"mid-eye to fork of tail, post orbit to fork of tail, mid-eye to hypural plate, tip of snout to fork of tail, mid-eye to posterior insertion of anal fin"
+doi:10.5063/F1K64GBK,ASL_formatted_Kotzebue.csv,District,Kotzebue
+doi:10.5063/F1K64GBK,ASL_formatted_Kotzebue.csv,ASLProjectType,"commercial catch, general escapement, subsistence catch, test fishing, escapement"
+doi:10.5063/F1K64GBK,ASL_formatted_Kotzebue.csv,Gear,"set gillnet, beach seine, handpicked or carcass, drift gillnet, sport hook and line"
+doi:10.5063/F1K64GBK,ASL_formatted_Kotzebue.csv,Species,"chum, pink, chinook, coho, sockeye"
+doi:10.5063/F1K64GBK,ASL_formatted_Kotzebue.csv,Sex,"female, male"
+doi:10.5063/F1K64GBK,ASL_formatted_Kotzebue.csv,Length.Measurement.Type,"mid-eye to fork of tail, post orbit to fork of tail"
+doi:10.5063/F1K64GBK,ASL_formatted_Kotzebue.csv,SASAP. Region,Kotzebue
+doi:10.5063/F1K64GBK,ASL_formatted_Kuskokwim.csv,District,Kuskokwim
+doi:10.5063/F1K64GBK,ASL_formatted_Kuskokwim.csv,ASLProjectType,"commercial catch, subsistence catch, general escapement, test fishing, escapement, sport catch (freshwater), sport catch (marine), mark/recapture"
+doi:10.5063/F1K64GBK,ASL_formatted_Kuskokwim.csv,Gear,"drift gillnet, set gillnet, weir, beach seine, handpicked or carcass, sport hook and line, dip net, troll, purse seine, fishwheel, mixed gillnet"
+doi:10.5063/F1K64GBK,ASL_formatted_Kuskokwim.csv,Species,"coho, chinook, chum, sockeye, pink"
+doi:10.5063/F1K64GBK,ASL_formatted_Kuskokwim.csv,Sex,"female, male"
+doi:10.5063/F1K64GBK,ASL_formatted_Kuskokwim.csv,Length.Measurement.Type,"tip of snout to fork of tail, mid-eye to fork of tail, post orbit to fork of tail"
+doi:10.5063/F1K64GBK,ASL_formatted_Kuskokwim.csv,SASAP. Region,Kuskokwim
+doi:10.5063/F1K64GBK,ASL_formatted_NorthernArea.csv,SASAP. Region,Northern Area
+doi:10.5063/F1K64GBK,ASL_formatted_NorthernArea.csv,Location,Elson Lagoon
+doi:10.5063/F1K64GBK,ASL_formatted_NorthernArea.csv,ASLProjectType,subsistence catch
+doi:10.5063/F1K64GBK,ASL_formatted_NorthernArea.csv,Gear,set gillnet
+doi:10.5063/F1K64GBK,ASL_formatted_NorthernArea.csv,Species,"pink, chum"
+doi:10.5063/F1K64GBK,ASL_formatted_NorthernArea.csv,Sex,"female, male"
+doi:10.5063/F1K64GBK,ASL_formatted_NorthernArea.csv,Length.Measurement.Type,mid-eye to fork of tail
+doi:10.5063/F1K64GBK,ASL_formatted_NortonSound.csv,ASLProjectType,"commercial catch, sport catch (freshwater), general escapement, subsistence catch, escapement, test fishing, radio telemetry, acoustic telemetry"
+doi:10.5063/F1K64GBK,ASL_formatted_NortonSound.csv,Gear,"set gillnet, drift gillnet, sport hook and line, beach seine, handpicked or carcass, weir, troll, trap"
+doi:10.5063/F1K64GBK,ASL_formatted_NortonSound.csv,Species,"chum, coho, sockeye, pink, chinook"
+doi:10.5063/F1K64GBK,ASL_formatted_NortonSound.csv,Sex,"female, male"
+doi:10.5063/F1K64GBK,ASL_formatted_NortonSound.csv,Length.Measurement.Type,"mid-eye to fork of tail, tip of snout to fork of tail, post orbit to fork of tail, mid-eye to hypural plate"
+doi:10.5063/F1K64GBK,ASL_formatted_NortonSound.csv,SASAP. Region,Norton Sound
+doi:10.5063/F1K64GBK,ASL_formatted_Yukon.csv,ASLProjectType,"subsistence catch, commercial catch, test fishing, general escapement, escapement, mark/recapture, sport catch (freshwater), acoustic telemetry"
+doi:10.5063/F1K64GBK,ASL_formatted_Yukon.csv,Gear,"set gillnet, fishwheel, handpicked or carcass, drift gillnet, gig, sport hook and line, dip net, purse seine, beach seine, weir, electrofishing, spear, troll, trap, pots, gillnet & fishwheel"
+doi:10.5063/F1K64GBK,ASL_formatted_Yukon.csv,Species,"sockeye, chum, coho, pink, sockeye, whitefish (broad), sheefish (inconnu), whitefish (least cisco), whitefish (humpback), burbot, pike (northern), longnose sucker, dolly varden (general), whitefish (bering cisco)"
+doi:10.5063/F1K64GBK,ASL_formatted_Yukon.csv,Sex,"male, female"
+doi:10.5063/F1K64GBK,ASL_formatted_Yukon.csv,Length.Measurement.Type,"mid-eye to fork of tail, tip of snout to fork of tail, post orbit to for of tail, mid-eye to hypural plate, post orbit to hypural plate"
+doi:10.5063/F1K64GBK,ASL_formatted_Yukon.csv,SASAP.Region,Yukon
+doi:10.5063/F1K64GBK,ASL_formatted_YukonCanada.csv,ASLProjectType,"commercial catch, general escapement, escapement, test fishing"
+doi:10.5063/F1K64GBK,ASL_formatted_YukonCanada.csv,Gear,"fishwheel, set gillnet, handpicked or carcass, dip net, drift gillnet, gig, weir"
+doi:10.5063/F1K64GBK,ASL_formatted_YukonCanada.csv,Species,"chinook, chum"
+doi:10.5063/F1K64GBK,ASL_formatted_YukonCanada.csv,Sex,"female, male"
+doi:10.5063/F1K64GBK,ASL_formatted_YukonCanada.csv,Length.Measurement.Type,"mid-eye to fork of tail, mid-eye to hypural plate, tip of snout to fork of tail, post orbit to hypural plate, post orbit to fork of tail"
+doi:10.5063/F1K64GBK,ASL_formatted_YukonCanada.csv,SASAP.Region,Yukon
+doi:10.5063/F1K64GBK,YukonCanada_ASL.csv,ASLProjectType,"commercial catch, general escapement, escapement, test fishing"
+doi:10.5063/F1K64GBK,YukonCanada_ASL.csv,gear,"fishwheel, set gillnet, handpicked or carcass, dip net, drift gillnet, gig, weir"
+doi:10.5063/F1K64GBK,YukonCanada_ASL.csv,species,"chinook, chum"
+doi:10.5063/F1K64GBK,YukonCanada_ASL.csv,sex,"female, male"
+doi:10.5063/F1K64GBK,YukonCanada_ASL.csv,lengthMeasurementType,"mid-eye to fork of tail, mid-eye to hypural plate, tip of snout to fork of tail, post orbit to hypural plate, post orbit to fork of tail"
+doi:10.5063/F1K64GBK,Yukon_ASL.csv,ASLProjectType,"subsistence catch, commercial catch, test fishing, general escapement, escapement, mark/recapture, sport catch (freshwater), acoustic telemetry"
+doi:10.5063/F1K64GBK,Yukon_ASL.csv,gear,"set gillnet, fishwheel, handpicked or carcass, drift gillnet, gig, sport hook and line, dip net, purse seine, beach seine, weir, electrofishing, spear, troll, trap, pots, gillnet & fishwheel"
+doi:10.5063/F1K64GBK,Yukon_ASL.csv,species,"sockeye, chum, coho, pink, sockeye, whitefish (broad), sheefish (inconnu), whitefish (least cisco), whitefish (humpback), burbot, pike (northern), longnose sucker, dolly varden (general), whitefish (bering cisco)"
+doi:10.5063/F1K64GBK,Yukon_ASL.csv,sex,"male, female"
+doi:10.5063/F1K64GBK,Yukon_ASL.csv,lengthMeasurementType,"mid-eye to fork of tail, tip of snout to fork of tail, post orbit to fork of tail, mid-eye to hypural plate, post orbit to hypural plate"
+doi:10.5063/F1K64GBK,NortonSound_ASL.csv,ASLProjectType,"commercial catch, sport catch (freshwater), general escapement, subsistence catch, escapement, test fishing, radio telemetry, acoustic telemetry"
+doi:10.5063/F1K64GBK,NortonSound_ASL.csv,gear,"set gilnet, drft gillnet, sport hook and line, beach seine, handpicked or carcass, weir, troll, trap"
+doi:10.5063/F1K64GBK,NortonSound_ASL.csv,species,"chum, coho, sockeye, pink, chinook"
+doi:10.5063/F1K64GBK,NortonSound_ASL.csv,sex,"female, male"
+doi:10.5063/F1K64GBK,NortonSound_ASL.csv,lengthMeasurementType,"mid-eye to fork of tail, tip of snout to fork of tail, post orbit to fork of tail, mid-eye to hypural plate"
+doi:10.5063/F1K64GBK,NorthernArea_ASL.csv,ASLProjectType,subsistence catch
+doi:10.5063/F1K64GBK,NorthernArea_ASL.csv,gear,set gillnet
+doi:10.5063/F1K64GBK,NorthernArea_ASL.csv,species,"pink, chum"
+doi:10.5063/F1K64GBK,NorthernArea_ASL.csv,sex,"male, female"
+doi:10.5063/F1K64GBK,NorthernArea_ASL.csv,lengthMeasurementType,mid-eye to fork of tail
+doi:10.5063/F1K64GBK,Kuskokwim_ASL.csv,ASLProjectType,"commercial catch, subsistence catch, general escapement, test fishing, escapement, sport catch (freshwater), sport catch (marine), mark/recapture"
+doi:10.5063/F1K64GBK,Kuskokwim_ASL.csv,gear,"drift gillnet, set gillnet, weir, beach seine, handpicked or carcass, sport hook and line, dip net, troll, purse seine, fishwheel, mixed gillnet"
+doi:10.5063/F1K64GBK,Kuskokwim_ASL.csv,species,"coho, chinook, chum, sockeye, pink"
+doi:10.5063/F1K64GBK,Kuskokwim_ASL.csv,sex,"female, male"
+doi:10.5063/F1K64GBK,Kuskokwim_ASL.csv,lengthMeasurementType,"tip of snout to fork of tail, mid-eye to fork of tail, post orbit to fork of tail"
+doi:10.5063/F1K64GBK,Kotzebue_ASL.csv,ASLProjectType,"commercial catch, general escapement, subsistence catch, test fishing, escapement"
+doi:10.5063/F1K64GBK,Kotzebue_ASL.csv,gear,"set gillnet, beach seine, handpicked or carcass, drift gillnet, sport hook and line"
+doi:10.5063/F1K64GBK,Kotzebue_ASL.csv,species,"chum, pink, chinook, coho, sockeye"
+doi:10.5063/F1K64GBK,Kotzebue_ASL.csv,sex,"female, male"
+doi:10.5063/F1K64GBK,Kotzebue_ASL.csv,lengthMeasurementType,"mid-eye to fork of tail, post orbit to fork of tail"
+doi:10.5063/F1NV9GHW,ASL_formatted_LowerCookInlet.csv,Species,"sockeye, chum, coho, chinook"
+doi:10.5063/F1NV9GHW,ASL_formatted_LowerCookInlet.csv,Sex,"female, male"
+doi:10.5063/F1NV9GHW,ASL_formatted_LowerCookInlet.csv,Gear,"purse seine, weir, dip net, handpicked or carcass, sport hook and line, beach seine, drift gillnet, set gillnet"
+doi:10.5063/F1NV9GHW,ASL_formatted_LowerCookInlet.csv,Length.Measurement.Type,"mid-eye to fork of tail, tip of snout to tip of tail"
+doi:10.5063/F1NV9GHW,ASL_formatted_LowerCookInlet.csv,ASLProjectType,"commercial catch, escapement, hatchery cost recovery, test fishing, mark recapture, sport catch"
+doi:10.5063/F1NV9GHW,ASL_formatted_LowerCookInlet.csv,SASAP.Region,Cook Inlet
+doi:10.5063/F1PR7T8D,ASL_formatted_PrinceWilliamSoundpinks.csv,ASLProjectType,commercial catch
+doi:10.5063/F1PR7T8D,ASL_formatted_PrinceWilliamSoundpinks.csv,SASAP.Region,Prince William Sound
+doi:10.5063/F1PR7T8D,ASL_formatted_PrinceWilliamSoundpinks.csv,Length.Measurement.Type,mid-eye to fork of tail
+doi:10.5063/F1PR7T8D,ASL_formatted_PrinceWilliamSoundpinks.csv,Species,pink
+doi:10.5063/F1W957GP,ASL_bristol_bay_full.csv,Species,"chinook, chum, sockey"
+doi:10.5063/F1W957GP,ASL_bristol_bay_full.csv,ASLProjectType,"escapement, commercial catch"
+doi:10.5063/F1W957GP,ASL_bristol_bay_full.csv,Gear,"drift gillnet, set gillnet, beach seine, trap"
+doi:10.5063/F1W957GP,ASL_bristol_bay_full.csv,Sex,"female, male"
+doi:10.5063/F1W957GP,ASL_bristol_bay_full.csv,Length.Measurement.Type,"mid-eye to fork of tail, post orbit to for of tail, tip of snout to fork of tail"
+doi:10.5063/F1W957GP,ASL_bristol_bay_full.csv,SASAP.Region,Bristol Bay

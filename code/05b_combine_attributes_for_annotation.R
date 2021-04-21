@@ -1,7 +1,7 @@
-# title: combine attributes for annotation
+# title: combine sorted attributes for annotation
 # author: "Sam Csik"
 # date created: "2021-02-03"
-# date edited: "2021-02-03"
+# date edited: "2021-02-26"
 # R version: 3.6.3
 # input: 
 # output: 
