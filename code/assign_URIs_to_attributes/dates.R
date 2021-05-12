@@ -36,7 +36,9 @@ source(here::here("code", "05a_exploring_attributes.R"))
 
 dates <- attributes %>% 
   filter(str_detect(attributeName, "(?i)date") |
-         str_detect(attributeName, "(?i)year"))
+         str_detect(attributeName, "(?i)year") |
+         str_detect(attributeName, "(?i)month") |
+         attributeName == "season")
 
 times <- attributes %>% 
   filter(str_detect(attributeName, "(?i)time"))
@@ -107,6 +109,32 @@ sample_year <- dates_times %>%
          notes = rep("year of measurement"))
 
 #############################
+# month of measurement
+#############################
+
+sample_month <- dates_times %>% 
+  filter(attributeName %in% c("month")) %>% 
+  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/ECSO_00002047"),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         prefName = rep("month of year"),
+         ontoName = rep("The Ecosystem Ontology"),
+         grouping = rep("sample_month"),
+         notes = rep("month of measurement"))
+
+#############################
+# season of measurement
+#############################
+
+sample_season <- dates_times %>% 
+  filter(attributeName %in% c("season")) %>% 
+  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/ECSO_00002366"),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         prefName = rep("season"),
+         ontoName = rep("The Ecosystem Ontology"),
+         grouping = rep("sample_season"),
+         notes = rep("season of observation"))
+
+#############################
 # sample time
 #############################
 
@@ -157,7 +185,7 @@ numYears <- dates_times %>%
                                     "number of years project was ongoing", "number of years the data covers",
                                     "The number of years of data collected")) %>% 
   mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/ECSO_00001636"),
-         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         assigned_propertyURI = rep("https://www.w3.org/2006/time#hasTemporalDuration"),
          prefName = rep("number of years"),
          ontoName = rep("The Ecosystem Ontology"),
          grouping = rep("numYears"),
@@ -169,8 +197,8 @@ numYears <- dates_times %>%
 
 startDate <- dates_times %>% 
   filter(attributeName %in% c("start_date", "Initial_date")) %>% 
-  mutate(assigned_valueURI = rep(""),
-         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+  mutate(assigned_valueURI = rep("tbd"),
+         assigned_propertyURI = rep("https://www.w3.org/2006/time#hasBeginning"), # review this
          prefName = rep("tbd"),
          ontoName = rep("tbd"),
          grouping = rep("startDate"),
@@ -183,7 +211,7 @@ startDate <- dates_times %>%
 endDate <- dates_times %>% 
   filter(attributeName %in% c("End_date")) %>% 
   mutate(assigned_valueURI = rep("tbd"),
-         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         assigned_propertyURI = rep("https://www.w3.org/2006/time#hasEnd"),
          prefName = rep("tbd"),
          ontoName = rep("tbd"),
          grouping = rep("endDate"),
@@ -193,7 +221,7 @@ endDate <- dates_times %>%
 # combine and ensure no duplicates
 ##########################################################################################
 
-all_date_atts <- rbind(brood_year, commHarvestYear_CLEANED, date, sample_time, sample_year, numYears, startDate, endDate)
+all_date_atts <- rbind(brood_year, commHarvestYear_CLEANED, date, sample_time, sample_year, numYears, startDate, endDate, sample_month, sample_season)
 
 remainder <- anti_join(dates_times, all_date_atts)
 
@@ -203,4 +231,4 @@ all_dates_distinct <- all_date_atts %>% select(-assigned_valueURI, -assigned_pro
 isTRUE(length(all_dates$attributeName) == length(all_dates_distinct$attributeName))
 
 # clean up global environment
-rm(dates, brood_year, commHarvestYear, commHarvestYear_BB, commHarvestYear_rest, commHarvestYear_CLEANED, date, license_issue_date, sample_time, sample_year, numYears, startDate, endDate, remainder, all_dates, all_dates_distinct)
+rm(dates, brood_year, commHarvestYear, commHarvestYear_BB, commHarvestYear_rest, commHarvestYear_CLEANED, date, license_issue_date, sample_time, sample_year, numYears, startDate, endDate, sample_month, sample_season, remainder, all_dates, all_dates_distinct)

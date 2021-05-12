@@ -10,7 +10,7 @@
 # Summary
 ##########################################################################################
 
-# Identifying attributes related to "species"
+# Identifying attributes related to "fish counts (surveys, harvest, etc) as well as fish weights"
 
 # NOTE NEED TO COME BACK TO THESE, NOT SORTED CORRECTLY YET
 
@@ -38,7 +38,12 @@ fishCounts <- attributes %>%
   filter(str_detect(attributeDefinition, "(?i)the species ratio") |
          str_detect(attributeDefinition, "(?i)harvested in") |
          str_detect(attributeDefinition, "(?i)number of fish in") |
-         attributeUnit == "tonne" |
+         str_detect(attributeDefinition, "(?i)Weight of the fish.") |
+         str_detect(attributeDefinition, "(?i)Weight of fish.") |
+         str_detect(attributeDefinition, "(?i)Weight of salmon fish in grams.") |
+         str_detect(attributeDefinition, "(?i)weight of sampled fish in grams") |
+         str_detect(attributeDefinition, "(?i)weight in kg") |
+         attributeUnit %in% c("tonne", "pound") |
          attributeName %in% c("Chum", "Coho", "Chinook", "Pink", "Sockeye", "Total"))
 
 ##########################################################################################
@@ -72,7 +77,7 @@ species_ratio <- fishCounts %>%
          notes = rep("species ratio"))
 
 #############################
-# counts of mature returning salmon (by natural origin species) by region
+# counts of mature returning salmon (by natural- or enhanced-origin species) by region
 #############################
 #!!!! needs to be divided up
 counts_by_region <- fishCounts %>% 
@@ -99,7 +104,7 @@ numFishHarvested_byRegion <- fishCounts %>%
          grouping = rep("numFishHarvested_byRegion"),
          notes = rep("number of fish harvested by year"))
 
-# ---- clean up repeats for BristolBay.cscv ----
+# ---- clean up repeats for BristolBay.csv ----
 
 numFishHarvested_byRegion_BB <- numFishHarvested_byRegion %>% filter(entityName == "BristolBay.csv") %>% distinct()
 numFishHarvested_byRegion_rest <- numFishHarvested_byRegion %>% filter(entityName != "BristolBay.csv")
@@ -120,13 +125,17 @@ numFishHarvested_byRegion_CLEANED <- rbind(numFishHarvested_byRegion_BB, numFish
 #############################
 
 biomassFishHarvested <- fishCounts %>% 
-  filter(attributeUnit == "thousandsOfTonnes") %>% 
+  filter(attributeUnit == "thousandsOfTonnes" |
+         attributeName %in% c("Chinook_Lbs", "Chum_Lbs", "Pink_Lbs", "Coho_Lbs", "Sockeye_Lbs", 
+                              "X_Total_Lbs", "Chinook.Lbs", "Chum.Lbs", "Pink.Lbs", "Coho.Lbs", "Sockeye.Lbs",
+                              "Total.Pounds", "Total.Salmon.Lbs", "NETPOUNDS", "net_lbs", "pounds", "Total_Salmon_Lbs", 
+                              "pu_lbs_harvested", "Total_Lbs_Harvested")) %>% 
   mutate(assigned_valueURI = rep("tbd"),
          assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
          prefName = rep("tbd"),
          ontoName = rep("tbd"),
          grouping = rep("biomassFishHarvested"),
-         notes = rep("biomass of fish harvested by year"))
+         notes = rep("biomass of fish harvested by year (this may no longer be accurate; need to read more to determine if it's a measurement over a year): also includes a mix of commercial, personal use, and subsistence fishery harvest"))
 
 #############################
 # fish biomass by region
@@ -139,7 +148,7 @@ fishBiomass_byRegion <- fishCounts %>%
          assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
          prefName = rep("tbd"),
          ontoName = rep("tbd"),
-         grouping = rep("fishBiomass_byRegion"),
+         grouping = rep("biomassFishHarvested_byRegion"),
          notes = rep("biomass of fish, by region and year"))
 
 #############################
@@ -156,12 +165,67 @@ total_fishBiomass <- fishCounts %>%
          grouping = rep("total_fishBiomass"),
          notes = rep("total fish biomass (across regions) by year"))
 
+#############################
+# weight of processed product
+#############################
+
+weightProcessedProduct <- fishCounts %>% 
+  filter(attributeName %in% c("TotalNetWeight", "net_weight")) %>% 
+  mutate(assigned_valueURI = rep("tbd"),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         prefName = rep("tbd"),
+         ontoName = rep("tbd"),
+         grouping = rep("weight_processed_product"),
+         notes = rep("weight of processed fish product"))
+
+#############################
+# average weight of fish
+#############################
+
+avgWeight <- fishCounts %>% 
+  filter(str_detect(attributeDefinition, "(?i)average adult weight of")) %>% 
+  mutate(assigned_valueURI = rep("tbd"),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         prefName = rep("tbd"),
+         ontoName = rep("tbd"),
+         grouping = rep("avgWeight_adultSalmon"),
+         notes = rep("average weight of adult salmon, by species"))
+
+#############################
+# weight of fish (kg)
+#############################
+
+weightKG <- fishCounts %>% 
+  filter(str_detect(attributeDefinition, "(?i)Weight of the fish.") |
+         str_detect(attributeDefinition, "(?i)Weight of fish.") |
+         str_detect(attributeDefinition, "(?i)weight in kg")) %>% 
+  filter(!attributeName %in% c("NETPOUNDS", "net_lbs")) %>% 
+  mutate(assigned_valueURI = rep("tbd"),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         prefName = rep("tbd"),
+         ontoName = rep("tbd"),
+         grouping = rep("fish_weightKG"),
+         notes = rep("weight of fish in kg"))
+
+#############################
+# weight of fish (g)
+#############################
+
+weightG <- fishCounts %>% 
+  filter(str_detect(attributeDefinition, "(?i)Weight of salmon fish in grams.") |
+           str_detect(attributeDefinition, "(?i)weight of sampled fish in grams")) %>% 
+  mutate(assigned_valueURI = rep("tbd"),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         prefName = rep("tbd"),
+         ontoName = rep("tbd"),
+         grouping = rep("fish_weightG"),
+         notes = rep("weight of fish in g"))
 
 ##########################################################################################
 # combine and ensure no duplicates
 ##########################################################################################
 
-all_fishCounts_atts <- rbind(annual_harvested, species_ratio, counts_by_region, numFishHarvested_byRegion_CLEANED, biomassFishHarvested, fishBiomass_byRegion, total_fishBiomass)
+all_fishCounts_atts <- rbind(annual_harvested, species_ratio, counts_by_region, numFishHarvested_byRegion_CLEANED, biomassFishHarvested, fishBiomass_byRegion, total_fishBiomass, weightProcessedProduct, avgWeight, weightKG, weightG)
 
 remainder <- anti_join(fishCounts, all_fishCounts_atts)
 

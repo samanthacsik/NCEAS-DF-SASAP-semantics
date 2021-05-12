@@ -29,7 +29,9 @@ library(janitor)
 
 source(here::here("code", "05a_exploring_attributes.R"))
 source(here::here("code", "assign_URIs_to_attributes", "agency.R"))
+source(here::here("code", "assign_URIs_to_attributes", "area_location.R"))
 source(here::here("code", "assign_URIs_to_attributes", "dates.R"))
+source(here::here("code", "assign_URIs_to_attributes", "environmental_feature.R")) 
 source(here::here("code", "assign_URIs_to_attributes", "escapement.R")) 
 source(here::here("code", "assign_URIs_to_attributes", "fishAge.R")) 
 source(here::here("code", "assign_URIs_to_attributes", "fishCounts.R"))
@@ -40,7 +42,7 @@ source(here::here("code", "assign_URIs_to_attributes", "permits.R"))
 source(here::here("code", "assign_URIs_to_attributes", "precipitation.R"))
 source(here::here("code", "assign_URIs_to_attributes", "random_ids.R"))
 source(here::here("code", "assign_URIs_to_attributes", "recruits.R"))
-source(here::here("code", "assign_URIs_to_attributes", "sampleInfo.R"))
+#source(here::here("code", "assign_URIs_to_attributes", "sampleInfo.R"))
 source(here::here("code", "assign_URIs_to_attributes", "fishSex.R"))
 source(here::here("code", "assign_URIs_to_attributes", "species.R"))
 source(here::here("code", "assign_URIs_to_attributes", "temperature.R")) 
@@ -52,16 +54,18 @@ source(here::here("code", "assign_URIs_to_attributes", "temperature.R"))
 SASAP_attributes <- rbind(all_age_atts, 
                           all_agency_atts, 
                           all_date_atts, 
+                          all_envFeat_atts,
                           all_escapement_atts,
                           all_fishCounts_atts, 
                           all_length_atts, 
+                          all_location_atts,
                           all_flag_atts, 
                           all_gear_atts, 
                           all_permit_atts, 
                           all_precipitation_atts, 
-                          all_randomID_atts,
+                          all_ID_atts,
                           all_recruit_atts, 
-                          all_sample_atts, 
+                          #all_sample_atts, 
                           all_sex_atts, 
                           all_species_atts, 
                           all_temp_atts) %>% 

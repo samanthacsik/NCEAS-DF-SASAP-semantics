@@ -59,8 +59,8 @@ fishSampleID <- sample_info %>%
 # sample location identifier
 #############################
 
-location <- sample_info %>% 
-  filter(str_detect(attributeName, "(?i)location")) %>% 
+location <- sample_info %>%
+  filter(str_detect(attributeName, "(?i)location")) %>%
   mutate(assigned_valueURI = rep("tbd"),
          assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
          prefName = rep("tbd"),
@@ -72,7 +72,7 @@ location <- sample_info %>%
 # combine and ensure no duplicates
 ##########################################################################################
 
-all_sample_atts <- rbind(fishSampleID, location)
+all_sample_atts <- rbind(fishSampleID) # location
 
 remainder <- anti_join(sample_info, all_sample_atts)
 

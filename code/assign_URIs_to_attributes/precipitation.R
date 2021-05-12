@@ -103,3 +103,4 @@ isTRUE(length(all_precipitation$attributeName) == length(all_precipitation_disti
 
 # clean up global environment
 rm(precipitation, monthly_total_precip, quarterly_mean_precip, annual_mean_precipitation, tempA, tempB, tempC, tempD, all_precipitation, all_precipitation_distinct, remainder)
+

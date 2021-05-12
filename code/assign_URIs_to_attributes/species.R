@@ -145,7 +145,7 @@ remainder <- anti_join(species, all_species_atts)
 
 # check that there are no duplicates
 all_spp <- all_species_atts %>% select(-assigned_valueURI,-assigned_propertyURI, -prefName, -ontoName, -grouping, -notes)
-all_spp_distinct <- all_species_atts %>% select(-assigned_valueURI, -assigned_propertyURI, -prefName, -ontoName, -gropuing, -notes) %>% distinct()
+all_spp_distinct <- all_species_atts %>% select(-assigned_valueURI, -assigned_propertyURI, -prefName, -ontoName, -grouping, -notes) %>% distinct()
 isTRUE(length(all_spp$attributeName) == length(all_spp_distinct$attributeName))
 
 # clean up global environment
