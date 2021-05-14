@@ -31,3 +31,6 @@ test5 <- SASAP_attributes %>%
   filter(viewURL %in% c("https://search.dataone.org/view/doi:10.5063/F1891459")) %>% 
   filter(assigned_valueURI != "tbd") %>% 
   filter(prefName != "Species")
+
+Rushi_testing <- rbind(test1, test2, test3, test4, test5)
+write_csv(Rushi_testing, here::here("data", "Rushi_testing.csv"))
