@@ -405,6 +405,6 @@ all_permits_distinct <- all_permit_atts %>% select(-assigned_valueURI, -assigned
 isTRUE(length(all_permits$attributeName) == length(all_permits_distinct$attributeName))
 
 # clean up global environment
-rm(permits, TlicenseUSCitizenship, cityOfResidence, stateOfResidence, countryOfResidence, licenseClassCode, licenseTypeCode, licenseEndorsementNum, sexOfLicenseHolder, licenseIssueDate, licenseNum, licenseYear, licenseVendorNum, licenseZipCode, num_permitHolders_by_ageClass, perc_permits_by_ageClass, permitType, permit_issueYear, num_permitsIssued, num_interimPermitsIssued, num_transferablePermitsIssued, num_permitsTransferred, num_permitsReturned, mean_age_UNSORTED, num_transferablePermitsHeld, num_permitsHeld, UNSORTED, remainder, all_permits, all_permits_distinct)
+rm(licenseUSCitizenship, licenseVendorNum, permits, TlicenseUSCitizenship, cityOfResidence, stateOfResidence, countryOfResidence, licenseClassCode, licenseTypeCode, licenseEndorsementNum, sexOfLicenseHolder, licenseIssueDate, licenseNum, licenseYear, licenseVendoNum, licenseZipCode, num_permitHolders_by_ageClass, perc_permits_by_ageClass, permitType, permit_issueYear, num_permitsIssued, num_interimPermitsIssued, num_transferablePermitsIssued, num_permitsTransferred, num_permitsReturned, mean_age_UNSORTED, num_transferablePermitsHeld, num_permitsHeld, UNSORTED, remainder, all_permits, all_permits_distinct)
 
   

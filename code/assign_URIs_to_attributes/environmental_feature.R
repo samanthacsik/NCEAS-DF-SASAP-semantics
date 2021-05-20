@@ -67,4 +67,4 @@ all_envFeat_distinct <- all_envFeat_atts %>% select(-assigned_valueURI, -assigne
 isTRUE(length(all_envFeat$attributeName) == length(all_envFeat_distinct$attributeName))
 
 # clean up global environment
-rm(waterbody_type, remainder, all_envFeat, all_envFeat_distinct)
+rm(waterbody_type, remainder, all_envFeat, all_envFeat_distinct, envFeat)

@@ -65,4 +65,4 @@ all_flags_distinct <- all_flag_atts %>% select(-assigned_valueURI, -assigned_pro
 isTRUE(length(all_flags$attributeName) == length(all_flags_distinct$attributeName))
 
 # clean up global environment
-rm(flags, flags_all)
+rm(flags, flags_all, data_quality_flags)

@@ -39,6 +39,7 @@ source(here::here("code", "assign_URIs_to_attributes", "fishLength.R"))
 source(here::here("code", "assign_URIs_to_attributes", "flags.R")) 
 source(here::here("code", "assign_URIs_to_attributes", "gear.R")) 
 source(here::here("code", "assign_URIs_to_attributes", "permits.R")) 
+source(here::here("code", "assign_URIs_to_attributes", "placeNames.R")) 
 source(here::here("code", "assign_URIs_to_attributes", "precipitation.R"))
 source(here::here("code", "assign_URIs_to_attributes", "random_ids.R"))
 source(here::here("code", "assign_URIs_to_attributes", "recruits.R"))
@@ -61,7 +62,8 @@ SASAP_attributes <- rbind(all_age_atts,
                           all_location_atts,
                           all_flag_atts, 
                           all_gear_atts, 
-                          all_permit_atts, 
+                          all_permit_atts,
+                          all_name_atts,
                           all_precipitation_atts, 
                           all_ID_atts,
                           all_recruit_atts, 

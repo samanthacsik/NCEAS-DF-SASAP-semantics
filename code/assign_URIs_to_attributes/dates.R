@@ -231,4 +231,4 @@ all_dates_distinct <- all_date_atts %>% select(-assigned_valueURI, -assigned_pro
 isTRUE(length(all_dates$attributeName) == length(all_dates_distinct$attributeName))
 
 # clean up global environment
-rm(dates, brood_year, commHarvestYear, commHarvestYear_BB, commHarvestYear_rest, commHarvestYear_CLEANED, date, license_issue_date, sample_time, sample_year, numYears, startDate, endDate, sample_month, sample_season, remainder, all_dates, all_dates_distinct)
+rm(dates, brood_year, commHarvestYear, commHarvestYear_BB, commHarvestYear_rest, commHarvestYear_CLEANED, date, license_issue_date, sample_time, sample_year, numYears, startDate, endDate, sample_month, sample_season, remainder, all_dates, all_dates_distinct, times, dates_times)

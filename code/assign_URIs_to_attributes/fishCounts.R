@@ -235,4 +235,4 @@ all_fishCounts_distinct <- all_fishCounts_atts %>% select(-assigned_valueURI, -a
 isTRUE(length(all_fishCounts$attributeName) == length(all_fishCounts_distinct$attributeName))
 
 # clean up global environment
-rm(annual_harvested, species_ratio, counts, remainder, all_fishCounts, all_fishCounts_distinct, fishCounts, numFishHarvested, numFishHarvested_byRegion_BB, numFishHarvested_byRegion_rest, numFishHarvested_byRegion_CLEANED, biomassFishHarvested, fishBiomass_byRegion, total_fishBiomass)
+rm(annual_harvested, species_ratio, counts, remainder, all_fishCounts, all_fishCounts_distinct, fishCounts, numFishHarvested, numFishHarvested_byRegion_BB, numFishHarvested_byRegion_rest, numFishHarvested_byRegion, numFishHarvested_byRegion_CLEANED, biomassFishHarvested, fishBiomass_byRegion, total_fishBiomass, avgWeight, weightG, weightKG, counts_by_region, weightProcessedProduct)

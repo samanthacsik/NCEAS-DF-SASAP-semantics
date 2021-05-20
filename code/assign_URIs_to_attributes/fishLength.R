@@ -74,7 +74,7 @@ all_lengths_distinct <- all_length_atts %>% select(-assigned_valueURI, - assigne
 isTRUE(length(all_lengths$attributeName) == length(all_lengths_distinct$attributeName))
 
 # clean up global environment
-rm(temp_lengths, all_lengths_distinct, all_lengths, remainder)
+rm(temp_lengths, all_lengths_distinct, all_lengths, remainder, length, length_notes)
 
 
 

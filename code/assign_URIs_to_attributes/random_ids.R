@@ -79,17 +79,19 @@ AKOATS_id <- ids %>%
 # location or region id
 #############################
 
-locationRegion_id <- ids %>% 
-  filter(attributeName %in% c("LocationID", "region", "region_id") |
-         attributeDefinition %in% c("Numeric (HUC) region ID", "Numeric ID (HUC) of region")) %>% 
-  mutate(assigned_valueURI = rep("tbd"),
-         assigned_propertyURI = rep("tbd"),
-         prefName = rep("tbd"),
-         ontoName = rep("tbd"),
-         grouping = rep("locationRegion_id"),
-         notes = rep("unique identifier which describes a location or region"))
+# duplicates; going to move these namePlace.R !!!!!!!!!!!!!!!!!!!!!!
 
-test <- get_dupes(locationRegion_id)
+# locationRegion_id <- ids %>% 
+#   filter(attributeName %in% c("LocationID", "region", "region_id") |
+#          attributeDefinition %in% c("Numeric (HUC) region ID", "Numeric ID (HUC) of region")) %>% 
+#   mutate(assigned_valueURI = rep("tbd"),
+#          assigned_propertyURI = rep("tbd"),
+#          prefName = rep("tbd"),
+#          ontoName = rep("tbd"),
+#          grouping = rep("locationRegion_id"),
+#          notes = rep("unique identifier which describes a location or region"))
+# 
+# test <- get_dupes(locationRegion_id)
 
 
 # location <- sample_info %>%
@@ -103,9 +105,9 @@ test <- get_dupes(locationRegion_id)
 
 # ---- clean up repeats for sasap_regions.zip ----
 
-zip_single <- locationRegion_id %>% filter(entityName == "sasap_regions.zip") %>% distinct()
-locationRegion_rest <- locationRegion_id %>% filter(entityName != "sasap_regions.zip")
-locationRegion_id_CLEANED <- rbind(zip_single, locationRegion_rest) # USE THIS ONE
+# zip_single <- locationRegion_id %>% filter(entityName == "sasap_regions.zip") %>% distinct()
+# locationRegion_rest <- locationRegion_id %>% filter(entityName != "sasap_regions.zip")
+# locationRegion_id_CLEANED <- rbind(zip_single, locationRegion_rest) # USE THIS ONE
 
 ############################
 # stock id
@@ -137,7 +139,7 @@ watershed_id <- ids %>%
 # combine and ensure no duplicates
 ##########################################################################################
 
-all_ID_atts <- rbind(fishSampleID, AKOATS_id, locationRegion_id, locationRegion_id_CLEANED, stock_id, watershed_id)
+all_ID_atts <- rbind(fishSampleID, AKOATS_id, stock_id, watershed_id) # locationRegion_id, locationRegion_id_CLEANED,
 
 remainder <- anti_join(ids, all_ID_atts)
 
@@ -151,5 +153,5 @@ isTRUE(length(all_IDs$attributeName) == length(all_IDs_distinct$attributeName))
 # test <- anti_join(all_IDs, all_IDs_distinct)
 
 # clean up global environment
-rm(ids, AKOATS_id, locationRegion_id, zip_single, locationRegion_rest, locationRegion_id_CLEANED, stock_id, watershed_id, remainder, all_IDs, all_IDs_distinct)
+rm(ids, AKOATS_id, stock_id, watershed_id, remainder, all_IDs, all_IDs_distinct, fishSampleID) # locationRegion_id, zip_single, locationRegion_rest, locationRegion_id_CLEANED, 
 

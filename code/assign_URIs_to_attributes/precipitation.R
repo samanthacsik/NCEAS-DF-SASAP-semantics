@@ -51,7 +51,7 @@ tempB <- precipitation %>%
 
 monthly_total_precip <- rbind(tempA, tempB) %>% 
   mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/ECSO_00001237"),
-         assigned_propertyURI = rep(""),
+         assigned_propertyURI = rep("tbd"),
          prefName = rep("Precipitation Volume"),
          ontoName = rep("The Ecosystem Ontology"),
          grouping = rep("monthly_total_precip"),
