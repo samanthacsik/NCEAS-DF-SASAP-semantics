@@ -36,7 +36,11 @@ source(here::here("code", "05a_exploring_attributes.R"))
 
 species <- attributes %>% 
   filter(str_detect(attributeName, "(?i)species") |
-         str_detect(attributeDefinition, "(?i)scientific name")) 
+           str_detect(attributeDefinition, "(?i) common name") |
+         str_detect(attributeDefinition, "(?i)scientific name") |
+         str_detect(attributeDefinition, "(?i) common name")) 
+
+write_csv(species, here::here("data", "annotationPrep", "species_datasets.csv"))
   
 ##########################################################################################
 # determine appropriate valueURIs
