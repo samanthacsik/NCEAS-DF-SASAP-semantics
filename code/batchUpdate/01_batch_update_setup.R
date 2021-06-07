@@ -102,53 +102,133 @@ attributes <- read_csv(here::here("data", "RushiTesting", "Rushi_testing.csv"))
 
 # ------------------------------------------------------------------------------------------------
 # original: doi:10.5063/F1542KVC; new: resource_map_urn:uuid:ae3c5617-970d-4d61-867f-ca2f9758531c
-# post-update metadata PID: 
+# post-update metadata PID: urn:uuid:d0406e02-ec5e-4c8b-a21a-afa8c2bd8b63
 # https://search.dataone.org/view/doi:10.5063/F1542KVC
 # https://dev.nceas.ucsb.edu/view/urn%3Auuid%3A461fa59f-efdd-4080-b9e4-60e32687ca98
+# https://dev.nceas.ucsb.edu/view/urn%3Auuid%3Ad0406e02-ec5e-4c8b-a21a-afa8c2bd8b63
 
-# COME BACK TO THIS ONE
+# spp3 <- read_csv(here::here("data", "RushiTesting", "speciesData", "HighSeas_tag_recovery_database.csv"))
+# unique(spp$Species) # CHUM, SOCKEYE, PINK, COHO, CHINOOK, STEELHEAD
 
-spp3 <- read_csv(here::here("data", "RushiTesting", "speciesData", "HighSeas_tag_recovery_database.csv"))
-unique(spp$Species) # CHUM, SOCKEYE, PINK, COHO, CHINOOK, STEELHEAD
+# test3 <- attributes %>%
+#   filter(viewURL %in% c("https://search.dataone.org/view/doi:10.5063/F1542KVC")) %>%
+#   rename(identifierOriginal = identifier) %>%
+#   mutate(testIdentifier = rep("resource_map_urn:uuid:ae3c5617-970d-4d61-867f-ca2f9758531c")) %>%
+#   rename(identifier = testIdentifier)
 
-test3 <- attributes %>% 
-  filter(viewURL %in% c("https://search.dataone.org/view/doi:10.5063/F1542KVC")) %>% 
-  # filter(assigned_valueURI != "tbd") %>% 
-  #filter(!attributeName %in% c("RecSex", "Species")) %>% 
-  rename(identifierOriginal = identifier) %>%
-  mutate(testIdentifier = rep("resource_map_urn:uuid:ae3c5617-970d-4d61-867f-ca2f9758531c")) %>%
-  rename(identifier = testIdentifier)
+# test3.2 <- attributes %>%
+#     filter(viewURL %in% c("https://search.dataone.org/view/doi:10.5063/F1542KVC")) %>%
+#     rename(identifierOriginal = identifier) %>%
+#     mutate(testIdentifier = rep("resource_map_urn:uuid:d0406e02-ec5e-4c8b-a21a-afa8c2bd8b63")) %>%
+#     rename(identifier = testIdentifier) 
+
+# test3.3 directly in script 02a.3_batchUpdate_SPP3.R
 
 # ------------------------------------------------------------------------------------------------
 # original: doi:10.5063/F1639N0M; new: resource_map_urn:uuid:1dc641c2-fc89-47f2-95d2-901fb7f8afa4
 # post-update metadata PID: urn:uuid:230bbbd8-9d39-4b9b-b573-da29b6a60443
 # https://search.dataone.org/view/doi:10.5063/F1639N0M
 # https://dev.nceas.ucsb.edu/view/urn%3Auuid%3A29eda9ca-e82b-4da0-85b7-d7796c85193b
-
-# test4 <- attributes %>% 
-#   filter(viewURL %in% c("https://search.dataone.org/view/doi:10.5063/F1639N0M")) %>% 
-#   filter(assigned_valueURI != "tbd") %>% 
-#   filter(prefName != "number of years") %>% 
+# 
+# test4 <- attributes %>%
+#   filter(viewURL %in% c("https://search.dataone.org/view/doi:10.5063/F1639N0M")) %>%
+#   filter(assigned_valueURI != "tbd") %>%
+#   filter(prefName != "number of years") %>%
 #   rename(identifierOriginal = identifier) %>%
 #   mutate(testIdentifier = rep("resource_map_urn:uuid:1dc641c2-fc89-47f2-95d2-901fb7f8afa4")) %>%
 #   rename(identifier = testIdentifier)
 
+# urn:uuid:335dd277-08b8-4e8d-b8ca-922f7f7a242c
+# test4.2 <- attributes %>%
+#   filter(viewURL %in% c("https://search.dataone.org/view/doi:10.5063/F1639N0M")) %>%
+#   filter(assigned_valueURI != "tbd") %>%
+#   filter(prefName != "number of years") %>%
+#   rename(identifierOriginal = identifier) %>%
+#   mutate(testIdentifier = rep("resource_map_urn:uuid:230bbbd8-9d39-4b9b-b573-da29b6a60443")) %>%
+#   rename(identifier = testIdentifier)
+
 # ------------------------------------------------------------------------------------------------
 # original: doi:10.5063/F1891459; new: resource_map_urn:uuid:7515b8e6-7fdb-460f-a4ec-7b385ad3a330
-# post-update metadata PID: 
+# post-update metadata PID: urn:uuid:641beab0-0b46-4cd5-87d7-611816faaae4
 # https://search.dataone.org/view/doi:10.5063/F1891459
 # https://dev.nceas.ucsb.edu/view/urn%3Auuid%3Aa88f8e1f-8eca-437a-8853-e813eac2ad01
 
-spp5a <- read_csv(here::here("data", "RushiTesting", "speciesData", "raw_brood_table_2019_07_16.csv"))
-unique(spp5a$Species) # Sockeye
+# spp5a <- read_csv(here::here("data", "RushiTesting", "speciesData", "raw_brood_table_2019_07_16.csv"))
+# unique(spp5a$Species) # Sockeye
 
-spp5b <- read_csv(here::here("data", "RushiTesting", "speciesData", "StockInfo.csv"))
-unique(spp5b$Species) # Sockeye
+# spp5b <- read_csv(here::here("data", "RushiTesting", "speciesData", "StockInfo.csv"))
+# unique(spp5b$Species) # Sockeye
 
-test5 <- attributes %>% 
-  filter(viewURL %in% c("https://search.dataone.org/view/doi:10.5063/F1891459")) %>% 
-  filter(assigned_valueURI != "tbd") %>% 
-  filter(prefName != "Species") %>% 
+# test5 <- attributes %>% 
+#   filter(viewURL %in% c("https://search.dataone.org/view/doi:10.5063/F1891459")) %>% 
+#   filter(assigned_valueURI != "tbd") %>% 
+#   rename(identifierOriginal = identifier) %>%
+#   mutate(testIdentifier = rep("resource_map_urn:uuid:7515b8e6-7fdb-460f-a4ec-7b385ad3a330")) %>%
+#   rename(identifier = testIdentifier)
+
+# https://dev.nceas.ucsb.edu/view/urn%3Auuid%3A7e068dc4-cfc5-4120-b91e-cece549ba46d
+# test5.2 <- attributes %>% 
+#   filter(viewURL %in% c("https://search.dataone.org/view/doi:10.5063/F1891459")) %>% 
+#   filter(assigned_valueURI != "tbd") %>% 
+#   rename(identifierOriginal = identifier) %>%
+#   mutate(testIdentifier = rep("resource_map_urn:uuid:641beab0-0b46-4cd5-87d7-611816faaae4")) %>%
+#   rename(identifier = testIdentifier)
+  
+# ------------------------------------------------------------------------------------------------
+# original: doi:10.5063/F1T151XN; new: resource_map_urn:uuid:075d8b92-2408-47bd-b0f7-3c2483cf53ef
+# post-update metadata PID: 
+# https://search.dataone.org/view/doi:10.5063/F1T151XN
+# https://dev.nceas.ucsb.edu/view/urn%3Auuid%3A3772a412-c538-4184-a9be-b0e5a203f19a
+
+# spp6a <- read_csv(here::here("data", "RushiTesting", "speciesData", "1 DistrictByYear_SASAPRegion.csv"))
+# unique(spp6a$Species) # sockeye, pink, chum, coho, chinook
+# 
+# spp6b <- read_csv(here::here("data", "RushiTesting", "speciesData", "2 Daily.csv"))
+# unique(spp6b$Species) # sockeye, pink, chum, coho, chinook
+# 
+# spp6c <- read_csv(here::here("data", "RushiTesting", "speciesData", "3 StatWeekByArea.csv"))
+# unique(spp6c$Species) # sockeye, pink, chum, coho, chinook
+# 
+# spp6d <- read_csv(here::here("data", "RushiTesting", "speciesData", "4 StatAreaByYear.csv"))
+# unique(spp6d$Species) # sockeye, pink, chum, coho, chinook
+# 
+# spp6e <- read_csv(here::here("data", "RushiTesting", "speciesData", "5 AreaByYear.csv"))
+# unique(spp6e$Species) # sockeye, pink, chum, coho, chinook
+
+# test6 <- attributes %>% 
+#   filter(viewURL %in% c("https://search.dataone.org/view/doi:10.5063/F1T151XN")) %>% 
+#   filter(assigned_valueURI != "tbd") %>% 
+#   rename(identifierOriginal = identifier) %>%
+#   mutate(testIdentifier = rep("resource_map_urn:uuid:075d8b92-2408-47bd-b0f7-3c2483cf53ef")) %>%
+#   rename(identifier = testIdentifier)
+
+# 7------------------------------------------------------------------------------------------------
+# original: doi:10.5063/F12805X0; new: 
+# https://search.dataone.org/view/doi:10.5063/F12805X0
+# https://dev.nceas.ucsb.edu/view/urn%3Auuid%3A6c948813-23e1-4c3d-86b6-e503a1b135d8
+
+# spp7 <- read_csv(here::here("data", "RushiTesting", "speciesData", "Hatchery_returns.csv"))
+# unique(spp7$Species) # sockeye, pink, chum, coho, chinook
+
+test7 <- attributes %>%
+  filter(viewURL %in% c("https://search.dataone.org/view/doi:10.5063/F12805X0")) %>%
+  filter(assigned_valueURI != "tbd") %>%
   rename(identifierOriginal = identifier) %>%
-  mutate(testIdentifier = rep("resource_map_urn:uuid:1dc641c2-fc89-47f2-95d2-901fb7f8afa4")) %>%
+  mutate(testIdentifier = rep("resource_map_urn:uuid:2421d2b6-2f6a-4331-a053-60e0c659b076")) %>%
   rename(identifier = testIdentifier)
+
+# 8------------------------------------------------------------------------------------------------
+# original: doi:10.5063/F1GB22B9; new: 
+# https://search.dataone.org/view/doi:10.5063/F1GB22B9
+# 
+test8 <- attributes %>%
+  filter(viewURL %in% c("https://search.dataone.org/view/doi:10.5063/F1GB22B9")) %>%
+  filter(assigned_valueURI != "tbd") %>%
+  rename(identifierOriginal = identifier) %>%
+  mutate(testIdentifier = rep("")) %>%
+  rename(identifier = testIdentifier)
+
+
+
+
+

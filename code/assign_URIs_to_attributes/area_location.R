@@ -63,7 +63,8 @@ latitude <- location %>%
                                     "Latitude of community", "latitude of count location", "Latitude of count location",
                                     "latitude of location", "latitude of violation", "Latitude where community is located",
                                     "Latitude where Native place is located", "Latitude where tribe is located",
-                                    "Recovery latitude", "Release latitude")) %>% 
+                                    "Recovery latitude", "Release latitude", "Latitude location of the station in decimal degrees",
+                                    "Latitude of monitoring station, decimal degrees", "Latitude of monitoring station , decimal degrees")) %>% 
   mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/ECSO_00002130"),
          assigned_propertyURI = rep("tbd"),
          prefName = rep("latitude coordinate"),
@@ -73,14 +74,12 @@ latitude <- location %>%
 
 
 #############################
-# latitude degrees
+# latitude degrees - DOUBLE CHECK THESE!
 #############################
 
 latitudeDeg <- location %>% 
   filter(attributeDefinition %in% c("Decimal degree latitude of the observation.", "Latitude degrees at release",
-                                    "Latitude degrees at recovery", "Latitude of monitoring station , decimal degrees", 
-                                    "latitude in decimal degrees", "Latitude location of the station in decimal degrees",
-                                    "Latitude of monitoring station, decimal degrees")) %>% 
+                                    "Latitude degrees at recovery", "latitude in decimal degrees")) %>% 
   mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/ECSO_00002247"),
          assigned_propertyURI = rep("tbd"),
          prefName = rep("latitude degree component"),
@@ -110,7 +109,8 @@ longitude <- location %>%
                                     "Longitude of community", "longitude of count location", "Longitude of count location",
                                     "longitude of location", "longitude of violation", "Longitude where community is located",
                                     "Longitude where Native place is located", "Longitude where tribe is located",
-                                    "Release longitude", "Recovery longitude")) %>% 
+                                    "Release longitude", "Recovery longitude", "Longitude location of the site in decimal degrees",
+                                    "Longitude of monitoring station, decimal degrees", "Longitude of monitoring station , decimal degrees")) %>% 
   mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/ECSO_00002132"),
          assigned_propertyURI = rep("tbd"),
          prefName = rep("longitude coordinate"),
@@ -124,9 +124,7 @@ longitude <- location %>%
 
 longitudeDeg <- location %>% 
   filter(attributeDefinition %in% c("Decimal degree longitude of the observation.", "Longitude degrees at release",
-                                    "Longitude degrees at recovery", "Longitude of monitoring station , decimal degrees", 
-                                    "longitude in decimal degrees", "Longitude location of the site in decimal degrees",
-                                    "Longitude of monitoring station, decimal degrees")) %>% 
+                                    "Longitude degrees at recovery", "longitude in decimal degrees")) %>% 
   mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/ECSO_00002239"),
          assigned_propertyURI = rep("tbd"),
          prefName = rep("longitdue degree component"),

@@ -1,4 +1,4 @@
-# title: batch update of datapackages with semantic annotations  -- SASAP TESTING
+# title: SASAP TESTING MULTIPLE ANNOTATIONS PER ATTRIBUTE OR DATATABLE (https://search.dataone.org/view/doi:10.5063/F1891459)
 # author: "Sam Csik"
 # date created: "2021-01-04"
 # date edited: "2021-05-19"
@@ -9,6 +9,12 @@
 ##########################################################################################
 # Summary - READ BEFORE RUNNING
 ##########################################################################################
+
+# TESTING ON DEV
+# first run batch update, then annotate attribute/dataTable with species by hand
+# SPECIES: 
+  # BroodTables.csv: dataTable 1, attribute 2
+  # StockInfo.csv: dataTable 2, attribute 2
 
 # Pre-update steps:
 #------------------
@@ -60,7 +66,7 @@ source(here::here("code", "batchUpdate_functions", "process_entities_by_type().R
 ##############################
 
 # >>>>>>>> UPDATE HERE BEFORE EACH RUN <<<<<<<<<< 
-attributes <- test4.2
+attributes <- test5.2
 # -----------------------------------------------
 
 ##############################
@@ -131,7 +137,7 @@ tryLog(for(dp_num in 1:length(unique_datapackage_ids)){
   # ---------------------------------------------------------------------------------------------------------------------------------------
   # -------------------------------- add annotations from the 'attributes' df to attributes in the EML doc --------------------------------
   # ---------------------------------------------------------------------------------------------------------------------------------------
-
+  
   doc <- annotate_eml_attributes(doc)
   
   # ----------------------------------------------------------------------------------------------------------------------------------------
@@ -160,44 +166,39 @@ tryLog(for(dp_num in 1:length(unique_datapackage_ids)){
     names(list_of_pkgs_failed_FINAL_validation)[[dp_num]] <- current_metadata_pid
     message("-------------- doc & pkg ", dp_num, " (", current_metadata_pid, ") have been added to the FAILED lists --------------")
   }
-   
+  
 }, write.error.dump.file = TRUE, write.error.dump.folder = "dump_files", include.full.call.stack = FALSE) 
 
 
-
-
-
-
-
-
-
-
 # -------------------------------------------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------------------------------------------
-# ANNOTATE BY HAND - SPECIES 
+# ANNOTATE BY HAND - SPECIES (dataTable 1, attribute 12)
 # -------------------------------------------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------------------------------------------
 
-# containsMeasurementsofType <- "http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"
+#################
+# BroodTable.csv: Sockeye
+#################
 
-# # dataTable 1
-# doc$dataset$dataTable[[1]]$id <- "dataTable1_sppList"
-# doc$dataset$dataTable[[1]]$annotation <- list(
-#   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType), 
-#        valueURI = list(label = "Oncorhynchus kisutch", valueURI = "http://purl.bioontology.org/ontology/SNOMEDCT/81789001")),
-#   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType), 
-#        valueURI = list(label = "Oncorhynchus tshawytscha", valueURI = "http://purl.bioontology.org/ontology/SNOMEDCT/68644008")),
-#   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType), 
-#        valueURI = list(label = "Oncorhynchus nerka", valueURI = "http://purl.bioontology.org/ontology/SNOMEDCT/68644008")),
-#   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType), 
-#        valueURI = list(label = "Oncorhynchus gorbuscha", valueURI = "http://purl.bioontology.org/ontology/SNOMEDCT/23662001")),
-#   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType), 
-#        valueURI = list(label = "Oncorhynchus keta", valueURI = "http://purl.bioontology.org/ontology/SNOMEDCT/62285003"))
-# )
+doc$dataset$dataTable[[1]]$id <- "dataTable1_sppList"
+containsMeasurementsofType <- "http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"
+doc$dataset$dataTable[[1]]$annotation$propertyURI <- list(label = "contains measurements of", propertyURI = containsMeasurementsofType)
+doc$dataset$dataTable[[1]]$annotation$valueURI <- list(label = "Oncorhynchus nerka", valueURI = "http://purl.bioontology.org/ontology/SNOMEDCT/68644008")
+
+#################
+# StockInfo.csv: Sockeye
+#################
+
+doc$dataset$dataTable[[2]]$id <- "dataTable2_sppList"
+containsMeasurementsofType <- "http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"
+doc$dataset$dataTable[[2]]$annotation$propertyURI <- list(label = "contains measurements of", propertyURI = containsMeasurementsofType)
+doc$dataset$dataTable[[2]]$annotation$valueURI <- list(label = "Oncorhynchus nerka", valueURI = "http://purl.bioontology.org/ontology/SNOMEDCT/68644008")
 
 
+spp_validation <- eml_validate(doc)
+isTRUE(spp_validation[1])
 
 # -------------------------------------------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------------------------------------------
@@ -207,238 +208,13 @@ tryLog(for(dp_num in 1:length(unique_datapackage_ids)){
 # -------------------------------------------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------------------------------------------
 
-# 
-# write_eml(doc, "~/eml.xml")
-# eml_validate("~/eml.xml")
-# 
-# new_id <- dataone::generateIdentifier(devnceas@mn, "UUID")
-# 
-# doc_name <- current_metadata_pid
-# dp <- current_pkg
-# dp <- replaceMember(dp, doc_name, replacement = "~/eml.xml", newId = new_id, formatId = "https://eml.ecoinformatics.org/eml-2.2.0") 
-# new_rm <- uploadDataPackage(devnceas, dp, public = TRUE, quiet = FALSE)
-
-
-
-
-
-
-
-
-# some space to breathe...
-
-
-
-
-
-
-
-
-
-
-
-##########################################################################################
-# STEP 2: clean up environment, make sure lists are cleaned (no empty elements)
-##########################################################################################
-
-# clean up global environment...
-rm(current_datapackage_subset, current_pkg, doc, outputs, current_metadata_pid, dp_num, duplicate_ids, final_validation, initial_validation, pkg_identifier, unique_datapackage_ids, validate_attributeID_hash)
-
-# !!!!!!!!!
-# BE SURE TO MANUALLY INSPECT LISTS BELOW AND ASSESS BLANK ELEMENTS -- MAKE SURE LISTS MATCH (though there is check for this built into step 3 below)
-# !!!!!!!!!
-
-# clean up lists (manually inspect and remove empty (NA) element(s), if necessary...if all docs passed initial/final validation then you won't need to worry about removing NAs)
-publish_update_docs <- list_of_docs_to_publish_update
-publish_update_pkgs <- list_of_pkgs_to_publish_update
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-##########################################################################################
-# STEP 3: publish updates to arctic.io 
-##########################################################################################
-
-##############################
-# create empty df to store old and new pids in (in case they are needed for later reference) 
-##############################
-
-old_new_PIDs <- data.frame(old_metadataPID = as.character(),
-                           old_resource_map = as.character(),
-                           new_metadataPID = as.character(),
-                           new_resource_map = as.character())
-
-##############################
-# create empty lists for docs/pkgs that don't match
-##############################
-
-nonmatching_docs <- list()
-nonmatching_pkgs <- list()
-id_not_in_dp <- list() 
-
-##############################
-# publish updates
-##############################
-
-tryLog(for(doc_num in 1:length(publish_update_docs)){ 
-
-  # ----------------------------------------------------------------------------------------------
-  # ----------------- get doc + metadata pid from the publish_update_docs() list -----------------
-  # ----------------------------------------------------------------------------------------------
-  
-  # get doc from list
-  doc <- publish_update_docs[[doc_num]]
-  doc_name <- names(publish_update_docs)[[doc_num]]
-  dataset_name <- doc$dataset$title
-  message("Grabbing doc ", doc_num, ": ", doc_name)
-  
-  # -----------------------------------------------------------------------------------
-  # ----------- extract DataPackage instance from publish_update_pkgs() list ----------
-  # -----------------------------------------------------------------------------------
-  
-  # get DataPackage instance from list based on index that matched doc_num 
-  dp <- publish_update_pkgs[[doc_num]]
-  pkg_name <- names(publish_update_pkgs)[[doc_num]]
-  original_rm <- dp@resmapId
-  
-  # -----------------------------------------------------------------------------------
-  # -------------------------- make sure doc and pkg matches --------------------------
-  # -----------------------------------------------------------------------------------
-  
-  # GATE: make sure doc and pkg names from both lists match; if not, throw a warning, save to lists, and move to next doc/pkg pair
-  if(doc_name != pkg_name){
-    warning("The doc name matches the pkg name: ", doc_name == pkg_name, " |  Saving to lists and moving to next doc/pkg pair.")
-    nonmatching_docs[[doc_num]] <- doc
-    names(nonmatching_docs)[[doc_num]] <- doc_name
-    nonmatching_pkgs[[doc_num]] <- dp
-    names(nonmatching_docs)[[doc_num]] <- pkg_name
-    next
-  } 
-  
-  # print message if doc and package match
-  message("The doc name matches the pkg name: ", doc_name == pkg_name)
-  
-  # -----------------------------------------------------------------------------------
-  # ------------- get package_type from 'attributes' df using metadata_pid ------------
-  # -----------------------------------------------------------------------------------
-  
-  # # filter attributes df using metadata_pid
-  # atts_filtered <- attributes %>% 
-  #   filter(identifier == doc_name)
-  # 
-  # # get package_type
-  # package_type <- atts_filtered[[1, 12]]
-  
-  # ---------------------------------------------------------------------
-  # ----------------- generate new pid and write to eml -----------------
-  # ---------------------------------------------------------------------
-
-  # generate new pid (either doi or urn:uuid depending on what the original had) for metadata and write eml path (using old & new pids in eml file name)
-  if(isTRUE(str_detect(doc_name, "(?i)doi"))) {
-    new_id <- dataone::generateIdentifier(devnceas@mn, "DOI")
-    message("Generating a new metadata DOI: ", new_id)
-    title_snakecase <- gsub(" ", "_", dataset_name)
-    short_title <- substr(title_snakecase, start = 1, stop = 30)
-    eml_name <- paste(short_title, "_METADATA.xml", sep = "")
-    # >>>>>>>> UPDATE HERE BEFORE EACH RUN <<<<<<<<<< 
-    eml_path <- paste("/Users/samanthacsik/Repositories/NCEAS-DF-semantic-annotations-review/eml/run3_standaloneDOI_small_2021Mar18/", eml_name, sep = "")
-    # ------------------------------------------------
-    message("eml path: ", eml_path)
-  } else if(isTRUE(str_detect(doc_name, "(?i)urn:uuid"))) {
-    new_id <- dataone::generateIdentifier(devnceas@mn, "UUID")
-    message("Generating a new metadata uuid: ", new_id)
-    title_snakecase <- gsub(" ", "_", dataset_name)
-    short_title <- substr(title_snakecase, start = 1, stop = 30)
-    eml_name <- paste(short_title, "_METADATA.xml", sep = "")
-    # >>>>>>>> UPDATE HERE BEFORE EACH RUN <<<<<<<<<< 
-    eml_path <- paste("/Users/samanthacsik/Repositories/NCEAS-DF-semantic-annotations-review/eml/run3_standaloneDOI_small_2021Mar18/", eml_name, sep = "")
-    # ------------------------------------------------
-  } else {
-    stop("The original metadata ID format, ", metadata_pid, " is not recognized. No new ID has been generated.")
-  }
-  
-  # write eml
-  write_eml(doc, eml_path)
-  
-  # ---------------------------------------------------------------
-  # ------------------------ publish update -----------------------
-  # ---------------------------------------------------------------
-  
-  # get DataObject names in current dp  
-  message("Getting DataObject names from current package...")
-  pkg_objects <- names(dp@objects)
-  
-  # check to make sure that the doc_name has a matching DataObject name in the current package; if so, replaceMember   
-  if(isTRUE(str_subset(pkg_objects, pkg_name) == pkg_name)){
-    dp <- replaceMember(dp, doc_name, replacement = eml_path, newId = new_id, formatId = "https://eml.ecoinformatics.org/eml-2.2.0") 
-    # double_check_sysmeta_formatId <- getSystemMetadata(d1c_prod@mn, new_id)
-    # message("formatId is 2.2.0: ", double_check_sysmeta@formatId == "https://eml.ecoinformatics.org/eml-2.2.0")
-    message("replaceMember() complete!")
-
-    # if no match is found, add to the 'id_not_in_dp()' list and move to next DataPackage
-  } else{
-    message("DataObject for id ", doc_name, " was not found in the DataPackage. Adding to list and skipping to next DataPackage.")
-    id_not_in_dp[[doc_num]] <- dp
-    names(id_not_in_dp)[[doc_num]] <- doc_name
-    next
-  }
-    
-  # publish update
-  message("Publishing update for the following data package: ", doc_name)
-  new_rm <- uploadDataPackage(devnceas, dp, public = TRUE, quiet = FALSE)
-  message("Old metadata PID: " , doc_name, " | New metadata PID: ", new_id)
-  message("-------------- Datapackage ", doc_num, " has been updated! --------------")
-  
-  # ---------------------------------------------------------------------------
-  # ----------------- save old + new pids to df for reference -----------------
-  # ---------------------------------------------------------------------------
-  
-  pids <- data.frame(old_metadataPID = doc_name,
-                     old_resource_map = original_rm,
-                     new_metadataPID = new_id, 
-                     new_resource_map = new_rm)
-  
-  old_new_PIDs <- rbind(old_new_PIDs, pids)
-  
-  message("______ PIDS SAVED ______")
-  
-})
-
-# ---------------------------------------------------------------
-# ------------- save old/new metadata PIDs to a .csv ------------
-# ---------------------------------------------------------------
-
-# >>>>>>>> UPDATE HERE BEFORE EACH RUN <<<<<<<<<< 
-# write_csv(old_new_PIDs, here::here("data", "updated_pkgs", "run3_standaloneDOI_small_2021Mar18.csv"))
-# ------------------------------------------------
-
-
-
-
+write_eml(doc, "~/eml.xml")
+eml_validate("~/eml.xml")
+
+new_id <- dataone::generateIdentifier(devnceas@mn, "UUID")
+
+doc_name <- current_metadata_pid
+dp <- current_pkg
+dp <- replaceMember(dp, doc_name, replacement = "~/eml.xml", newId = new_id, formatId = "https://eml.ecoinformatics.org/eml-2.2.0") 
+new_rm <- uploadDataPackage(devnceas, dp, public = TRUE, quiet = FALSE)
 

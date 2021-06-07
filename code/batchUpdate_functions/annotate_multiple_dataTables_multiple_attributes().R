@@ -19,7 +19,7 @@ annotate_multiple_dataTables_multiple_attributes <- function(doc, entity_num, em
   
   # add property URI to metadata (this is the same for all attributes)
   containsMeasurementsofType <- "http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"
-  doc$dataset$dataTable[[entity_num]]$attributeList$attribute[[eml_att_num]]$annotation$propertyURI <- list(label = "contains meausurements of",
+  doc$dataset$dataTable[[entity_num]]$attributeList$attribute[[eml_att_num]]$annotation$propertyURI <- list(label = "contains measurements of",
                                                                                                             propertyURI = containsMeasurementsofType)
   
   # add value URI to metadata

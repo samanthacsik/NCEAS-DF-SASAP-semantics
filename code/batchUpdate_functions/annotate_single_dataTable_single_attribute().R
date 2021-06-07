@@ -5,7 +5,7 @@ annotate_single_dataTable_single_attribute <- function(doc, current_attribute_id
   
   # add property URI to metadata (this is the same for all attributes)
   containsMeasurementsofType <- "http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"
-  doc$dataset$dataTable$attributeList$attribute$annotation$propertyURI <- list(label = "contains meausurements of",
+  doc$dataset$dataTable$attributeList$attribute$annotation$propertyURI <- list(label = "contains measurements of",
                                                                                propertyURI = containsMeasurementsofType)
   
   # add value URI to metadata
