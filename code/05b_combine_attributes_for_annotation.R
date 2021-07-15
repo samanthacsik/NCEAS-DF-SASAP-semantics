@@ -85,7 +85,7 @@ repeats <- get_dupes(SASAP_attributes_test)
 # save as .csv
 ##############################
 
-# write_csv(SASAP_attributes, here::here("data", "sorted_attributes", "SASAP_attributes_sorted.csv"))
+write_csv(SASAP_attributes, here::here("data", "sorted_attributes", "SASAP_attributes_sorted.csv"))
 test <- read_csv(here::here("data", "sorted_attributes", "SASAP_attributes_sorted.csv"))
 
 ##############################

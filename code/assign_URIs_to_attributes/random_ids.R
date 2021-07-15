@@ -55,9 +55,9 @@ ids <- attributes %>%
 
 fishSampleID <- ids %>% 
   filter(attributeDefinition %in% c("Numeric value assigned to a sample taken from a fish on a particular date")) %>% 
-  mutate(assigned_valueURI = rep("tbd"),
+  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_000529"),
          assigned_propertyURI = rep("tbd"),
-         prefName = rep("tbd"),
+         prefName = rep("Fish sample code"),
          ontoName = rep("tbd"),
          grouping = rep("fishSampleID"),
          notes = rep("fish sample identifier"))

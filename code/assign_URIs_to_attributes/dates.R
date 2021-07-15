@@ -56,9 +56,9 @@ dates_times <- rbind(dates, times)
 brood_year <- dates_times %>% 
   filter(attributeName %in% c("BroodYear", "Year Brood") |
          attributeDefinition %in% c("Brood year")) %>% 
-  mutate(assigned_valueURI = rep("tbd"),
+  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_000520"),
          assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
-         prefName = rep("tbd"),
+         prefName = rep("Brood year"),
          ontoName = rep("tbd"),
          grouping = rep("brood_year"),
          notes = rep("brood year; ASSIGN URI FOR YEAR??"))

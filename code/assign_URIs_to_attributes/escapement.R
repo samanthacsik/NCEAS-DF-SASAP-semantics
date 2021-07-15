@@ -49,9 +49,9 @@ escapement <- attributes %>%
 annual_escapement <- escapement %>% 
   filter(attributeName %in% c("TotalEscapement", "Escapement", "REPORTED_ESCAPEMENT", "OFFICIAL_ESCAPEMENT") | 
          str_detect(attributeDefinition, "(?i)annual escapement")) %>% 
-  mutate(assigned_valueURI = rep("tbd"),
+  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_000480"),
          assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
-         prefName = rep("tbd"),
+         prefName = rep("Annual escapement count"),
          ontoName = rep("tbd"),
          grouping = rep("annual_escapement"),
          notes = rep("annual escapement counts")) 
@@ -63,9 +63,9 @@ annual_escapement <- escapement %>%
 daily_escapement <- escapement %>% 
   filter(str_detect(attributeDefinition, "(?i)number of fish escaping upstream") |
          attributeName == "COUNT") %>% 
-  mutate(assigned_valueURI = rep("tbd"),
+  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_000481"),
          assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
-         prefName = rep("tbd"),
+         prefName = rep("Daily escapement count"),
          ontoName = rep("tbd"),
          grouping = rep("daily_escapement"),
          notes = rep("daily escapement counts")) 

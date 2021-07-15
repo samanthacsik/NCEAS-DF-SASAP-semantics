@@ -61,18 +61,18 @@ sci_name <- species %>%
 
 tempA <- species %>%  
   filter(str_detect(attributeName, "(?i)code")) %>% 
-  mutate(assigned_valueURI = rep("tbd"),
+  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_000525"),
          assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
-         prefName = rep("tbd"),
+         prefName = rep("ADF&G species code"),
          ontoName = rep("tbd"),
          grouping = rep("ADFG_species_code"),
          notes = rep("ADFG species code"))
 
 tempB <- species %>%  
   filter(attributeName == "Species_ID") %>% 
-  mutate(assigned_valueURI = rep("tbd"),
+  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_000525"),
          assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
-         prefName = rep("tbd"),
+         prefName = rep("ADF&G species code"),
          ontoName = rep("tbd"),
          grouping = rep("ADFG_species_code"),
          notes = rep("ADFG species code"))
