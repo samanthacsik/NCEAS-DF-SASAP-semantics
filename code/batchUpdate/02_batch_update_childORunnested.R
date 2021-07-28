@@ -60,7 +60,7 @@ source(here::here("code", "batchUpdate_functions", "process_entities_by_type().R
 ##############################
 
 # >>>>>>>> UPDATE HERE BEFORE EACH RUN <<<<<<<<<< 
-attributes <- test4.2
+attributes <- test1
 # -----------------------------------------------
 
 ##############################
@@ -411,7 +411,7 @@ tryLog(for(doc_num in 1:length(publish_update_docs)){
     
   # publish update
   message("Publishing update for the following data package: ", doc_name)
-  new_rm <- uploadDataPackage(devnceas, dp, public = TRUE, quiet = FALSE)
+  # new_rm <- uploadDataPackage(devnceas, dp, public = TRUE, quiet = FALSE)
   message("Old metadata PID: " , doc_name, " | New metadata PID: ", new_id)
   message("-------------- Datapackage ", doc_num, " has been updated! --------------")
   

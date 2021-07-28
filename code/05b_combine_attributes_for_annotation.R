@@ -35,6 +35,7 @@ source(here::here("code", "assign_URIs_to_attributes", "environmental_feature.R"
 source(here::here("code", "assign_URIs_to_attributes", "escapement.R")) 
 source(here::here("code", "assign_URIs_to_attributes", "fishAge.R")) 
 source(here::here("code", "assign_URIs_to_attributes", "fishCounts.R"))
+source(here::here("code", "assign_URIs_to_attributes", "fishGirth.R")) 
 source(here::here("code", "assign_URIs_to_attributes", "fishLength.R"))
 source(here::here("code", "assign_URIs_to_attributes", "flags.R")) 
 source(here::here("code", "assign_URIs_to_attributes", "gear.R")) 
@@ -58,6 +59,7 @@ SASAP_attributes <- rbind(all_age_atts,
                           all_envFeat_atts,
                           all_escapement_atts,
                           all_fishCounts_atts, 
+                          all_girth_atts, 
                           all_length_atts, 
                           all_location_atts,
                           all_flag_atts, 
@@ -74,8 +76,8 @@ SASAP_attributes <- rbind(all_age_atts,
   select(-valueURI, -propertyURI)
 
 # check that there are no duplicates
-SASAP_attributes_test <- SASAP_attributes %>% select(-assigned_valueURI, -assigned_propertyURI, -prefName, -ontoName, -grouping, -notes)
-SASAP_attributes_distinct <- SASAP_attributes %>% select(-assigned_valueURI, -assigned_propertyURI, -prefName, -ontoName, -grouping, -notes) %>% distinct()
+SASAP_attributes_test <- SASAP_attributes %>% select(-assigned_valueURI, -assigned_propertyURI, -propertyURI_label, -prefName, -ontoName, -grouping, -notes)
+SASAP_attributes_distinct <- SASAP_attributes %>% select(-assigned_valueURI, -assigned_propertyURI, -propertyURI_label, -prefName, -ontoName, -grouping, -notes) %>% distinct()
 isTRUE(length(SASAP_attributes_test$attributeName) == length(SASAP_attributes_distinct$attributeName))
 
 # if need to find repeats
