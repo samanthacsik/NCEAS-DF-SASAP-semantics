@@ -47,6 +47,7 @@ waterbody_type <- envFeat %>%
   filter(attributeName %in% c("Waterbody_type")) %>% 
   mutate(assigned_valueURI = rep("tbd"),
          assigned_propertyURI = rep("tbd"),
+         propertyURI_label = rep("tbd"),
          prefName = rep("tbd"),
          ontoName = rep("tbd"),
          grouping = rep("waterbody_type"),

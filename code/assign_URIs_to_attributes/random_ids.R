@@ -39,9 +39,11 @@ ids <- attributes %>%
   filter(attributeName %in% c("AKOATS_ID", "Stock.ID", "Proposal_Num", "SURVEY_ID", "	OBJECTID",
                               "IncidentNumber", "Source.ID", "commcode", "loanNumber", "IncidentNumber",
                               "id_numeric", "	id_original", "region_id", "loggerSN", "sample_number", 
-                              "LocationID") |
+                              "LocationID", "card_num", "cardNo", "CardNum", "scale_card", "Stock", "STOCK", "ABBREVIATED_NAME") |
            attributeDefinition %in% c("Numeric region ID", "Numeric ID of region") |
            str_detect(attributeName, "(?i)sample") |
+           str_detect(attributeName, "(?i)awc") |
+           str_detect(attributeName, "(?i)awsc") |
            str_detect(attributeDefinition, "(?i)sample")) %>% 
            filter(!attributeName %in% c("Date", "sampleDate", "SampleDate", "Sample_interval", "sampleTime"))
 
@@ -50,13 +52,57 @@ ids <- attributes %>%
 ##########################################################################################
 
 #############################
+# stock name
+#############################
+
+awc <- ids %>% 
+  filter(str_detect(attributeName, "(?i)awc") |
+         str_detect(attributeName, "(?i)awsc")) %>%
+  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_000780"), 
+         assigned_propertyURI = rep("tbd"),
+         propertyURI_label = rep("tbd"),
+         prefName = rep("AWC water body code"),
+         ontoName = rep("tbd"),
+         grouping = rep("AWC_water_body_codes"),
+         notes = rep("Anadromous Water Council water body codes"))
+  
+#############################
+# stock name
+#############################
+
+stockName <- ids %>% 
+  filter(attributeName %in% c("STOCK", "Stock")) %>% 
+  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_000647"),
+         assigned_propertyURI = rep("https://schema.org/about"), # will need to confirm this
+         propertyURI_label = rep("about"),
+         prefName = rep("Fish stock name"),
+         ontoName = rep("tbd"),
+         grouping = rep("fishStockName"),
+         notes = rep("Name of fish stock"))
+
+#############################
+# gum card number
+#############################
+
+gumCardNo <- ids %>% 
+  filter(attributeName %in% c("card_num", "cardNo", "CardNum", "scale_card")) %>% 
+  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_000680"),
+         assigned_propertyURI = rep("tbd"),
+         propertyURI_label = rep("tbd"),
+         prefName = rep("Gum card number"),
+         ontoName = rep("tbd"),
+         grouping = rep("gumCardNo"),
+         notes = rep("gum card number"))
+
+#############################
 # fish sample identifier
 #############################
 
 fishSampleID <- ids %>% 
-  filter(attributeDefinition %in% c("Numeric value assigned to a sample taken from a fish on a particular date")) %>% 
+  filter(attributeDefinition %in% c("Numeric value assigned to a sample taken from a fish on a particular date", "numeric id for sample")) %>% 
   mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_000529"),
          assigned_propertyURI = rep("tbd"),
+         propertyURI_label = rep("tbd"),
          prefName = rep("Fish sample code"),
          ontoName = rep("tbd"),
          grouping = rep("fishSampleID"),
@@ -70,6 +116,7 @@ AKOATS_id <- ids %>%
   filter(attributeName %in% c("AKOATS_ID")) %>% 
   mutate(assigned_valueURI = rep("tbd"),
          assigned_propertyURI = rep("tbd"),
+         propertyURI_label = rep("tbd"),
          prefName = rep("tbd"),
          ontoName = rep("tbd"),
          grouping = rep("AKOATS_id"),
@@ -110,13 +157,14 @@ AKOATS_id <- ids %>%
 # locationRegion_id_CLEANED <- rbind(zip_single, locationRegion_rest) # USE THIS ONE
 
 ############################
-# stock id
+# stock id -- WILL WANT TO CHANGE PROPERTY URI OUT
 #############################
 
 stock_id <- ids %>% 
-  filter(attributeName %in% c("Stock.ID")) %>% 
-  mutate(assigned_valueURI = rep("tbd"),
+  filter(attributeName %in% c("Stock.ID", "ABBREVIATED_NAME")) %>% 
+  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_000671"),
          assigned_propertyURI = rep("tbd"),
+         propertyURI_label = rep("tbd"),
          prefName = rep("tbd"),
          ontoName = rep("tbd"),
          grouping = rep("stock_id"),
@@ -130,6 +178,7 @@ watershed_id <- ids %>%
   filter(attributeDefinition %in% c("Watershed ID number", "The numeric identification number of the watershed in this shapefile")) %>% 
   mutate(assigned_valueURI = rep("tbd"),
          assigned_propertyURI = rep("tbd"),
+         propertyURI_label = rep("tbd"),
          prefName = rep("tbd"),
          ontoName = rep("tbd"),
          grouping = rep("watershed_id"),
@@ -139,7 +188,7 @@ watershed_id <- ids %>%
 # combine and ensure no duplicates
 ##########################################################################################
 
-all_ID_atts <- rbind(fishSampleID, AKOATS_id, stock_id, watershed_id) # locationRegion_id, locationRegion_id_CLEANED,
+all_ID_atts <- rbind(gumCardNo, fishSampleID, AKOATS_id, stock_id, watershed_id, stockName, awc) # locationRegion_id, locationRegion_id_CLEANED,
 
 remainder <- anti_join(ids, all_ID_atts)
 
@@ -149,9 +198,9 @@ all_IDs_distinct <- all_ID_atts %>% select(-assigned_valueURI, - assigned_proper
 isTRUE(length(all_IDs$attributeName) == length(all_IDs_distinct$attributeName))
 
 # if need to find repeats
-# repeats <- get_dupes(all_IDs)
+repeats <- get_dupes(all_IDs)
 # test <- anti_join(all_IDs, all_IDs_distinct)
 
 # clean up global environment
-rm(ids, AKOATS_id, stock_id, watershed_id, remainder, all_IDs, all_IDs_distinct, fishSampleID) # locationRegion_id, zip_single, locationRegion_rest, locationRegion_id_CLEANED, 
+rm(ids, AKOATS_id, stock_id, watershed_id, remainder, all_IDs, all_IDs_distinct, fishSampleID, gumCardNo, stockName, awc) # locationRegion_id, zip_single, locationRegion_rest, locationRegion_id_CLEANED, 
 

@@ -38,6 +38,9 @@ library(tidyverse)
 
 ##############################
 # get token, set nodes
+# change 'devnceas' to 'knb' at the following locations:
+  # 02_batch_update_childORunnested.R (currently line 414)
+  # get_datapackage_metadata.R (currently lines 13, 21, 39)
 ##############################
 
 # get token reminder
@@ -66,13 +69,61 @@ duplicate_ids <- c()
 # import data 
 ##############################
 
-attributes <- read_csv(here::here("data", "RushiTesting", "Rushi_testing.csv"))
+attributes <- read_csv(here::here("data", "annotationPrep", "round1_allAttributes.csv"))
 
 # col_types = cols(.default = col_character())) %>% 
 #   mutate(num_datasets = as.numeric(num_datasets))
 
+# 1: 2021-07-27@13:07 ------------------------------------------------------------------------------------------------
+# original rm: resource_map_doi:10.5063/F1891459
+# original URL: https://search.dataone.org/view/doi:10.5063/F1891459
+# new rm: resource_map_urn:uuid:22cf0551-a0e5-45a8-82ab-47ab00aa85a4
+# new URL: https://dev.nceas.ucsb.edu/view/urn%3Auuid%3A3dd897e3-46f6-4bf5-8c90-93bb9601d5cc
+# post-update metadata PID: urn:uuid:3dd897e3-46f6-4bf5-8c90-93bb9601d5cc
+
+# switch out pkg identifier for testing -- will not need this step when running for real
+test1 <- attributes %>%
+  filter(viewURL %in% c("https://search.dataone.org/view/doi:10.5063/F1891459")) %>%
+  rename(identifierOriginal = identifier) %>%
+  mutate(testIdentifier = rep("resource_map_urn:uuid:22cf0551-a0e5-45a8-82ab-47ab00aa85a4")) %>%
+  rename(identifier = testIdentifier) %>% 
+  drop_na(grouping) %>% 
+  filter(assigned_propertyURI != "tbd")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #########################################################################################
-# Data Subsets 
+# Data Subsets -- Rushi testing
 ##########################################################################################
 
 # original: doi:10.5063/F1KD1W57; new: resource_map_urn:uuid:f286a177-6ed1-44d3-a553-d0c52d1e7a57
@@ -210,23 +261,23 @@ attributes <- read_csv(here::here("data", "RushiTesting", "Rushi_testing.csv"))
 # spp7 <- read_csv(here::here("data", "RushiTesting", "speciesData", "Hatchery_returns.csv"))
 # unique(spp7$Species) # sockeye, pink, chum, coho, chinook
 
-test7 <- attributes %>%
-  filter(viewURL %in% c("https://search.dataone.org/view/doi:10.5063/F12805X0")) %>%
-  filter(assigned_valueURI != "tbd") %>%
-  rename(identifierOriginal = identifier) %>%
-  mutate(testIdentifier = rep("resource_map_urn:uuid:2421d2b6-2f6a-4331-a053-60e0c659b076")) %>%
-  rename(identifier = testIdentifier)
+# test7 <- attributes %>%
+#   filter(viewURL %in% c("https://search.dataone.org/view/doi:10.5063/F12805X0")) %>%
+#   filter(assigned_valueURI != "tbd") %>%
+#   rename(identifierOriginal = identifier) %>%
+#   mutate(testIdentifier = rep("resource_map_urn:uuid:2421d2b6-2f6a-4331-a053-60e0c659b076")) %>%
+#   rename(identifier = testIdentifier)
 
 # 8------------------------------------------------------------------------------------------------
 # original: doi:10.5063/F1GB22B9; new: 
 # https://search.dataone.org/view/doi:10.5063/F1GB22B9
 # 
-test8 <- attributes %>%
-  filter(viewURL %in% c("https://search.dataone.org/view/doi:10.5063/F1GB22B9")) %>%
-  filter(assigned_valueURI != "tbd") %>%
-  rename(identifierOriginal = identifier) %>%
-  mutate(testIdentifier = rep("")) %>%
-  rename(identifier = testIdentifier)
+# test8 <- attributes %>%
+#   filter(viewURL %in% c("https://search.dataone.org/view/doi:10.5063/F1GB22B9")) %>%
+#   filter(assigned_valueURI != "tbd") %>%
+#   rename(identifierOriginal = identifier) %>%
+#   mutate(testIdentifier = rep("")) %>%
+#   rename(identifier = testIdentifier)
 
 
 

@@ -47,6 +47,7 @@ nameSampledRegion <- names %>%
   filter(attributeDefinition %in% c("Name of sampled region", "Name of location where data was collected")) %>% 
   mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/ECSO_00002768"),
          assigned_propertyURI = rep("tbd"),
+         propertyURI_label = rep("tbd"),
          prefName = rep("study location name"),
          ontoName = rep("tbd"),
          grouping = rep("studyLocationName"),

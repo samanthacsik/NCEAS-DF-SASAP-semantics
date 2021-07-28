@@ -49,7 +49,8 @@ species <- attributes %>%
 sci_name <- species %>% 
   filter(str_detect(attributeDefinition, "(?i)scientific name")) %>% 
   mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/ECSO_00002735"),
-         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         assigned_propertyURI = rep("https://schema.org/about"),
+         propertyURI_label = rep("about"),
          prefName = rep("species name"),
          ontoName = rep("The Ecosystem Ontology"),
          grouping = rep("sci_name"),
@@ -62,7 +63,8 @@ sci_name <- species %>%
 tempA <- species %>%  
   filter(str_detect(attributeName, "(?i)code")) %>% 
   mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_000525"),
-         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         assigned_propertyURI = rep("tbd"),
+         propertyURI_label = rep("tbd"),
          prefName = rep("ADF&G species code"),
          ontoName = rep("tbd"),
          grouping = rep("ADFG_species_code"),
@@ -71,7 +73,8 @@ tempA <- species %>%
 tempB <- species %>%  
   filter(attributeName == "Species_ID") %>% 
   mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_000525"),
-         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         assigned_propertyURI = rep("tbd"),
+         propertyURI_label = rep("tbd"),
          prefName = rep("ADF&G species code"),
          ontoName = rep("tbd"),
          grouping = rep("ADFG_species_code"),
@@ -86,25 +89,29 @@ ADFG_species_code <- rbind(tempA, tempB)
 species_code <- species %>% 
   filter(attributeName%in% c("SpeciesNo")) %>% 
   mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/ECSO_00002490"),
-         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         assigned_propertyURI = rep("tbd"),
+         propertyURI_label = rep("tbd"),
          prefName = rep("species code"),
          ontoName = rep("The Ecosystem Ontology"),
          grouping = rep("species_code"),
          notes = rep("species code (not ADFG)"))
 
 #############################
-# common name
+# common name -- WILL HAVE TO CHANGE THIS OUT WITH WHATEVER WE DECIDE
 #############################
 
 common_name <- species %>% 
   filter(str_detect(attributeDefinition, "(?i)common name") |
+         attributeName %in% c("Species_Name", "species", "Species") |
          attributeDefinition %in% c("Species of fish", "Name of species defined by ADFG species code",
                                     "species of stock", "Species valued", "Commonly used name of fish being counted.",
                                     "Species of the tagged fish", "Species of fish being counted")) %>%
-  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/ECSO_00000313"),
-         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
-         prefName = rep("Species"),
-         ontoName = rep("The Ecosystem Ontology"),
+  filter(attributeDefinition != "The sub-genus classification of salmonids being sampled") %>% 
+  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/ECSO_00002735"),
+         assigned_propertyURI = rep("https://schema.org/about"),
+         propertyURI_label = rep("about"),
+         prefName = rep("species name"),
+         ontoName = rep("tbd"),
          grouping = rep("common_name"),
          notes = rep("common name -- identity"))
 
@@ -116,7 +123,8 @@ common_name_product <- species %>%
   filter(entityName == "Total_wholesale.csv",
          attributeName %in% c("SpeciesName", "SpeciesGroup")) %>% 
   mutate(assigned_valueURI = rep("tbd"),
-         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         assigned_propertyURI = rep("tbd"),
+         propertyURI_label = rep("tbd"),
          prefName = rep("tbd"),
          ontoName = rep("tbd"),
          grouping = rep("common_name_product"),
@@ -129,7 +137,8 @@ common_name_product <- species %>%
 subGenus <- species %>% 
   filter(str_detect(attributeDefinition, "(?i)sub-genus")) %>% 
   mutate(assigned_valueURI = rep("tbd"),
-         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         assigned_propertyURI = rep("tbd"),
+         propertyURI_label = rep("tbd"),
          prefName = rep("tbd"),
          ontoName = rep("tbd"),
          grouping = rep("subGenus"),

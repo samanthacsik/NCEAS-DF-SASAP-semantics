@@ -55,9 +55,10 @@ length_notes <- read_csv(here::here("data/sorted_attributes/manual_fish_length_a
 temp_lengths <- length %>% 
   mutate(assigned_valueURI = rep("tbd"),
          assigned_propertyURI = rep("tbd"),
+         propertyURI_label = rep("tbd"),
          prefName = rep("tbd"),
          ontoName = rep("tbd"),
-         grouping = rep("temporary_lengths"),
+         grouping = rep("fishLengths"),
          notes = rep("fish length measurement types"))
 
 ##########################################################################################

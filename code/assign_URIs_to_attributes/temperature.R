@@ -49,7 +49,8 @@ unique_identifiers <- unique(temp$identifier)
 avg_air_temp <- temp %>%
   filter(identifier == "doi:10.5063/F1MK6B60") %>% 
   mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/ECSO_00001225"),
-         assigned_propertyURI = rep("tbd"),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         propertyURI_label = rep("containsMeasurementsOfType"),
          prefName = rep("Air Temperature"),
          ontoName = rep("The Ecosystem Ontology"),
          grouping = rep("avg_air_temp"),
@@ -67,6 +68,7 @@ stream_temp <- temp %>%
            attributeName %in% c("HoboTemp", "sondeTemp")) %>% 
   mutate(assigned_valueURI = rep("tbd"),
          assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         propertyURI_label = rep("containsMeasurementsOfType"),
          prefName = rep("tbd"),
          ontoName = rep("tbd"),
          grouping = rep("stream_temp"),
@@ -75,7 +77,8 @@ stream_temp <- temp %>%
 max_stream_temp <- temp %>% 
   filter(attributeName == "max_temp") %>% 
   mutate(assigned_valueURI = rep("tbd"),
-         assigned_propertyURI = rep("tbd"),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         propertyURI_label = rep("containsMeasurementsOfType"),
          prefName = rep("tbd"),
          ontoName = rep("tbd"),
          grouping = rep("max_stream_temp"),
@@ -84,7 +87,8 @@ max_stream_temp <- temp %>%
 min_stream_temp <- temp %>% 
   filter(attributeName == "min_temp") %>% 
   mutate(assigned_valueURI = rep("tbd"),
-         assigned_propertyURI = rep("tbd"),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         propertyURI_label = rep("containsMeasurementsOfType"),
          prefName = rep("tbd"),
          ontoName = rep("tbd"),
          grouping = rep("min_stream_temp"),
@@ -93,7 +97,8 @@ min_stream_temp <- temp %>%
 mean_stream_temp <- temp %>% 
   filter(attributeName == "mean_temp") %>% 
   mutate(assigned_valueURI = rep("tbd"),
-         assigned_propertyURI = rep("tbd"),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         propertyURI_label = rep("containsMeasurementsOfType"),
          prefName = rep("tbd"),
          ontoName = rep("tbd"),
          grouping = rep("mean_stream_temp"),
@@ -102,7 +107,8 @@ mean_stream_temp <- temp %>%
 stream_temp_TBD <- temp %>%
   filter(attributeName %in% c("Hobo_Sonde", "ABS_diff")) %>% 
   mutate(assigned_valueURI = rep("tbd"),
-         assigned_propertyURI = rep("tbd"),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         propertyURI_label = rep("containsMeasurementsOfType"),
          prefName = rep("tbd"),
          ontoName = rep("tbd"),
          grouping = rep("stream_temp_TBD"),

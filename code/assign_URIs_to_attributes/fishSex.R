@@ -47,9 +47,10 @@ sex <- attributes %>%
 
 sex_determination_method <- sex %>% 
   filter(str_detect(attributeDefinition, "(?i)method")) %>% 
-  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/ECSO_00001601"),
-         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
-         prefName = rep("method of sex identification"),
+  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_00186"),
+         assigned_propertyURI = rep("tbd"),
+         propertyURI_label = rep("tbd"),
+         prefName = rep("Fish sex determination method"),
          ontoName = rep("The Ecosystem Ontology"),
          grouping = rep("sex_determination_method"),
          notes = rep("method used to determin sex of fish"))
@@ -62,6 +63,7 @@ fishSex<- sex %>%
   filter(attributeName %in% c("RecSex", "sex", "Sex", "SEX")) %>% 
   mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_00216"),
          assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         propertyURI_label = rep("containsMeasurementsOfType"),
          prefName = rep("Fish sex measurement type"),
          ontoName = rep("The Ecosystem Ontology"),
          grouping = rep("fishSex"),

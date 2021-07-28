@@ -48,6 +48,7 @@ agency_name <- agency %>%
   filter(attributeName %in% c("Agency", "AGENCY", "agency_cd", "SourceName", "IncidentAgency", "AGY_SHORT_NAME", "RelAgency")) %>% 
   mutate(assigned_valueURI = rep("tbd"),
          assigned_propertyURI = rep("tbd"),
+         propertyURI_label = rep("tbd"),
          prefName = rep("tbd"),
          ontoName = rep("tbd"),
          grouping = rep("agency_name"),
@@ -57,6 +58,7 @@ agency_code <- agency %>%
   filter(attributeName %in% c("AGY_NUM")) %>% 
   mutate(assigned_valueURI = rep("tbd"),
          assigned_propertyURI = rep("tbd"),
+         propertyURI_label = rep("tbd"),
          prefName = rep("tbd"),
          ontoName = rep("tbd"),
          grouping = rep("agency_code"),
@@ -70,6 +72,7 @@ contact_person <- agency %>%
   filter(attributeName %in% c("Contact_person")) %>% 
   mutate(assigned_valueURI = rep("tbd"),
          assigned_propertyURI = rep("tbd"),
+         propertyURI_label = rep("tbd"),
          prefName = rep("tbd"),
          ontoName = rep("tbd"),
          grouping = rep("contact_person"),
@@ -83,6 +86,7 @@ contact_email <- agency %>%
   filter(attributeName %in% c("Contact_email")) %>% 
   mutate(assigned_valueURI = rep("tbd"),
          assigned_propertyURI = rep("tbd"),
+         propertyURI_label = rep("tbd"),
          prefName = rep("tbd"),
          ontoName = rep("tbd"),
          grouping = rep("contact_email"),
@@ -96,6 +100,7 @@ contact_telephone <- agency %>%
   filter(attributeName %in% c("Contact_telephone")) %>% 
   mutate(assigned_valueURI = rep("tbd"),
          assigned_propertyURI = rep("tbd"),
+         propertyURI_label = rep("tbd"),
          prefName = rep("tbd"),
          ontoName = rep("tbd"),
          grouping = rep("contact_telephone"),
@@ -109,6 +114,7 @@ agency_hyperlink <- agency %>%
   filter(attributeName %in% c("Link")) %>% 
   mutate(assigned_valueURI = rep("tbd"),
          assigned_propertyURI = rep("tbd"),
+         propertyURI_label = rep("tbd"),
          prefName = rep("tbd"),
          ontoName = rep("tbd"),
          grouping = rep("agency_hyperlink"),

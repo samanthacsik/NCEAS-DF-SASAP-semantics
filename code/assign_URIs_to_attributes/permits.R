@@ -52,6 +52,7 @@ licenseUSCitizenship <- permits %>%
   filter(attributeName %in% c("CITIZEN", "USCitizen", "X.CITIZEN")) %>% 
   mutate(assigned_valueURI = rep("tbd"),
          assigned_propertyURI = rep("tbd"),
+         propertyURI_label = rep("tbd"),
          prefName = rep("tbd"),
          ontoName = rep("tbd"),
          grouping = rep("licenseUSCitizenship"),
@@ -67,6 +68,7 @@ cityOfResidence <- permits %>%
          attributeName %in% c("MailingCity")) %>% 
   mutate(assigned_valueURI = rep("tbd"),
          assigned_propertyURI = rep("tbd"),
+         propertyURI_label = rep("tbd"),
          prefName = rep("tbd"),
          ontoName = rep("tbd"),
          grouping = rep("cityOfResidence"),
@@ -80,6 +82,7 @@ stateOfResidence <- permits %>%
   filter(attributeName %in% c("STATE", "MailingState", "X.STATE", "StateProvinceCode")) %>% 
   mutate(assigned_valueURI = rep("tbd"),
          assigned_propertyURI = rep("tbd"),
+         propertyURI_label = rep("tbd"),
          prefName = rep("tbd"),
          ontoName = rep("tbd"),
          grouping = rep("stateOfResidence"),
@@ -94,6 +97,7 @@ countryOfResidence <- permits %>%
          attributeName %in% c("MailingCountry")) %>% 
   mutate(assigned_valueURI = rep("tbd"),
          assigned_propertyURI = rep("tbd"),
+         propertyURI_label = rep("tbd"),
          prefName = rep("tbd"),
          ontoName = rep("tbd"),
          grouping = rep("countryOfResidence"),
@@ -107,6 +111,7 @@ licenseClassCode <- permits %>%
   filter(attributeName %in% c("CLASS_CODE", "Class.Code", "ProductClassCode", "X.CLASS_CODE")) %>% 
   mutate(assigned_valueURI = rep("tbd"),
          assigned_propertyURI = rep("tbd"),
+         propertyURI_label = rep("tbd"),
          prefName = rep("tbd"),
          ontoName = rep("tbd"),
          grouping = rep("licenseClassCode"),
@@ -120,6 +125,7 @@ licenseTypeCode <- permits %>%
   filter(attributeName %in% c("TYPE_CODE", "Type.Code", "License Year", "X.TYPE_CODE")) %>% 
   mutate(assigned_valueURI = rep("tbd"),
          assigned_propertyURI = rep("tbd"),
+         propertyURI_label = rep("tbd"),
          prefName = rep("tbd"),
          ontoName = rep("tbd"),
          grouping = rep("licenseTypeCode"),
@@ -133,6 +139,7 @@ licenseEndorsementNum <- permits %>%
   filter(attributeName %in% c("EndorsementNumber")) %>% 
   mutate(assigned_valueURI = rep("tbd"),
          assigned_propertyURI = rep("tbd"),
+         propertyURI_label = rep("tbd"),
          prefName = rep("tbd"),
          ontoName = rep("tbd"),
          grouping = rep("licenseEndorsementNumber"),
@@ -146,6 +153,7 @@ sexOfLicenseHolder <- permits %>%
   filter(attributeName %in% c("Gender", "SEX", "X.SEX")) %>% 
   mutate(assigned_valueURI = rep("tbd"),
          assigned_propertyURI = rep("tbd"),
+         propertyURI_label = rep("tbd"),
          prefName = rep("tbd"),
          ontoName = rep("tbd"),
          grouping = rep("sexOfLicenseHolder"),
@@ -159,6 +167,7 @@ licenseIssueDate <- permits %>%
   filter(attributeName %in% c("ISSUE_DATE", "IssueDate", "X.ISSUE_DATE")) %>% 
   mutate(assigned_valueURI = rep("tbd"),
          assigned_propertyURI = rep("tbd"),
+         propertyURI_label = rep("tbd"),
          prefName = rep("tbd"),
          ontoName = rep("tbd"),
          grouping = rep("licenseIssueDate"),
@@ -172,6 +181,7 @@ licenseNum <- permits %>%
   filter(attributeName %in% c("LIC_NUM", "License.Number", "X.LIC_NUM")) %>% 
   mutate(assigned_valueURI = rep("tbd"),
          assigned_propertyURI = rep("tbd"),
+         propertyURI_label = rep("tbd"),
          prefName = rep("tbd"),
          ontoName = rep("tbd"),
          grouping = rep("licenseNum"),
@@ -185,6 +195,7 @@ licenseYear <- permits %>%
   filter(attributeName %in% c("LIC_YR", "X.LIC_YR", "Year")) %>% 
   mutate(assigned_valueURI = rep("tbd"),
          assigned_propertyURI = rep("tbd"),
+         propertyURI_label = rep("tbd"),
          prefName = rep("tbd"),
          ontoName = rep("tbd"),
          grouping = rep("licenseYear"),
@@ -198,6 +209,7 @@ licenseVendorNum <- permits %>%
   filter(attributeName %in% c("VENDOR", "X.VENDOR", "VendorNumber")) %>% 
   mutate(assigned_valueURI = rep("tbd"),
          assigned_propertyURI = rep("tbd"),
+         propertyURI_label = rep("tbd"),
          prefName = rep("tbd"),
          ontoName = rep("tbd"),
          grouping = rep("licenseVendorNum"),
@@ -211,6 +223,7 @@ licenseZipCode <- permits %>%
   filter(attributeName %in% c("ZIP", "X.ZIP", "MailingZip", "Zip", "Zip.Code")) %>% 
   mutate(assigned_valueURI = rep("tbd"),
          assigned_propertyURI = rep("tbd"),
+         propertyURI_label = rep("tbd"),
          prefName = rep("tbd"),
          ontoName = rep("tbd"),
          grouping = rep("licenseZipCode"),
@@ -227,6 +240,7 @@ num_permitHolders_by_ageClass <- permits %>%
          attributeName != "Total") %>% 
   mutate(assigned_valueURI = rep("tbd"),
          assigned_propertyURI = rep("tbd"),
+         propertyURI_label = rep("tbd"),
          prefName = rep("tbd"),
          ontoName = rep("tbd"),
          grouping = rep("num_permitHolders_by_ageClass"),
@@ -241,6 +255,7 @@ perc_permits_by_ageClass <- permits %>%
          attributeUnit == "dimensionless") %>% 
   mutate(assigned_valueURI = rep("tbd"),
          assigned_propertyURI = rep("tbd"),
+         propertyURI_label = rep("tbd"),
          prefName = rep("tbd"),
          ontoName = rep("tbd"),
          grouping = rep("perc_permits_by_ageClass"),
@@ -256,6 +271,7 @@ permitType <- permits %>%
                               "type_clean", "Permit.Type")) %>% 
   mutate(assigned_valueURI = rep("tbd"),
          assigned_propertyURI = rep("tbd"),
+         propertyURI_label = rep("tbd"),
          prefName = rep("tbd"),
          ontoName = rep("tbd"),
          grouping = rep("permitType"),
@@ -270,6 +286,7 @@ permit_issueYear <- permits %>%
          entityName != "transfersRelationshipByCommunity.csv") %>% 
   mutate(assigned_valueURI = rep("tbd"),
          assigned_propertyURI = rep("tbd"),
+         propertyURI_label = rep("tbd"),
          prefName = rep("tbd"),
          ontoName = rep("tbd"),
          grouping = rep("permit_issueYear"),
@@ -287,6 +304,7 @@ num_permitsIssued <- permits %>%
          !str_detect(attributeDefinition, "(?i)interim")) %>% 
   mutate(assigned_valueURI = rep("tbd"),
          assigned_propertyURI = rep("tbd"),
+         propertyURI_label = rep("tbd"),
          prefName = rep("tbd"),
          ontoName = rep("tbd"),
          grouping = rep("num_permitsIssued"),
@@ -299,6 +317,7 @@ num_interimPermitsIssued <- permits %>%
          str_detect(attributeDefinition, "(?i)interim")) %>% 
   mutate(assigned_valueURI = rep("tbd"),
          assigned_propertyURI = rep("tbd"),
+         propertyURI_label = rep("tbd"),
          prefName = rep("tbd"),
          ontoName = rep("tbd"),
          grouping = rep("num_interimPermitsIssued"),
@@ -311,6 +330,7 @@ num_transferablePermitsIssued <- permits %>%
          str_detect(attributeDefinition, "(?i)transferrable")) %>% 
   mutate(assigned_valueURI = rep("tbd"),
          assigned_propertyURI = rep("tbd"),
+         propertyURI_label = rep("tbd"),
          prefName = rep("tbd"),
          ontoName = rep("tbd"),
          grouping = rep("num_transferablePermitsIssued"),
@@ -324,6 +344,7 @@ num_permitsTransferred <- permits %>%
   filter(str_detect(attributeDefinition, "(?i)number of permits transferred")) %>% 
   mutate(assigned_valueURI = rep("tbd"),
          assigned_propertyURI = rep("tbd"),
+         propertyURI_label = rep("tbd"),
          prefName = rep("tbd"),
          ontoName = rep("tbd"),
          grouping = rep("num_permitsTransferred"),
@@ -337,6 +358,7 @@ num_permitsReturned <- permits %>%
   filter(str_detect(attributeDefinition, "(?i)number of permits returned")) %>% 
   mutate(assigned_valueURI = rep("tbd"),
          assigned_propertyURI = rep("tbd"),
+         propertyURI_label = rep("tbd"),
          prefName = rep("tbd"),
          ontoName = rep("tbd"),
          grouping = rep("num_permitsReturned"),
@@ -351,6 +373,7 @@ num_permitsHeld <- permits %>%
          entityName != "commercial_fishing.csv") %>% 
   mutate(assigned_valueURI = rep("tbd"),
          assigned_propertyURI = rep("tbd"),
+         propertyURI_label = rep("tbd"),
          prefName = rep("tbd"),
          ontoName = rep("tbd"),
          grouping = rep("num_permitsHeld"),
@@ -360,6 +383,7 @@ num_transferablePermitsHeld <- permits %>%
   filter(str_detect(attributeDefinition, "(?i)number of transferable permits")) %>% 
   mutate(assigned_valueURI = rep("tbd"),
          assigned_propertyURI = rep("tbd"),
+         propertyURI_label = rep("tbd"),
          prefName = rep("tbd"),
          ontoName = rep("tbd"),
          grouping = rep("num_transferablePermitsHeld"),
@@ -373,6 +397,7 @@ mean_age_UNSORTED <- permits %>%
   filter(str_detect(attributeDefinition, "(?i)mean age")) %>% 
   mutate(assigned_valueURI = rep("tbd"),
          assigned_propertyURI = rep("tbd"),
+         propertyURI_label = rep("tbd"),
          prefName = rep("tbd"),
          ontoName = rep("tbd"),
          grouping = rep("tbd"),
@@ -386,6 +411,7 @@ UNSORTED <- permits %>%
   filter(attributeName %in% c("CONFIDENTIAL", "DCCED/CFAB", "Transfer_DCCED/CFAB", "DCCED.CFAB")) %>% 
   mutate(assigned_valueURI = rep("tbd"),
          assigned_propertyURI = rep("tbd"),
+         propertyURI_label = rep("tbd"),
          prefName = rep("tbd"),
          ontoName = rep("tbd"),
          grouping = rep("tbd"),

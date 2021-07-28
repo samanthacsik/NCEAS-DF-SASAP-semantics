@@ -51,7 +51,8 @@ tempB <- precipitation %>%
 
 monthly_total_precip <- rbind(tempA, tempB) %>% 
   mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/ECSO_00001237"),
-         assigned_propertyURI = rep("tbd"),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         propertyURI_label = rep("containsMeasurementsOfType"),
          prefName = rep("Precipitation Volume"),
          ontoName = rep("The Ecosystem Ontology"),
          grouping = rep("monthly_total_precip"),
@@ -69,7 +70,8 @@ tempD <- precipitation %>%
 
 quarterly_mean_precip <- rbind(tempC, tempD) %>% 
   mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/ECSO_00001237"),
-         assigned_propertyURI = rep("tbd"),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         propertyURI_label = rep("containsMeasurementsOfType"),
          prefName = rep("Precipitation Volume"),
          ontoName = rep("The Ecosystem Ontology"),
          grouping = rep("quarterly_mean_precip"),
@@ -82,7 +84,8 @@ quarterly_mean_precip <- rbind(tempC, tempD) %>%
 annual_mean_precipitation <- precipitation %>% 
   filter(entityName %in% c("precip_regional_yearly_wide.csv", "precip_hucs_yearly_wide.csv")) %>% 
   mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/ECSO_00001237"),
-         assigned_propertyURI = rep("tbd"),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         propertyURI_label = rep("containsMeasurementsOfType"),
          prefName = rep("Precipitation Volume"),
          ontoName = rep("The Ecosystem Ontology"),
          grouping = rep("annual_mean_precipitation"),

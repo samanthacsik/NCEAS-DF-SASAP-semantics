@@ -35,7 +35,10 @@ source(here::here("code", "05a_exploring_attributes.R"))
 location <- attributes %>% 
   filter(str_detect(attributeName, "(?i)area") |
          str_detect(attributeDefinition, "(?i)latitude") |
-         str_detect(attributeDefinition, "(?i)longitude"))
+         str_detect(attributeDefinition, "(?i)longitude") |
+         attributeName %in% c("Location", "Location_ID") |
+         attributeLabel %in% c("Location Sampled", "Sample Location") |
+         attributeDefinition %in% c("location where sample was taken", "Location of sample"))
 
 ##########################################################################################
 # determine appropriate valueURIs
@@ -48,7 +51,8 @@ location <- attributes %>%
 latLon <- location %>% 
   filter(attributeDefinition %in% c("(latitude, longitude) of location of violation")) %>% 
   mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/ECSO_00002269"),
-         assigned_propertyURI = rep("tbd"),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         propertyURI_label = rep("containsMeasurementsOfType"),
          prefName = rep("latitude and longitude coordinates"),
          ontoName = rep("tbd"),
          grouping = rep("latLon"),
@@ -66,7 +70,8 @@ latitude <- location %>%
                                     "Recovery latitude", "Release latitude", "Latitude location of the station in decimal degrees",
                                     "Latitude of monitoring station, decimal degrees", "Latitude of monitoring station , decimal degrees")) %>% 
   mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/ECSO_00002130"),
-         assigned_propertyURI = rep("tbd"),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         propertyURI_label = rep("containsMeasurementsOfType"),
          prefName = rep("latitude coordinate"),
          ontoName = rep("tbd"),
          grouping = rep("latitude"),
@@ -81,7 +86,8 @@ latitudeDeg <- location %>%
   filter(attributeDefinition %in% c("Decimal degree latitude of the observation.", "Latitude degrees at release",
                                     "Latitude degrees at recovery", "latitude in decimal degrees")) %>% 
   mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/ECSO_00002247"),
-         assigned_propertyURI = rep("tbd"),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         propertyURI_label = rep("containsMeasurementsOfType"),
          prefName = rep("latitude degree component"),
          ontoName = rep("tbd"),
          grouping = rep("latitudeDeg"),
@@ -94,7 +100,8 @@ latitudeDeg <- location %>%
 latitudeMin <- location %>% 
   filter(attributeDefinition %in% c("Latitude minutes at recovery", "Latitude minutes at release")) %>% 
   mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/ECSO_00002137"),
-         assigned_propertyURI = rep("tbd"),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         propertyURI_label = rep("containsMeasurementsOfType"),
          prefName = rep("latitude minute component"),
          ontoName = rep("tbd"),
          grouping = rep("latitudeMin"),
@@ -112,7 +119,8 @@ longitude <- location %>%
                                     "Release longitude", "Recovery longitude", "Longitude location of the site in decimal degrees",
                                     "Longitude of monitoring station, decimal degrees", "Longitude of monitoring station , decimal degrees")) %>% 
   mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/ECSO_00002132"),
-         assigned_propertyURI = rep("tbd"),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         propertyURI_label = rep("containsMeasurementsOfType"),
          prefName = rep("longitude coordinate"),
          ontoName = rep("tbd"),
          grouping = rep("longitude"),
@@ -126,7 +134,8 @@ longitudeDeg <- location %>%
   filter(attributeDefinition %in% c("Decimal degree longitude of the observation.", "Longitude degrees at release",
                                     "Longitude degrees at recovery", "longitude in decimal degrees")) %>% 
   mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/ECSO_00002239"),
-         assigned_propertyURI = rep("tbd"),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         propertyURI_label = rep("containsMeasurementsOfType"),
          prefName = rep("longitdue degree component"),
          ontoName = rep("tbd"),
          grouping = rep("longitudeDeg"),
@@ -139,17 +148,34 @@ longitudeDeg <- location %>%
 longitudeMin <- location %>% 
   filter(attributeDefinition %in% c("Longitude minutes at recovery", "Longitude minutes at release")) %>% 
   mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/ECSO_00002151"),
-         assigned_propertyURI = rep("tbd"),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         propertyURI_label = rep("containsMeasurementsOfType"),
          prefName = rep("longitude minute component"),
          ontoName = rep("tbd"),
          grouping = rep("longitudeMin"),
          notes = rep("longitude minute component"))
 
+#############################
+# study location name
+#############################
+
+studyLocationName <- location %>% 
+  filter(attributeName %in% c("Location") |
+           attributeLabel %in% c("Location Sampled", "Sample Location") |
+           attributeDefinition %in% c("location where sample was taken", "Location of sample")) %>% 
+  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/ECSO_00002768"),
+         assigned_propertyURI = rep("tbd"),
+         propertyURI_label = rep("tbd"),
+         prefName = rep("study location name"),
+         ontoName = rep("tbd"),
+         grouping = rep("longitudeMin"),
+         notes = rep("definition reads 'Location of escapement project'"))
+
 ##########################################################################################
 # combine and ensure no duplicates
 ##########################################################################################
 
-all_location_atts <- rbind(latLon, latitude, latitudeDeg, latitudeMin, longitude, longitudeDeg, longitudeMin)
+all_location_atts <- rbind(latLon, latitude, latitudeDeg, latitudeMin, longitude, longitudeDeg, longitudeMin, studyLocationName)
 
 remainder <- anti_join(location, all_location_atts)
 
@@ -159,4 +185,4 @@ all_location_distinct <- all_location_atts %>% select(-assigned_valueURI, - assi
 isTRUE(length(all_location$attributeName) == length(all_location_distinct$attributeName))
 
 # clean up global environment
-rm(latLon, location, latitude, latitudeDeg, latitudeMin, longitude, longitudeDeg, longitudeMin, remainder, all_location, all_location_distinct)
+rm(studyLocationName, latLon, location, latitude, latitudeDeg, latitudeMin, longitude, longitudeDeg, longitudeMin, remainder, all_location, all_location_distinct)
