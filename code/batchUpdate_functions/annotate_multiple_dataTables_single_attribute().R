@@ -5,9 +5,13 @@ annotate_multiple_dataTables_single_attribute <- function(doc, entity_num, curre
   # message("Added attributeID, '", current_attribute_id, "' to metadata")
   
   # add property URI to metadata (this is the same for all attributes)
-  containsMeasurementsofType <- "http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"
-  doc$dataset$dataTable[[entity_num]]$attributeList$attribute$annotation$propertyURI <- list(label = "contains measurements of",
-                                                                                             propertyURI = containsMeasurementsofType)
+  # containsMeasurementsofType <- "http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"
+  # doc$dataset$dataTable[[entity_num]]$attributeList$attribute$annotation$propertyURI <- list(label = "contains measurements of",
+  #                                                                                            propertyURI = containsMeasurementsofType)
+  current_propertyURI <- attributeName_subset$assigned_propertyURI
+  current_propertyLabel <- attributeName_subset$propertyURI_label
+  doc$dataset$dataTable[[entity_num]]$attributeList$attribute$annotation$propertyURI <- list(label = current_propertyLabel,
+                                                                                             propertyURI = current_propertyURI)
   
   # add value URI to metadata
   current_valueURI <- attributeName_subset$assigned_valueURI

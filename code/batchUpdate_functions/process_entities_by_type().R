@@ -56,6 +56,7 @@ process_entities_by_type <- function(doc, dataTable_or_otherEntity = "dataTable"
 }
 
 #-----------------
+# UPDATE ON NOTES BELOW 2021-07-28 -- I THINK THESE ARE TAKEN CARE OF
 # entity_num = 1
 # this is still an issue because it points to the first index of an unpacked dataTable (which is just a character string entityName and not the whole entity)
 # can't use doc$dataset$dataTable bc it needs to be flexible
