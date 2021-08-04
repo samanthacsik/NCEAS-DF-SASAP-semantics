@@ -48,8 +48,8 @@ gear <- attributes %>%
 meshSize <- gear %>% 
   filter(str_detect(attributeName, "(?i)mesh")) %>% 
   mutate(assigned_valueURI = rep("tbd"),
-         assigned_propertyURI = rep("tbd"),
-         propertyURI_label = rep("tbd"),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         propertyURI_label = rep("containsMeasurementsOfType"),
          prefName = rep("tbd"),
          ontoName = rep("tbd"),
          grouping = rep("meshSize"),
@@ -63,8 +63,8 @@ ADFGgearCode <- gear %>%
   filter(str_detect(attributeDefinition, "(?i)ADFG") |
          attributeName %in% c("gear_type")) %>% 
   mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_000527"),
-         assigned_propertyURI = rep("tbd"),
-         propertyURI_label = rep("tbd"),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         propertyURI_label = rep("containsMeasurementsOfType"),
          prefName = rep("ADF&G gear code"),
          ontoName = rep("tbd"),
          grouping = rep("ADFGgearCode"),
@@ -77,8 +77,8 @@ ADFGgearCode <- gear %>%
 gearCode <- gear %>% 
   filter(attributeName %in% c("RecGear", "RelGear")) %>% 
   mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_000526"),
-         assigned_propertyURI = rep("tbd"),
-         propertyURI_label = rep("tbd"),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         propertyURI_label = rep("containsMeasurementsOfType"),
          prefName = rep("Fishing gear code"),
          ontoName = rep("tbd"),
          grouping = rep("gearCode"),
@@ -92,8 +92,8 @@ gearType <- gear %>%
   filter(attributeName %in% c("gear", "Gear", "GEAR", "Gear_Type_Name", "GearType", "gearTypeID"),
          attributeDefinition != "Name of gear defined by ADFG gear code") %>% 
   mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_00142"),
-         assigned_propertyURI = rep("tbd"),
-         propertyURI_label = rep("tbd"),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         propertyURI_label = rep("containsMeasurementsOfType"),
          prefName = rep("Fishing gear type"),
          ontoName = rep("tbd"),
          grouping = rep("gearType"),

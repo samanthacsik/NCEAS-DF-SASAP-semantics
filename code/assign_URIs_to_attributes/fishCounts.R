@@ -123,7 +123,7 @@ species_ratio <- fishCounts %>%
 #          grouping = rep("numFishHarvestedCommercial_byRegion"),
 #          notes = rep("number of fish harvested (commercial) by year"))
 
-# NEW commercial harvest counts -- filers OLD (above) and combines with 'annual_harvested' (above)
+# NEW commercial harvest counts -- files OLD numHarvestedCommercial (above) and combines with 'annual_harvested' (above)
 numHarvestedCommercial <- fishCounts %>% 
   filter(str_detect(attributeDefinition, "(?i)harvested in") |
          attributeName %in% c("Chum", "Coho", "Chinook", "Pink", "Sockeye", "Copper_District_Commercial_Harvest"), # included 'Total' but should break out
@@ -199,6 +199,7 @@ biomassFishHarvested <- fishCounts %>%
                               "X_Total_Lbs", "Chinook.Lbs", "Chum.Lbs", "Pink.Lbs", "Coho.Lbs", "Sockeye.Lbs",
                               "Total.Pounds", "Total.Salmon.Lbs", "NETPOUNDS", "net_lbs", "pounds", "Total_Salmon_Lbs", 
                               "pu_lbs_harvested", "Total_Lbs_Harvested")) %>% 
+  filter(attributeUnit != "thousandsOfTonnes") %>% 
   filter(attributeName != "Total all 3 species") %>% 
   mutate(assigned_valueURI = rep("tbd"),
          assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
@@ -206,22 +207,8 @@ biomassFishHarvested <- fishCounts %>%
          prefName = rep("tbd"),
          ontoName = rep("tbd"),
          grouping = rep("biomassFishHarvested"),
-         notes = rep("biomass of fish harvested by year (this may no longer be accurate; need to read more to determine if it's a measurement over a year): also includes a mix of commercial, personal use, and subsistence fishery harvest"))
+         notes = rep("general biomass fish harvested"))
 
-#############################
-# fish biomass by region
-#############################
-
-fishBiomass_byRegion <- fishCounts %>% 
-  filter(attributeUnit == "tonne",
-         attributeName != "TOTAL") %>% 
-  mutate(assigned_valueURI = rep("tbd"),
-         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
-         propertyURI_label = rep("containsMeasurementsOfType"),
-         prefName = rep("tbd"),
-         ontoName = rep("tbd"),
-         grouping = rep("biomassFishHarvested_byRegion"),
-         notes = rep("biomass of fish, by region and year"))
 
 #############################
 # total fish biomass 
@@ -301,10 +288,10 @@ weightG <- fishCounts %>%
          notes = rep("weight of fish in g"))
 
 #############################
-# general abundance
+# salmon abundance counts (was called 'general abundance')
 #############################
 
-generalAbundance <- fishCounts %>% 
+salmon_abundance_counts <- fishCounts %>% 
   filter(attributeDefinition %in% c("number of chum salmon (millions of fish)",
                                     "number of pink salmon (millions of fish)",
                                     "number of sockeye salmon (millions of fish)") |
@@ -317,23 +304,45 @@ generalAbundance <- fishCounts %>%
          propertyURI_label = rep("containsMeasurementsOfType"),
          prefName = rep("Salmon abundance"), # this needs to be defined in the onto still
          ontoName = rep("tbd"),
-         grouping = rep("salmon_abundance"),
+         grouping = rep("salmon_abundance_counts"),
          notes = rep("general abundance of salmon (counts)"))
 
+#############################
+# salmon abundance biomass (was called 'general abundance')
+#############################
+
+salmon_abundance_biomass <- fishCounts %>% 
+  filter(str_detect(attributeDefinition, "(?i)biomass of")) %>% 
+  filter(!attributeName %in% c("TOTAL", "Total all 3 species")) %>% 
+  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_000493"),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         propertyURI_label = rep("containsMeasurementsOfType"),
+         prefName = rep("Fish biomass"), 
+         ontoName = rep("tbd"),
+         grouping = rep("salmon_abundance_biomass"),
+         notes = rep("general abundance of salmon (biomass)"))
 
 ##########################################################################################
 # combine and ensure no duplicates
 ##########################################################################################
 
-all_fishCounts_atts <- rbind(generalAbundance, totalHarvest, numHarvestedSport, species_ratio, numHarvestedCommercial_CLEANED, biomassFishHarvested, 
-                             fishBiomass_byRegion, total_fishBiomass, weightProcessedProduct, avgWeight, weightKG, weightG, numHarvestedSubsistence)
+all_fishCounts_atts <- rbind(totalHarvest, numHarvestedSport, species_ratio, numHarvestedCommercial_CLEANED, biomassFishHarvested, 
+                            total_fishBiomass, weightProcessedProduct, avgWeight, weightKG, weightG, numHarvestedSubsistence,
+                              salmon_abundance_counts, salmon_abundance_biomass) # fishBiomass_byRegion, 
 
-# remainder <- anti_join(fishCounts, all_fishCounts_atts) 
-# 
-# escapement_remainder <- remainder %>% 
-#   filter(str_detect(attributeDefinition, "(?i)escapement"))
+remainder <- anti_join(fishCounts, all_fishCounts_atts) 
 
-# final_remainder <- anti_join(remainder, escapement_remainder)
+escapement_other_remainder <- remainder %>%
+   filter(str_detect(attributeDefinition, "(?i)escapement") |
+          str_detect(attributeDefinition, "(?i)round pound") |
+          str_detect(attributeDefinition, "(?i)probability") |
+          str_detect(attributeDefinition, "(?i)remote video") |
+          str_detect(attributeDefinition, "(?i)permit") |
+          attributeName %in% c("Daily sockeye", "Daily kings"))
+  # filter(attributeUnit == "pound")
+            
+final_remainder <- anti_join(remainder, escapement_other_remainder) %>% 
+  filter(attributeUnit != "pound")
 
 # check that there are no duplicates
 all_fishCounts <- all_fishCounts_atts %>% select(-assigned_valueURI,-assigned_propertyURI, -prefName, -ontoName, -grouping, -notes)
@@ -344,9 +353,9 @@ isTRUE(length(all_fishCounts$attributeName) == length(all_fishCounts_distinct$at
 repeats <- get_dupes(all_fishCounts)
 
 # clean up global environment
-rm(remainder, all_fish_counts, all_fishCounts_distinct, repeats, weightG, weightKG, avgWeight, weightProcessedProduct, total_fishBiomass, 
+rm(remainder, escapement_other_remainder, final_remainder, all_fish_counts, all_fishCounts_distinct, repeats, weightG, weightKG, avgWeight, weightProcessedProduct, total_fishBiomass, 
    fishBiomass_byRegion, biomassFishHarvested, totalHarvest, numHarvestedSport, numHarvestedSubsistence, numHarvestedCommercial, numHarvestedCommercial_CLEANED,
-   numHarvestedCommercial_rest, numHarvestedCommercial_BB, species_ratio, fishCounts, generalAbundance)
+   numHarvestedCommercial_rest, numHarvestedCommercial_BB, species_ratio, fishCounts, salmon_abundance_biomass, salmon_abundance_counts, salmon_abundance_biomass)
 
 
 rm(numHarvestedSport, numHarvestedSubsistence, annual_harvested, species_ratio, counts, remainder, all_fishCounts, all_fishCounts_distinct, fishCounts, numFishHarvested, numHarvestedCommercial_BB, numHarvestedCommercial_rest, numHarvestedCommercial, numHarvestedCommercial_byRegion_CLEANED, biomassFishHarvested, fishBiomass_byRegion, total_fishBiomass, avgWeight, weightG, weightKG, counts_by_region, weightProcessedProduct)

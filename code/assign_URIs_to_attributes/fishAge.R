@@ -93,8 +93,8 @@ errorAgeCode <- age %>%
   filter(attributeName %in% c("Age.Error", "ageError", "AGE_ERROR_CODE", "age_error", "Age Error", "error_code")) %>% 
   filter(attributeDefinition != "Description of age error: Otolith, Inverted, Regenerated, Illegible, Missing, Reabsorbed, Wrong Species, or Not Preferred") %>% 
   mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_000681"),
-         assigned_propertyURI = rep("tbd"),
-         propertyURI_label = rep("tbd"),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         propertyURI_label = rep("containsMeasurementsOfType"),
          prefName = rep("Age error code"),
          ontoName = rep("tbd"),
          grouping = rep("errorAgeCode"),
@@ -103,8 +103,8 @@ errorAgeCode <- age %>%
 errorAgeDescription <- age %>% 
   filter(attributeDefinition == "Description of age error: Otolith, Inverted, Regenerated, Illegible, Missing, Reabsorbed, Wrong Species, or Not Preferred") %>% 
   mutate(assigned_valueURI = rep("tbd"),
-         assigned_propertyURI = rep("tbd"),
-         propertyURI_label = rep("tbd"),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         propertyURI_label = rep("containsMeasurementsOfType"),
          prefName = rep("tbd"),
          ontoName = rep("tbd"),
          grouping = rep("errorAgeDescription"),

@@ -52,22 +52,44 @@ length_notes <- read_csv(here::here("data/sorted_attributes/manual_fish_length_a
 # TEMPORARY (TO REMOVE FROM MASTER_LIST)
 #############################
 
-temp_lengths <- length %>% 
-  mutate(assigned_valueURI = rep("tbd"),
-         assigned_propertyURI = rep("tbd"),
-         propertyURI_label = rep("tbd"),
-         prefName = rep("tbd"),
+# temp_lengths <- length %>% 
+#   mutate(assigned_valueURI = rep("tbd"),
+#          assigned_propertyURI = rep("tbd"),
+#          propertyURI_label = rep("tbd"),
+#          prefName = rep("tbd"),
+#          ontoName = rep("tbd"),
+#          grouping = rep("fishLengths"),
+#          notes = rep("fish length measurement types"))
+
+length_value <- length %>% 
+  filter(attributeName %in% c("length", "Length", "RecLength", "RelLength", "LENGTH_MM")) %>% 
+  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_00127"),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         propertyURI_label = rep("containsMeasurementsOfType"),
+         prefName = rep("Fish length measurement type"),
          ontoName = rep("tbd"),
-         grouping = rep("fishLengths"),
+         grouping = rep("fishLengths_measurementValue"),
+         notes = rep("fish lengths (values)"))
+
+length_type <- length %>% 
+  filter(attributeName %in% c("Type_of_length_measurement", "LengthType", "lengthMeasurementType", 
+                              "Length.Measurement.Type", "LENGTH_TYPE", "length_type", 
+                              "length_measurement_type", "Length Measurement Type")) %>% 
+  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_000630"), # MAY NEED TO CHANGE THIS
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         propertyURI_label = rep("containsMeasurementsOfType"),
+         prefName = rep("Fish length determination method"),
+         ontoName = rep("tbd"),
+         grouping = rep("fishLengths_measurementMethod"),
          notes = rep("fish length measurement types"))
 
 ##########################################################################################
 # combine and ensure no duplicates
 ##########################################################################################
 
-all_length_atts <- rbind(temp_lengths)
+all_length_atts <- rbind(length_value, length_type)
 
-remainder <- anti_join(temp_lengths, all_length_atts)
+remainder <- anti_join(length, all_length_atts)
 
 # check that there are no duplicates
 all_lengths <- all_length_atts %>% select(-assigned_valueURI, - assigned_propertyURI, -prefName, -ontoName, -grouping,  -notes)

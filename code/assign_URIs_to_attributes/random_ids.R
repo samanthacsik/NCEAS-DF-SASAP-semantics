@@ -59,8 +59,8 @@ awc <- ids %>%
   filter(str_detect(attributeName, "(?i)awc") |
          str_detect(attributeName, "(?i)awsc")) %>%
   mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_000780"), 
-         assigned_propertyURI = rep("tbd"),
-         propertyURI_label = rep("tbd"),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         propertyURI_label = rep("containsMeasurementsOfType"),
          prefName = rep("AWC water body code"),
          ontoName = rep("tbd"),
          grouping = rep("AWC_water_body_codes"),
@@ -73,8 +73,8 @@ awc <- ids %>%
 stockName <- ids %>% 
   filter(attributeName %in% c("STOCK", "Stock")) %>% 
   mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_000647"),
-         assigned_propertyURI = rep("https://schema.org/about"), # will need to confirm this
-         propertyURI_label = rep("about"),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"), # https://schema.org/about
+         propertyURI_label = rep("containsMeasurementsOfType"), # about
          prefName = rep("Fish stock name"),
          ontoName = rep("tbd"),
          grouping = rep("fishStockName"),
@@ -87,8 +87,8 @@ stockName <- ids %>%
 gumCardNo <- ids %>% 
   filter(attributeName %in% c("card_num", "cardNo", "CardNum", "scale_card")) %>% 
   mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_000680"),
-         assigned_propertyURI = rep("tbd"),
-         propertyURI_label = rep("tbd"),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         propertyURI_label = rep("containsMeasurementsOfType"),
          prefName = rep("Gum card number"),
          ontoName = rep("tbd"),
          grouping = rep("gumCardNo"),
@@ -101,8 +101,8 @@ gumCardNo <- ids %>%
 fishSampleID <- ids %>% 
   filter(attributeDefinition %in% c("Numeric value assigned to a sample taken from a fish on a particular date", "numeric id for sample")) %>% 
   mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_000529"),
-         assigned_propertyURI = rep("tbd"),
-         propertyURI_label = rep("tbd"),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         propertyURI_label = rep("containsMeasurementsOfType"),
          prefName = rep("Fish sample code"),
          ontoName = rep("tbd"),
          grouping = rep("fishSampleID"),
@@ -115,8 +115,8 @@ fishSampleID <- ids %>%
 AKOATS_id <- ids %>% 
   filter(attributeName %in% c("AKOATS_ID")) %>% 
   mutate(assigned_valueURI = rep("tbd"),
-         assigned_propertyURI = rep("tbd"),
-         propertyURI_label = rep("tbd"),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         propertyURI_label = rep("containsMeasurementsOfType"),
          prefName = rep("tbd"),
          ontoName = rep("tbd"),
          grouping = rep("AKOATS_id"),
@@ -163,9 +163,9 @@ AKOATS_id <- ids %>%
 stock_id <- ids %>% 
   filter(attributeName %in% c("Stock.ID", "ABBREVIATED_NAME")) %>% 
   mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_000671"),
-         assigned_propertyURI = rep("tbd"),
-         propertyURI_label = rep("tbd"),
-         prefName = rep("tbd"),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         propertyURI_label = rep("containsMeasurementsOfType"),
+         prefName = rep("Fish stock code"),
          ontoName = rep("tbd"),
          grouping = rep("stock_id"),
          notes = rep("unique stock identifier"))
@@ -177,8 +177,8 @@ stock_id <- ids %>%
 watershed_id <- ids %>% 
   filter(attributeDefinition %in% c("Watershed ID number", "The numeric identification number of the watershed in this shapefile")) %>% 
   mutate(assigned_valueURI = rep("tbd"),
-         assigned_propertyURI = rep("tbd"),
-         propertyURI_label = rep("tbd"),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         propertyURI_label = rep("containsMeasurementsOfType"),
          prefName = rep("tbd"),
          ontoName = rep("tbd"),
          grouping = rep("watershed_id"),

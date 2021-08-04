@@ -49,8 +49,8 @@ species <- attributes %>%
 sci_name <- species %>% 
   filter(str_detect(attributeDefinition, "(?i)scientific name")) %>% 
   mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/ECSO_00002735"),
-         assigned_propertyURI = rep("https://schema.org/about"),
-         propertyURI_label = rep("about"),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"), # https://schema.org/about
+         propertyURI_label = rep("containsMeasurementsOfType"), # about
          prefName = rep("species name"),
          ontoName = rep("The Ecosystem Ontology"),
          grouping = rep("sci_name"),
@@ -63,8 +63,8 @@ sci_name <- species %>%
 tempA <- species %>%  
   filter(str_detect(attributeName, "(?i)code")) %>% 
   mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_000525"),
-         assigned_propertyURI = rep("tbd"),
-         propertyURI_label = rep("tbd"),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         propertyURI_label = rep("containsMeasurementsOfType"),
          prefName = rep("ADF&G species code"),
          ontoName = rep("tbd"),
          grouping = rep("ADFG_species_code"),
@@ -73,8 +73,8 @@ tempA <- species %>%
 tempB <- species %>%  
   filter(attributeName == "Species_ID") %>% 
   mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_000525"),
-         assigned_propertyURI = rep("tbd"),
-         propertyURI_label = rep("tbd"),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         propertyURI_label = rep("containsMeasurementsOfType"),
          prefName = rep("ADF&G species code"),
          ontoName = rep("tbd"),
          grouping = rep("ADFG_species_code"),
@@ -89,8 +89,8 @@ ADFG_species_code <- rbind(tempA, tempB)
 species_code <- species %>% 
   filter(attributeName%in% c("SpeciesNo")) %>% 
   mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/ECSO_00002490"),
-         assigned_propertyURI = rep("tbd"),
-         propertyURI_label = rep("tbd"),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         propertyURI_label = rep("containsMeasurementsOfType"),
          prefName = rep("species code"),
          ontoName = rep("The Ecosystem Ontology"),
          grouping = rep("species_code"),
@@ -108,8 +108,8 @@ common_name <- species %>%
                                     "Species of the tagged fish", "Species of fish being counted")) %>%
   filter(attributeDefinition != "The sub-genus classification of salmonids being sampled") %>% 
   mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/ECSO_00002735"),
-         assigned_propertyURI = rep("https://schema.org/about"),
-         propertyURI_label = rep("about"),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"), # https://schema.org/about
+         propertyURI_label = rep("containsMeasurementsOfType"), # about
          prefName = rep("species name"),
          ontoName = rep("tbd"),
          grouping = rep("common_name"),
@@ -123,7 +123,7 @@ common_name_product <- species %>%
   filter(entityName == "Total_wholesale.csv",
          attributeName %in% c("SpeciesName", "SpeciesGroup")) %>% 
   mutate(assigned_valueURI = rep("tbd"),
-         assigned_propertyURI = rep("tbd"),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
          propertyURI_label = rep("tbd"),
          prefName = rep("tbd"),
          ontoName = rep("tbd"),
@@ -137,8 +137,8 @@ common_name_product <- species %>%
 subGenus <- species %>% 
   filter(str_detect(attributeDefinition, "(?i)sub-genus")) %>% 
   mutate(assigned_valueURI = rep("tbd"),
-         assigned_propertyURI = rep("tbd"),
-         propertyURI_label = rep("tbd"),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         propertyURI_label = rep("containsMeasurementsOfType"),
          prefName = rep("tbd"),
          ontoName = rep("tbd"),
          grouping = rep("subGenus"),

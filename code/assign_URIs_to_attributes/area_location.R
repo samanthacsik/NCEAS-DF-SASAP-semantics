@@ -164,8 +164,8 @@ studyLocationName <- location %>%
            attributeLabel %in% c("Location Sampled", "Sample Location") |
            attributeDefinition %in% c("location where sample was taken", "Location of sample")) %>% 
   mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/ECSO_00002768"),
-         assigned_propertyURI = rep("tbd"),
-         propertyURI_label = rep("tbd"),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
+         propertyURI_label = rep("containsMeasurementsOfType"),
          prefName = rep("study location name"),
          ontoName = rep("tbd"),
          grouping = rep("longitudeMin"),

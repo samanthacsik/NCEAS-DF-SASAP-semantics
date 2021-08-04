@@ -193,8 +193,8 @@ numYears <- dates_times %>%
                                     "number of years project was ongoing", "number of years the data covers",
                                     "The number of years of data collected")) %>% 
   mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/ECSO_00001636"),
-         assigned_propertyURI = rep("https://www.w3.org/2006/time#hasTemporalDuration"), # review this
-         propertyURI_label = rep("hasTemporalDuration"),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"), # https://www.w3.org/2006/time#hasTemporalDuration
+         propertyURI_label = rep("containsMeasurementsOfType"), # hasTemporalDuration
          prefName = rep("number of years"),
          ontoName = rep("The Ecosystem Ontology"),
          grouping = rep("numYears"),
@@ -207,8 +207,8 @@ numYears <- dates_times %>%
 startDate <- dates_times %>% 
   filter(attributeName %in% c("start_date", "Initial_date")) %>% 
   mutate(assigned_valueURI = rep("tbd"),
-         assigned_propertyURI = rep("https://www.w3.org/2006/time#hasBeginning"), # review this
-         propertyURI_label = rep("hasBeginning"),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"), # https://www.w3.org/2006/time#hasBeginning
+         propertyURI_label = rep("containsMeasurementsOfType"), # hasBeginning
          prefName = rep("tbd"),
          ontoName = rep("tbd"),
          grouping = rep("startDate"),
@@ -221,8 +221,8 @@ startDate <- dates_times %>%
 endDate <- dates_times %>% 
   filter(attributeName %in% c("End_date")) %>% 
   mutate(assigned_valueURI = rep("tbd"),
-         assigned_propertyURI = rep("https://www.w3.org/2006/time#hasEnd"),
-         propertyURI_label = rep("hasEnd"),
+         assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"), # https://www.w3.org/2006/time#hasEnd
+         propertyURI_label = rep("containsMeasurementsOfType"), # hasEnd
          prefName = rep("tbd"),
          ontoName = rep("tbd"),
          grouping = rep("endDate"),
