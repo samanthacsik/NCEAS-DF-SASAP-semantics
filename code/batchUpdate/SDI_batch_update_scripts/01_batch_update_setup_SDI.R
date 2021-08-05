@@ -152,8 +152,8 @@ source(here::here("code", "annotation_prep", "SalmonDataIntegration_annotation_p
 # new URL:
 # post-update metadata PID: 
 
-SDI_atts_006 <- SDI_attributes_all %>%
-  filter(update_id == "006")
+# SDI_atts_006 <- SDI_attributes_all %>%
+#   filter(update_id == "006")
 
 
 
