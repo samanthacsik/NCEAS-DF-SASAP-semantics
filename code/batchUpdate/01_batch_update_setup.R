@@ -101,17 +101,76 @@ test1 <- attributes %>%
 
 
 
+#########################################################################################
+# round 1 exploration for real deal
+  # 85 total groupings
+    # 70 measurementType groupings
+    # 12 nameType groupings
+    # 1 equipmentType groupings
+    # 1 methodType groupings
+    # 1 notationType groupings
+#########################################################################################
 
+a <- attributes %>% 
+  drop_na(grouping) %>% 
+  filter(!grouping %in% c("meshSize"))
 
+measurementType_groupings <- a %>% # http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType
+  filter(grouping %in% c(
+    "annual_escapement", "daily_escapement",
+    "date", "sample_year", "sample_season", "sample_month", "sample_time", "brood_year",
+    "total_recruits", "num_recruits_per_spawner",
+    "num_recruits_by_ageClass_0.1", "num_recruits_by_ageClass_0.2", "num_recruits_by_ageClass_0.3",
+    "num_recruits_by_ageClass_0.4", "num_recruits_by_ageClass_0.5", "num_recruits_by_ageClass_1.1",
+    "num_recruits_by_ageClass_1.2", "num_recruits_by_ageClass_1.3", "num_recruits_by_ageClass_1.4",
+    "num_recruits_by_ageClass_1.5", "num_recruits_by_ageClass_2.1", "num_recruits_by_ageClass_2.2",
+    "num_recruits_by_ageClass_2.3", "num_recruits_by_ageClass_2.4", "num_recruits_by_ageClass_3.1",
+    "num_recruits_by_ageClass_3.2", "num_recruits_by_ageClass_3.3", "num_recruits_by_ageClass_3.4",
+    "num_recruits_by_ageClass_4.1", "num_recruits_by_ageClass_4.2", "num_recruits_by_ageClass_4.3",
+    "num_recruits_by_ageClass_2.5", "num_recruits_by_ageClass_3", "num_recruits_by_ageClass_4", 
+    "num_recruits_by_ageClass_5", "num_recruits_by_ageClass_6", "num_recruits_by_ageClass_7", 
+    "num_recruits_by_ageClass_8", "num_recruits_by_ageClass_1", "num_recruits_by_ageClass_2", 
+    "num_recruits_by_ageClass_0.6", "num_recruits_by_ageClass_1.6",
+    "salmon_abundance",
+    "biomassFishHarvested", "biomassFishHarvested_byRegion", 
+    "numHarvestedCommercial_byRegion","numHarvestedSport_byRegion", "numHarvestedSubsistence_byRegion", 
+    "totalHarvest", "total_fishBiomass",
+    "latitude", "latitudeDeg",
+    "longitude", "longitudeDeg", "longitudeMin",
+    "data_quality_flags",
+    "fishSex", "fishLengths", "fishGirth", 
+    "fish_weightKG", "fish_weightG", "avgWeight_adultSalmon",
+    "fishAge", "freshwaterAge", "saltwaterAge",
+    "circuliDist", 
+    "monthly_total_precip", "quarterly_mean_precip", "annual_mean_precipitation",
+    "avg_air_temp"
+    ))
 
+nameType_groupings <- a %>% 
+  filter(grouping %in% c(
+    "common_name", "sci_name", # http://schema.org/about
+    "fishStockName", "ADFG_species_code", "ADFGgearCode", # https://schema.org/identifier
+    "stock_id", "AWC_water_body_codes", "fishSampleID", # https://schema.org/identifier
+    "errorAgeDescription", # https://schema.org/description
+    "errorAgeCode", # https://schema.org/identifier 
+    "gumCardNo", # https://schema.org/identifier
+    "studyLocationName" # http://www.w3.org/ns/prov#atLocation
+  ))
 
+equipmentType_groupings <- a %>% 
+  filter(grouping %in% c(
+    "gearType"
+  ))
 
+methodType_groupings <- a %>% # http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#usesMethod OR http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#measuresUsingProtocol 
+  filter(grouping %in% c(
+    "sex_determination_method"
+  ))
 
-
-
-
-
-
+notationType_groupings <- a %>% 
+  filter(grouping %in% c(
+    "fishAgeEuroNotation"
+  ))
 
 
 
