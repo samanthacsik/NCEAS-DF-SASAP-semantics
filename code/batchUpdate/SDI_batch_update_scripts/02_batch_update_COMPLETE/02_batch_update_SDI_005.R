@@ -1,4 +1,4 @@
-# title: batch update of datapackages with semantic annotations -- SALMON DATA INTEGRATION TEST PORTAL 002
+# title: batch update of datapackages with semantic annotations -- SALMON DATA INTEGRATION TEST PORTAL 005 Malick 2015
 # author: "Sam Csik"
 # date created: "2021-08-xx"
 # date edited: "2021-08-xx"
@@ -42,8 +42,8 @@ source(here::here("code", "batchUpdate_functions", "all_batchUpdate_functions.R"
 ##############################
 
 # >>>>>>>> UPDATE HERE BEFORE EACH RUN <<<<<<<<<< 
-attributes <- SDI_atts_002 %>% 
-  filter(!attributeName %in% c("Species", "Length"))
+attributes <- SDI_atts_005 %>% 
+  filter(!attributeName %in% c("species"))
 # -----------------------------------------------
 
 ##############################
@@ -165,9 +165,7 @@ tryLog(for(dp_num in 1:length(unique_datapackage_ids)){
 # -------------------------------------------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------------------------------------------
-# ANNOTATE BY HAND - SPECIES 
-# dT 2, attribute 2
-# dT 3, attribute 2 
+# ANNOTATE BY HAND -- NEED TO CHANGE THESE TO DATATABLES, NOT OTHERENTITIES
 # -------------------------------------------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------------------------------------------
@@ -175,28 +173,60 @@ tryLog(for(dp_num in 1:length(unique_datapackage_ids)){
 containsMeasurementsofType <- "http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"
 
 ##############################
-# dataTable 1 (SourceInfo.csv) 
+# dataTable 1 (pink_sources.csv) 
 ##############################
 
-# NA - no manual annotations
+# NA
 
 ##############################
-# dataTable 2 (StockInfo.csv) 
+# dataTable 2 (pink_info.csv) 
 ##############################
 
-# attribute 2 (Species = Sockeye)
+# attribute 2, species = pink
 doc$dataset$dataTable[[2]]$attributeList$attribute[[2]]$id <- "dataTable2_spp"
-doc$dataset$dataTable[[2]]$attributeList$attribute[[2]]$annotation <- list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-                                                                           valueURI = list(label = "Sockeye", valueURI = "TBD"))
+doc$dataset$dataTable[[2]]$attributeList$attribute[[2]]$annotation <- list(
+  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
+       valueURI = list(label = "Pink salmon", valueURI = "http://purl.dataone.org/odo/salmon_000241"))
+)
 
 ##############################
-# dataTable 3 (BroodTables.csv) 
+# dataTable 3 (chum_sources.csv) 
 ##############################
 
-# attribute 2 (Species = Sockeye)
-doc$dataset$dataTable[[3]]$attributeList$attribute[[2]]$id <- "dataTable2_spp"
-doc$dataset$dataTable[[3]]$attributeList$attribute[[2]]$annotation <- list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-                                                                           valueURI = list(label = "Sockeye", valueURI = "TBD"))
+# NA
+
+##############################
+# dataTable 4 (chum_info.csv) 
+##############################
+
+# attribute 2, species = chum
+doc$dataset$dataTable[[4]]$attributeList$attribute[[2]]$id <- "dataTable4_spp"
+doc$dataset$dataTable[[4]]$attributeList$attribute[[2]]$annotation <- list(
+  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
+       valueURI = list(label = "Chum salmon", valueURI = "http://purl.dataone.org/odo/salmon_000240"))
+)
+
+##############################
+# dataTable 5 (pink_data.csv) 
+##############################
+
+# attribute 2, species = pink
+doc$dataset$dataTable[[5]]$attributeList$attribute[[2]]$id <- "dataTable5_spp"
+doc$dataset$dataTable[[5]]$attributeList$attribute[[2]]$annotation <- list(
+  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
+       valueURI = list(label = "Pink salmon", valueURI = "http://purl.dataone.org/odo/salmon_000241"))
+)
+
+##############################
+# dataTable 6 (chum_data.csv) 
+##############################
+
+# attribute 2, species = chum
+doc$dataset$dataTable[[6]]$attributeList$attribute[[2]]$id <- "dataTable6_spp"
+doc$dataset$dataTable[[6]]$attributeList$attribute[[2]]$annotation <- list(
+  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
+       valueURI = list(label = "Chum salmon", valueURI = "http://purl.dataone.org/odo/salmon_000240"))
+)
 
 
 # -------------------------------------------------------------------------------------------------------------------------
@@ -207,16 +237,13 @@ doc$dataset$dataTable[[3]]$attributeList$attribute[[2]]$annotation <- list(prope
 # -------------------------------------------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------------------------------------------
 
-# 
-# write_eml(doc, "~/eml.xml")
-# eml_validate("~/eml.xml")
-# 
-# new_id <- dataone::generateIdentifier(devnceas@mn, "UUID")
-# 
-# doc_name <- current_metadata_pid
-# dp <- current_pkg
-# dp <- replaceMember(dp, doc_name, replacement = "~/eml.xml", newId = new_id, formatId = "https://eml.ecoinformatics.org/eml-2.2.0") 
-# new_rm <- uploadDataPackage(devnceas, dp, public = TRUE, quiet = FALSE)
+##############################
+# update 'list_of_docs_to_publish_update' with updated version of doc
+##############################
+
+list_of_docs_to_publish_update[[1]] <- NULL
+list_of_docs_to_publish_update[[1]] <- doc
+names(list_of_docs_to_publish_update)[[dp_num]] <- current_metadata_pid 
 
 
 
@@ -367,7 +394,7 @@ tryLog(for(doc_num in 1:length(publish_update_docs)){
     short_title <- substr(title_snakecase, start = 1, stop = 30)
     eml_name <- paste(short_title, "_METADATA.xml", sep = "")
     # >>>>>>>> UPDATE HERE BEFORE EACH RUN <<<<<<<<<< 
-    eml_path <- paste("/Users/samanthacsik/Repositories/NCEAS-DF-semantic-annotations-review/eml/run3_standaloneDOI_small_2021Mar18/", eml_name, sep = "")
+    eml_path <- paste("/Users/samanthacsik/Repositories/NCEAS-DF-SASAP-semantics/eml/SDI_test_portal/", eml_name, sep = "")
     # ------------------------------------------------
     message("eml path: ", eml_path)
   } else if(isTRUE(str_detect(doc_name, "(?i)urn:uuid"))) {
@@ -377,7 +404,7 @@ tryLog(for(doc_num in 1:length(publish_update_docs)){
     short_title <- substr(title_snakecase, start = 1, stop = 30)
     eml_name <- paste(short_title, "_METADATA.xml", sep = "")
     # >>>>>>>> UPDATE HERE BEFORE EACH RUN <<<<<<<<<< 
-    eml_path <- paste("/Users/samanthacsik/Repositories/NCEAS-DF-semantic-annotations-review/eml/run3_standaloneDOI_small_2021Mar18/", eml_name, sep = "")
+    eml_path <- paste("/Users/samanthacsik/Repositories/NCEAS-DF-SASAP-semantics/eml/SDI_test_portal/", eml_name, sep = "")
     # ------------------------------------------------
   } else {
     stop("The original metadata ID format, ", metadata_pid, " is not recognized. No new ID has been generated.")
@@ -411,7 +438,7 @@ tryLog(for(doc_num in 1:length(publish_update_docs)){
   
   # publish update
   message("Publishing update for the following data package: ", doc_name)
-  # new_rm <- uploadDataPackage(devnceas, dp, public = TRUE, quiet = FALSE)
+  new_rm <- uploadDataPackage(devnceas, dp, public = TRUE, quiet = FALSE)
   message("Old metadata PID: " , doc_name, " | New metadata PID: ", new_id)
   message("-------------- Datapackage ", doc_num, " has been updated! --------------")
   
@@ -435,5 +462,88 @@ tryLog(for(doc_num in 1:length(publish_update_docs)){
 # ---------------------------------------------------------------
 
 # >>>>>>>> UPDATE HERE BEFORE EACH RUN <<<<<<<<<< 
-# write_csv(old_new_PIDs, here::here("data", "updated_pkgs", "run3_standaloneDOI_small_2021Mar18.csv"))
+write_csv(old_new_PIDs, here::here("data", "updated_pkgs", "SDI_test_portal", "SDI_005.csv"))
 # ------------------------------------------------
+
+# old metadata pid: urn:uuid:5624cbc2-9f95-4ddd-a342-c2049dadbf69
+# new metadata pid: urn:uuid:6319cb0b-724e-43e2-bc5b-3118312b5f63
+# old rm: resource_map_urn:uuid:5624cbc2-9f95-4ddd-a342-c2049dadbf69
+# new rm: resource_map_urn:uuid:6319cb0b-724e-43e2-bc5b-3118312b5f63
+
+
+
+
+
+
+
+
+
+
+
+
+#------------------------------------------------------------------------------------------------------
+# update 'spawners' annotation to 'Annual escapement count'
+#------------------------------------------------------------------------------------------------------
+
+# run lines 0-46 for setup
+
+# get package using metadata pid
+pkg <- get_package(devnceas@mn, 
+                   "urn:uuid:6319cb0b-724e-43e2-bc5b-3118312b5f63", # this is actually the metadata pid from solr (will throw a warning but that's okay)
+                   file_names = TRUE)
+
+# extract resource map
+resource_pid <-  pkg$resource_map
+
+# get pkg using resource map 
+current_pkg <- getDataPackage(devnceas, identifier = resource_pid, lazyLoad = TRUE, quiet = FALSE)
+
+# get current_metadata_pid
+current_metadata_pid  <- selectMember(current_pkg, name = "sysmeta@formatId", value = "https://eml.ecoinformatics.org/eml-2.2.0")
+
+# get doc
+doc <- read_eml(getObject(devnceas@mn, current_metadata_pid)) 
+
+##############################
+# manually add annotations
+##############################
+
+containsMeasurementsofType <- "http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"
+
+#------------------------------
+# dataTable 5 (pink_data.csv) 
+#------------------------------
+
+# attribute 5 (spawners = Annual escapement count)
+doc$dataset$dataTable[[5]]$attributeList$attribute[[7]]$id <- "dataTable5_spawners"
+doc$dataset$dataTable[[5]]$attributeList$attribute[[7]]$annotation <- list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
+                                                                           valueURI = list(label = "Annual escapement count", valueURI = "http://purl.dataone.org/odo/salmon_000480"))
+
+
+# validate
+eml_validate(doc)
+
+##############################
+# generate new pid & write eml
+##############################
+
+new_id <- dataone::generateIdentifier(devnceas@mn, "UUID")
+eml_path <- "/Users/samanthacsik/Repositories/NCEAS-DF-SASAP-semantics/eml/SDI_test_portal/Chum_salmon_escapement_Bonanza_METADATA.xml"
+write_eml(doc, eml_path)
+
+##############################
+# publish update
+##############################
+
+doc_name <- current_metadata_pid
+dp <- replaceMember(current_pkg, doc_name, replacement = eml_path, newId = new_id, formatId = "https://eml.ecoinformatics.org/eml-2.2.0") 
+message("Old metadata PID: " , doc_name, " | New metadata PID: ", new_id)
+new_rm <- uploadDataPackage(devnceas, dp, public = TRUE, quiet = FALSE)
+
+# old metadata pid: urn:uuid:6319cb0b-724e-43e2-bc5b-3118312b5f63
+# new metadata pid: urn:uuid:3941762b-a8b1-4a59-97a6-3feb4951b6f8
+
+
+
+
+

@@ -9,6 +9,7 @@
 # load pkgs
 library(datamgmt)
 library(dataone)
+library(arcticdatautils)
 
 # REMINDER: get authentication tokens
 
@@ -73,3 +74,4 @@ unique(pink$region)
 # stock.id
 pink_stock_id <- read_csv(here::here("data", "data_integration", "Malick_Cox2016", "pink_info.csv"))
 chum_stock_id <- read_csv(here::here("data", "data_integration", "Malick_Cox2016", "chum_info.csv"))
+

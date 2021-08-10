@@ -1,4 +1,4 @@
-# title: batch update of datapackages with semantic annotations -- SALMON DATA INTEGRATION TEST PORTAL 003
+# title: batch update of datapackages with semantic annotations -- SALMON DATA INTEGRATION TEST PORTAL 003 ADF&G AYK
 # author: "Sam Csik"
 # date created: "2021-08-xx"
 # date edited: "2021-08-xx"
@@ -117,6 +117,9 @@ tryLog(for(dp_num in 1:length(unique_datapackage_ids)){
   
   doc <- annotate_eml_attributes(doc)
   
+  
+  
+  
   # ----------------------------------------------------------------------------------------------------------------------------------------
   # ----------------- validate modified doc and add to appropriate list so that it can be manually reviewed (if necessary) -----------------
   # ----------------------------------------------------------------------------------------------------------------------------------------
@@ -180,24 +183,24 @@ containsMeasurementsofType <- "http://ecoinformatics.org/oboe/oboe.1.2/oboe-core
 doc$dataset$dataTable[[1]]$attributeList$attribute[[12]]$id <- "dataTable1_spp"
 doc$dataset$dataTable[[1]]$attributeList$attribute[[12]]$annotation <- list(
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Chum", valueURI = "URI HERE")),
+       valueURI = list(label = "Chum salmon", valueURI = "http://purl.dataone.org/odo/salmon_000240")),
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Sockeye", valueURI = "URI HERE")),
+       valueURI = list(label = "Sockeye salmon", valueURI = "http://purl.dataone.org/odo/salmon_000242")),
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Pink", valueURI = "URI HERE")),
+       valueURI = list(label = "Pink salmon", valueURI = "http://purl.dataone.org/odo/salmon_000241")),
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Coho", valueURI = "URI HERE")),
+       valueURI = list(label = "Coho salmon", valueURI = "http://purl.dataone.org/odo/salmon_000243")),
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Chinook", valueURI = "URI HERE"))
+       valueURI = list(label = "Chinook salmon", valueURI = "http://purl.dataone.org/odo/salmon_000239"))
 )
 
 # attribute 18, length = Mid-orbit to fork of tail, Post-orbit to fork of tail
 doc$dataset$dataTable[[1]]$attributeList$attribute[[18]]$id <- "dataTable1_length"
 doc$dataset$dataTable[[1]]$attributeList$attribute[[18]]$annotation <-  list(
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Mid-orbit to fork of tail", valueURI = "http://purl.dataone.org/odo/salmon_00133")),
+       valueURI = list(label = "Mid-orbit to fork of tail", valueURI = "http://purl.dataone.org/odo/salmon_000133")),
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Post-orbit to fork of tail", valueURI = "http://purl.dataone.org/odo/salmon_00129"))
+       valueURI = list(label = "Post-orbit to fork of tail", valueURI = "http://purl.dataone.org/odo/salmon_000129"))
 )
 ##############################
 # dataTable 2 (Kuskokwim_ASL.csv) 
@@ -207,26 +210,26 @@ doc$dataset$dataTable[[1]]$attributeList$attribute[[18]]$annotation <-  list(
 doc$dataset$dataTable[[2]]$attributeList$attribute[[12]]$id <- "dataTable2_spp"
 doc$dataset$dataTable[[2]]$attributeList$attribute[[12]]$annotation <- list(
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Chum", valueURI = "URI HERE")),
+       valueURI = list(label = "Chum salmon", valueURI = "http://purl.dataone.org/odo/salmon_000240")),
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Sockeye", valueURI = "URI HERE")),
+       valueURI = list(label = "Sockeye salmon", valueURI = "http://purl.dataone.org/odo/salmon_000242")),
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Pink", valueURI = "URI HERE")),
+       valueURI = list(label = "Pink salmon", valueURI = "http://purl.dataone.org/odo/salmon_000241")),
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Coho", valueURI = "URI HERE")),
+       valueURI = list(label = "Coho salmon", valueURI = "http://purl.dataone.org/odo/salmon_000243")),
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Chinook", valueURI = "URI HERE"))
+       valueURI = list(label = "Chinook salmon", valueURI = "http://purl.dataone.org/odo/salmon_000239"))
 )
 
 # attribute 18, length = Fork length, Mid-orbit to fork of tail, Post-orbit to fork of tail
 doc$dataset$dataTable[[2]]$attributeList$attribute[[18]]$id <- "dataTable2_length"
 doc$dataset$dataTable[[2]]$attributeList$attribute[[18]]$annotation <-  list(
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Fork length", valueURI = "http://purl.dataone.org/odo/salmon_00128")),
+       valueURI = list(label = "Fork length", valueURI = "http://purl.dataone.org/odo/salmon_000128")),
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Mid-orbit to fork of tail", valueURI = "http://purl.dataone.org/odo/salmon_00133")),
+       valueURI = list(label = "Mid-orbit to fork of tail", valueURI = "http://purl.dataone.org/odo/salmon_000133")),
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Post-orbit to fork of tail", valueURI = "http://purl.dataone.org/odo/salmon_00129"))
+       valueURI = list(label = "Post-orbit to fork of tail", valueURI = "http://purl.dataone.org/odo/salmon_000129"))
 )
 
 ##############################
@@ -237,15 +240,15 @@ doc$dataset$dataTable[[2]]$attributeList$attribute[[18]]$annotation <-  list(
 doc$dataset$dataTable[[3]]$attributeList$attribute[[12]]$id <- "dataTable3_spp"
 doc$dataset$dataTable[[3]]$attributeList$attribute[[12]]$annotation <- list(
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Chum", valueURI = "URI HERE")),
+       valueURI = list(label = "Chum salmon", valueURI = "http://purl.dataone.org/odo/salmon_000240")),
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Pink", valueURI = "URI HERE"))
+       valueURI = list(label = "Pink salmon", valueURI = "http://purl.dataone.org/odo/salmon_000241"))
 )
 # attribute 18, length = Mid-orbit to fork of tail
 doc$dataset$dataTable[[3]]$attributeList$attribute[[18]]$id <- "dataTable3_length"
 doc$dataset$dataTable[[3]]$attributeList$attribute[[18]]$annotation <-  list(
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Mid-orbit to fork of tail", valueURI = "http://purl.dataone.org/odo/salmon_00133"))
+       valueURI = list(label = "Mid-orbit to fork of tail", valueURI = "http://purl.dataone.org/odo/salmon_000133"))
 )
 
 ##############################
@@ -256,28 +259,28 @@ doc$dataset$dataTable[[3]]$attributeList$attribute[[18]]$annotation <-  list(
 doc$dataset$dataTable[[4]]$attributeList$attribute[[12]]$id <- "dataTable4_spp"
 doc$dataset$dataTable[[4]]$attributeList$attribute[[12]]$annotation <- list(
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Chum", valueURI = "URI HERE")),
+       valueURI = list(label = "Chum salmon", valueURI = "http://purl.dataone.org/odo/salmon_000240")),
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Sockeye", valueURI = "URI HERE")),
+       valueURI = list(label = "Sockeye salmon", valueURI = "http://purl.dataone.org/odo/salmon_000242")),
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Pink", valueURI = "URI HERE")),
+       valueURI = list(label = "Pink salmon", valueURI = "http://purl.dataone.org/odo/salmon_000241")),
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Coho", valueURI = "URI HERE")),
+       valueURI = list(label = "Coho salmon", valueURI = "http://purl.dataone.org/odo/salmon_000243")),
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Chinook", valueURI = "URI HERE"))
+       valueURI = list(label = "Chinook salmon", valueURI = "http://purl.dataone.org/odo/salmon_000239"))
 )
 
 # attribute 18, length = Mid-orbit to fork of tail, Fork length, Post-orbit to fork of tail, Mid-orbit to hypural plate
 doc$dataset$dataTable[[4]]$attributeList$attribute[[18]]$id <- "dataTable4_length"
 doc$dataset$dataTable[[4]]$attributeList$attribute[[18]]$annotation <-  list(
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Fork length", valueURI = "http://purl.dataone.org/odo/salmon_00128")),
+       valueURI = list(label = "Fork length", valueURI = "http://purl.dataone.org/odo/salmon_000128")),
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Mid-orbit to fork of tail", valueURI = "http://purl.dataone.org/odo/salmon_00133")),
+       valueURI = list(label = "Mid-orbit to fork of tail", valueURI = "http://purl.dataone.org/odo/salmon_000133")),
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Post-orbit to fork of tail", valueURI = "http://purl.dataone.org/odo/salmon_00129")),
+       valueURI = list(label = "Post-orbit to fork of tail", valueURI = "http://purl.dataone.org/odo/salmon_000129")),
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Mid-orbit to hypural plate", valueURI = "http://purl.dataone.org/odo/salmon_00131"))
+       valueURI = list(label = "Mid-orbit to hypural plate", valueURI = "http://purl.dataone.org/odo/salmon_000131"))
 )
 
 ##############################
@@ -288,30 +291,30 @@ doc$dataset$dataTable[[4]]$attributeList$attribute[[18]]$annotation <-  list(
 doc$dataset$dataTable[[5]]$attributeList$attribute[[12]]$id <- "dataTable5_spp"
 doc$dataset$dataTable[[5]]$attributeList$attribute[[12]]$annotation <- list(
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Chum", valueURI = "URI HERE")),
+       valueURI = list(label = "Chum salmon", valueURI = "http://purl.dataone.org/odo/salmon_000240")),
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Sockeye", valueURI = "URI HERE")),
+       valueURI = list(label = "Sockeye salmon", valueURI = "http://purl.dataone.org/odo/salmon_000242")),
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Pink", valueURI = "URI HERE")),
+       valueURI = list(label = "Pink salmon", valueURI = "http://purl.dataone.org/odo/salmon_000241")),
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Coho", valueURI = "URI HERE")),
+       valueURI = list(label = "Coho salmon", valueURI = "http://purl.dataone.org/odo/salmon_000243")),
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Chinook", valueURI = "URI HERE"))
+       valueURI = list(label = "Chinook salmon", valueURI = "http://purl.dataone.org/odo/salmon_000239"))
 )
 
 # attribute 18, length = Mid-orbit to fork of tail, Fork length, Post-orbit to fork of tail, Mid-orbit to hypural plate, Post-orbit to hypural plate
 doc$dataset$dataTable[[5]]$attributeList$attribute[[18]]$id <- "dataTable5_length"
 doc$dataset$dataTable[[5]]$attributeList$attribute[[18]]$annotation <-  list(
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Fork length", valueURI = "http://purl.dataone.org/odo/salmon_00128")),
+       valueURI = list(label = "Fork length", valueURI = "http://purl.dataone.org/odo/salmon_000128")),
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Mid-orbit to fork of tail", valueURI = "http://purl.dataone.org/odo/salmon_00133")),
+       valueURI = list(label = "Mid-orbit to fork of tail", valueURI = "http://purl.dataone.org/odo/salmon_000133")),
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Post-orbit to fork of tail", valueURI = "http://purl.dataone.org/odo/salmon_00129")),
+       valueURI = list(label = "Post-orbit to fork of tail", valueURI = "http://purl.dataone.org/odo/salmon_000129")),
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Mid-orbit to hypural plate", valueURI = "http://purl.dataone.org/odo/salmon_00131")),
+       valueURI = list(label = "Mid-orbit to hypural plate", valueURI = "http://purl.dataone.org/odo/salmon_000131")),
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Post-orbit to hypural plate", valueURI = "http://purl.dataone.org/odo/salmon_00130"))
+       valueURI = list(label = "Post-orbit to hypural plate", valueURI = "http://purl.dataone.org/odo/salmon_000130"))
 )
 
 ##############################
@@ -322,24 +325,25 @@ doc$dataset$dataTable[[5]]$attributeList$attribute[[18]]$annotation <-  list(
 doc$dataset$dataTable[[6]]$attributeList$attribute[[12]]$id <- "dataTable6_spp"
 doc$dataset$dataTable[[6]]$attributeList$attribute[[12]]$annotation <- list(
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Chum", valueURI = "URI HERE")),
+       valueURI = list(label = "Chum salmon", valueURI = "http://purl.dataone.org/odo/salmon_000240")),
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Chinook", valueURI = "URI HERE"))
+       valueURI = list(label = "Chinook salmon", valueURI = "http://purl.dataone.org/odo/salmon_000239"))
 )
+
 
 # attribute 18, length = Mid-orbit to fork of tail, Mid-orbit to hypural plate, Fork length, Post-orbit to hypural plate, Post-orbit to fork of tail
 doc$dataset$dataTable[[6]]$attributeList$attribute[[18]]$id <- "dataTable6_length"
 doc$dataset$dataTable[[6]]$attributeList$attribute[[18]]$annotation <-  list(
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Fork length", valueURI = "http://purl.dataone.org/odo/salmon_00128")),
+       valueURI = list(label = "Fork length", valueURI = "http://purl.dataone.org/odo/salmon_000128")),
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Mid-orbit to fork of tail", valueURI = "http://purl.dataone.org/odo/salmon_00133")),
+       valueURI = list(label = "Mid-orbit to fork of tail", valueURI = "http://purl.dataone.org/odo/salmon_000133")),
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Post-orbit to fork of tail", valueURI = "http://purl.dataone.org/odo/salmon_00129")),
+       valueURI = list(label = "Post-orbit to fork of tail", valueURI = "http://purl.dataone.org/odo/salmon_000129")),
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Mid-orbit to hypural plate", valueURI = "http://purl.dataone.org/odo/salmon_00131")),
+       valueURI = list(label = "Mid-orbit to hypural plate", valueURI = "http://purl.dataone.org/odo/salmon_000131")),
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Post-orbit to hypural plate", valueURI = "http://purl.dataone.org/odo/salmon_00130"))
+       valueURI = list(label = "Post-orbit to hypural plate", valueURI = "http://purl.dataone.org/odo/salmon_000130"))
 )
 
 ##############################
@@ -356,24 +360,24 @@ doc$dataset$dataTable[[6]]$attributeList$attribute[[18]]$annotation <-  list(
 doc$dataset$dataTable[[8]]$attributeList$attribute[[9]]$id <- "dataTable8_spp"
 doc$dataset$dataTable[[8]]$attributeList$attribute[[9]]$annotation <- list(
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Chum", valueURI = "URI HERE")),
+       valueURI = list(label = "Chum salmon", valueURI = "http://purl.dataone.org/odo/salmon_000240")),
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Chinook", valueURI = "URI HERE"))
+       valueURI = list(label = "Chinook salmon", valueURI = "http://purl.dataone.org/odo/salmon_000239"))
 )
 
 # attribute 15, Length = Mid-orbit to fork of tail, Mid-orbit to hypural plate, Fork length, Post-orbit to hypural plate, Post-orbit to fork of tail
 doc$dataset$dataTable[[8]]$attributeList$attribute[[15]]$id <- "dataTable8_length"
 doc$dataset$dataTable[[8]]$attributeList$attribute[[15]]$annotation <-  list(
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Fork length", valueURI = "http://purl.dataone.org/odo/salmon_00128")),
+       valueURI = list(label = "Fork length", valueURI = "http://purl.dataone.org/odo/salmon_000128")),
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Mid-orbit to fork of tail", valueURI = "http://purl.dataone.org/odo/salmon_00133")),
+       valueURI = list(label = "Mid-orbit to fork of tail", valueURI = "http://purl.dataone.org/odo/salmon_000133")),
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
        valueURI = list(label = "Post-orbit to fork of tail", valueURI = "http://purl.dataone.org/odo/salmon_00129")),
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Mid-orbit to hypural plate", valueURI = "http://purl.dataone.org/odo/salmon_00131")),
+       valueURI = list(label = "Mid-orbit to hypural plate", valueURI = "http://purl.dataone.org/odo/salmon_000131")),
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Post-orbit to hypural plate", valueURI = "http://purl.dataone.org/odo/salmon_00130"))
+       valueURI = list(label = "Post-orbit to hypural plate", valueURI = "http://purl.dataone.org/odo/salmon_000130"))
 )
 
 ##############################
@@ -384,30 +388,30 @@ doc$dataset$dataTable[[8]]$attributeList$attribute[[15]]$annotation <-  list(
 doc$dataset$dataTable[[9]]$attributeList$attribute[[9]]$id <- "dataTable9_spp"
 doc$dataset$dataTable[[9]]$attributeList$attribute[[9]]$annotation <- list(
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Chum", valueURI = "URI HERE")),
+       valueURI = list(label = "Chum salmon", valueURI = "http://purl.dataone.org/odo/salmon_000240")),
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Sockeye", valueURI = "URI HERE")),
+       valueURI = list(label = "Sockeye salmon", valueURI = "http://purl.dataone.org/odo/salmon_000242")),
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Pink", valueURI = "URI HERE")),
+       valueURI = list(label = "Pink salmon", valueURI = "http://purl.dataone.org/odo/salmon_000241")),
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Coho", valueURI = "URI HERE")),
+       valueURI = list(label = "Coho salmon", valueURI = "http://purl.dataone.org/odo/salmon_000243")),
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Chinook", valueURI = "URI HERE"))
+       valueURI = list(label = "Chinook salmon", valueURI = "http://purl.dataone.org/odo/salmon_000239"))
 )
 
 # attribute 15, Length = Mid-orbit to fork of tail, Fork length, Post-orbit to fork of tail, Mid-orbit to hypural plate, Post-orbit to hypural plate
 doc$dataset$dataTable[[9]]$attributeList$attribute[[15]]$id <- "dataTable9_length"
 doc$dataset$dataTable[[9]]$attributeList$attribute[[15]]$annotation <-  list(
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Fork length", valueURI = "http://purl.dataone.org/odo/salmon_00128")),
+       valueURI = list(label = "Fork length", valueURI = "http://purl.dataone.org/odo/salmon_000128")),
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Mid-orbit to fork of tail", valueURI = "http://purl.dataone.org/odo/salmon_00133")),
+       valueURI = list(label = "Mid-orbit to fork of tail", valueURI = "http://purl.dataone.org/odo/salmon_000133")),
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Post-orbit to fork of tail", valueURI = "http://purl.dataone.org/odo/salmon_00129")),
+       valueURI = list(label = "Post-orbit to fork of tail", valueURI = "http://purl.dataone.org/odo/salmon_000129")),
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Mid-orbit to hypural plate", valueURI = "http://purl.dataone.org/odo/salmon_00131")),
+       valueURI = list(label = "Mid-orbit to hypural plate", valueURI = "http://purl.dataone.org/odo/salmon_000131")),
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Post-orbit to hypural plate", valueURI = "http://purl.dataone.org/odo/salmon_00130"))
+       valueURI = list(label = "Post-orbit to hypural plate", valueURI = "http://purl.dataone.org/odo/salmon_000130"))
 )
 
 ##############################
@@ -418,28 +422,28 @@ doc$dataset$dataTable[[9]]$attributeList$attribute[[15]]$annotation <-  list(
 doc$dataset$dataTable[[10]]$attributeList$attribute[[9]]$id <- "dataTable10_spp"
 doc$dataset$dataTable[[10]]$attributeList$attribute[[9]]$annotation <- list(
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Chum", valueURI = "URI HERE")),
+       valueURI = list(label = "Chum salmon", valueURI = "http://purl.dataone.org/odo/salmon_000240")),
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Sockeye", valueURI = "URI HERE")),
+       valueURI = list(label = "Sockeye salmon", valueURI = "http://purl.dataone.org/odo/salmon_000242")),
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Pink", valueURI = "URI HERE")),
+       valueURI = list(label = "Pink salmon", valueURI = "http://purl.dataone.org/odo/salmon_000241")),
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Coho", valueURI = "URI HERE")),
+       valueURI = list(label = "Coho salmon", valueURI = "http://purl.dataone.org/odo/salmon_000243")),
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Chinook", valueURI = "URI HERE"))
+       valueURI = list(label = "Chinook salmon", valueURI = "http://purl.dataone.org/odo/salmon_000239"))
 )
 
 # attribute 15, Length = Mid-orbit to fork of tail, Fork length, Post-orbit to fork of tail, Mid-orbit to hypural plate
 doc$dataset$dataTable[[10]]$attributeList$attribute[[15]]$id <- "dataTable10_length"
 doc$dataset$dataTable[[10]]$attributeList$attribute[[15]]$annotation <-  list(
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Fork length", valueURI = "http://purl.dataone.org/odo/salmon_00128")),
+       valueURI = list(label = "Fork length", valueURI = "http://purl.dataone.org/odo/salmon_000128")),
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Mid-orbit to fork of tail", valueURI = "http://purl.dataone.org/odo/salmon_00133")),
+       valueURI = list(label = "Mid-orbit to fork of tail", valueURI = "http://purl.dataone.org/odo/salmon_000133")),
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Post-orbit to fork of tail", valueURI = "http://purl.dataone.org/odo/salmon_00129")),
+       valueURI = list(label = "Post-orbit to fork of tail", valueURI = "http://purl.dataone.org/odo/salmon_000129")),
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Mid-orbit to hypural plate", valueURI = "http://purl.dataone.org/odo/salmon_00131"))
+       valueURI = list(label = "Mid-orbit to hypural plate", valueURI = "http://purl.dataone.org/odo/salmon_000131"))
 )
 
 ##############################
@@ -450,16 +454,16 @@ doc$dataset$dataTable[[10]]$attributeList$attribute[[15]]$annotation <-  list(
 doc$dataset$dataTable[[11]]$attributeList$attribute[[9]]$id <- "dataTable11_spp"
 doc$dataset$dataTable[[11]]$attributeList$attribute[[9]]$annotation <- list(
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Chum", valueURI = "URI HERE")),
+       valueURI = list(label = "Chum salmon", valueURI = "http://purl.dataone.org/odo/salmon_000240")),
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Pink", valueURI = "URI HERE"))
+       valueURI = list(label = "Pink salmon", valueURI = "http://purl.dataone.org/odo/salmon_000241"))
 )
 
 # attribute 15, Length = Mid-orbit to fork of tail
 doc$dataset$dataTable[[11]]$attributeList$attribute[[15]]$id <- "dataTable11_length"
 doc$dataset$dataTable[[11]]$attributeList$attribute[[15]]$annotation <-  list(
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Mid-orbit to fork of tail", valueURI = "http://purl.dataone.org/odo/salmon_00133"))
+       valueURI = list(label = "Mid-orbit to fork of tail", valueURI = "http://purl.dataone.org/odo/salmon_000133"))
 )
 
 ##############################
@@ -470,15 +474,15 @@ doc$dataset$dataTable[[11]]$attributeList$attribute[[15]]$annotation <-  list(
 doc$dataset$dataTable[[12]]$attributeList$attribute[[9]]$id <- "dataTable12_spp"
 doc$dataset$dataTable[[12]]$attributeList$attribute[[9]]$annotation <- list(
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Chum", valueURI = "URI HERE")),
+       valueURI = list(label = "Chum salmon", valueURI = "http://purl.dataone.org/odo/salmon_000240")),
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Sockeye", valueURI = "URI HERE")),
+       valueURI = list(label = "Sockeye salmon", valueURI = "http://purl.dataone.org/odo/salmon_000242")),
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Pink", valueURI = "URI HERE")),
+       valueURI = list(label = "Pink salmon", valueURI = "http://purl.dataone.org/odo/salmon_000241")),
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Coho", valueURI = "URI HERE")),
+       valueURI = list(label = "Coho salmon", valueURI = "http://purl.dataone.org/odo/salmon_000243")),
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Chinook", valueURI = "URI HERE"))
+       valueURI = list(label = "Chinook salmon", valueURI = "http://purl.dataone.org/odo/salmon_000239"))
 )
 
 # attribute 15, Length = Fork length, Mid-orbit to fork of tail, Post-orbit to fork of tail
@@ -500,25 +504,27 @@ doc$dataset$dataTable[[12]]$attributeList$attribute[[15]]$annotation <-  list(
 doc$dataset$dataTable[[13]]$attributeList$attribute[[9]]$id <- "dataTable13_spp"
 doc$dataset$dataTable[[13]]$attributeList$attribute[[9]]$annotation <- list(
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Chum", valueURI = "URI HERE")),
+       valueURI = list(label = "Chum salmon", valueURI = "http://purl.dataone.org/odo/salmon_000240")),
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Sockeye", valueURI = "URI HERE")),
+       valueURI = list(label = "Sockeye salmon", valueURI = "http://purl.dataone.org/odo/salmon_000242")),
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Pink", valueURI = "URI HERE")),
+       valueURI = list(label = "Pink salmon", valueURI = "http://purl.dataone.org/odo/salmon_000241")),
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Coho", valueURI = "URI HERE")),
+       valueURI = list(label = "Coho salmon", valueURI = "http://purl.dataone.org/odo/salmon_000243")),
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Chinook", valueURI = "URI HERE"))
+       valueURI = list(label = "Chinook salmon", valueURI = "http://purl.dataone.org/odo/salmon_000239"))
 )
 
 # attribute 15, Length = Mid-orbit to fork of tail, Post-orbit to fork of tail
 doc$dataset$dataTable[[13]]$attributeList$attribute[[15]]$id <- "dataTable13_length"
 doc$dataset$dataTable[[13]]$attributeList$attribute[[15]]$annotation <-  list(
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Mid-orbit to fork of tail", valueURI = "http://purl.dataone.org/odo/salmon_00133")),
+       valueURI = list(label = "Mid-orbit to fork of tail", valueURI = "http://purl.dataone.org/odo/salmon_000133")),
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Post-orbit to fork of tail", valueURI = "http://purl.dataone.org/odo/salmon_00129"))
+       valueURI = list(label = "Post-orbit to fork of tail", valueURI = "http://purl.dataone.org/odo/salmon_000129"))
 )
+
+eml_validate(doc)
 
 # -------------------------------------------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------------------------------------------
@@ -528,18 +534,13 @@ doc$dataset$dataTable[[13]]$attributeList$attribute[[15]]$annotation <-  list(
 # -------------------------------------------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------------------------------------------
 
-# 
-# write_eml(doc, "~/eml.xml")
-# eml_validate("~/eml.xml")
-# 
-# new_id <- dataone::generateIdentifier(devnceas@mn, "UUID")
-# 
-# doc_name <- current_metadata_pid
-# dp <- current_pkg
-# dp <- replaceMember(dp, doc_name, replacement = "~/eml.xml", newId = new_id, formatId = "https://eml.ecoinformatics.org/eml-2.2.0") 
-# new_rm <- uploadDataPackage(devnceas, dp, public = TRUE, quiet = FALSE)
+##############################
+# update 'list_of_docs_to_publish_update' with updated version of doc
+##############################
 
-
+list_of_docs_to_publish_update[[1]] <- NULL
+list_of_docs_to_publish_update[[1]] <- doc
+names(list_of_docs_to_publish_update)[[dp_num]] <- current_metadata_pid 
 
 
 
@@ -688,7 +689,7 @@ tryLog(for(doc_num in 1:length(publish_update_docs)){
     short_title <- substr(title_snakecase, start = 1, stop = 30)
     eml_name <- paste(short_title, "_METADATA.xml", sep = "")
     # >>>>>>>> UPDATE HERE BEFORE EACH RUN <<<<<<<<<< 
-    eml_path <- paste("/Users/samanthacsik/Repositories/NCEAS-DF-semantic-annotations-review/eml/run3_standaloneDOI_small_2021Mar18/", eml_name, sep = "")
+    eml_path <- paste("/Users/samanthacsik/Repositories/NCEAS-DF-SASAP-semantics/eml/SDI_test_portal/", eml_name, sep = "")
     # ------------------------------------------------
     message("eml path: ", eml_path)
   } else if(isTRUE(str_detect(doc_name, "(?i)urn:uuid"))) {
@@ -698,7 +699,7 @@ tryLog(for(doc_num in 1:length(publish_update_docs)){
     short_title <- substr(title_snakecase, start = 1, stop = 30)
     eml_name <- paste(short_title, "_METADATA.xml", sep = "")
     # >>>>>>>> UPDATE HERE BEFORE EACH RUN <<<<<<<<<< 
-    eml_path <- paste("/Users/samanthacsik/Repositories/NCEAS-DF-semantic-annotations-review/eml/run3_standaloneDOI_small_2021Mar18/", eml_name, sep = "")
+    eml_path <- paste("/Users/samanthacsik/Repositories/NCEAS-DF-SASAP-semantics/eml/SDI_test_portal/", eml_name, sep = "")
     # ------------------------------------------------
   } else {
     stop("The original metadata ID format, ", metadata_pid, " is not recognized. No new ID has been generated.")
@@ -732,7 +733,7 @@ tryLog(for(doc_num in 1:length(publish_update_docs)){
   
   # publish update
   message("Publishing update for the following data package: ", doc_name)
-  # new_rm <- uploadDataPackage(devnceas, dp, public = TRUE, quiet = FALSE)
+  new_rm <- uploadDataPackage(devnceas, dp, public = TRUE, quiet = FALSE)
   message("Old metadata PID: " , doc_name, " | New metadata PID: ", new_id)
   message("-------------- Datapackage ", doc_num, " has been updated! --------------")
   
@@ -756,10 +757,271 @@ tryLog(for(doc_num in 1:length(publish_update_docs)){
 # ---------------------------------------------------------------
 
 # >>>>>>>> UPDATE HERE BEFORE EACH RUN <<<<<<<<<< 
-# write_csv(old_new_PIDs, here::here("data", "updated_pkgs", "run3_standaloneDOI_small_2021Mar18.csv"))
+# write_csv(old_new_PIDs, here::here("data", "updated_pkgs", "SDI_test_portal", "SDI_003.csv))
 # ------------------------------------------------
 
+# old metadata pid: urn:uuid:3c6f106a-84ea-4dea-b536-fe1e440c5905
+# new metadata pid: urn:uuid:afa0f968-968a-4dbc-bee7-948805eaa3b9
+# old rm: resource_map_urn:uuid:5a282ed9-d043-4052-9d0f-22682e67cf0b
+# new rm: resource_map_urn:uuid:afa0f968-968a-4dbc-bee7-948805eaa3b9
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#------------------------------------------------------------------------------------------------------
+# update length labels
+#------------------------------------------------------------------------------------------------------
+
+# run lines 0-46 for setup
+
+# get package using metadata pid
+pkg <- get_package(devnceas@mn, 
+                   "urn:uuid:afa0f968-968a-4dbc-bee7-948805eaa3b9", # this is actually the metadata pid from solr (will throw a warning but that's okay)
+                   file_names = TRUE)
+
+# extract resource map
+resource_pid <-  pkg$resource_map
+
+# get pkg using resource map 
+current_pkg <- getDataPackage(devnceas, identifier = resource_pid, lazyLoad = TRUE, quiet = FALSE)
+
+# get current_metadata_pid
+current_metadata_pid  <- selectMember(current_pkg, name = "sysmeta@formatId", value = "https://eml.ecoinformatics.org/eml-2.2.0")
+
+# get doc
+doc <- read_eml(getObject(devnceas@mn, current_metadata_pid)) 
+
+##############################
+# manually add annotations
+##############################
+
+containsMeasurementsofType <- "http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"
+
+#------------------------------
+# dataTable 1 (Kotzebue_ASL.csv) 
+#------------------------------
+
+# attribute 18, length = Mid-orbit to fork of tail, Post-orbit to fork of tail
+doc$dataset$dataTable[[1]]$attributeList$attribute[[18]]$id <- "dataTable1_length"
+doc$dataset$dataTable[[1]]$attributeList$attribute[[18]]$annotation <-  list(
+  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
+       valueURI = list(label = "Mid-orbit to fork of tail length", valueURI = "http://purl.dataone.org/odo/salmon_000133")),
+  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
+       valueURI = list(label = "Post-orbit to fork of tail length", valueURI = "http://purl.dataone.org/odo/salmon_000129"))
+)
+
+#------------------------------
+# dataTable 2 (Kuskokwim_ASL.csv) 
+#------------------------------
+
+# attribute 18, length = Fork length, Mid-orbit to fork of tail, Post-orbit to fork of tail
+doc$dataset$dataTable[[2]]$attributeList$attribute[[18]]$id <- "dataTable2_length"
+doc$dataset$dataTable[[2]]$attributeList$attribute[[18]]$annotation <-  list(
+  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
+       valueURI = list(label = "Fork length", valueURI = "http://purl.dataone.org/odo/salmon_000128")),
+  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
+       valueURI = list(label = "Mid-orbit to fork of tail length", valueURI = "http://purl.dataone.org/odo/salmon_000133")),
+  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
+       valueURI = list(label = "Post-orbit to fork of tail length", valueURI = "http://purl.dataone.org/odo/salmon_000129"))
+)
+
+#------------------------------
+# dataTable 3 (NorthernArea_ASL.csv) 
+#------------------------------
+
+# attribute 18, length = Mid-orbit to fork of tail
+doc$dataset$dataTable[[3]]$attributeList$attribute[[18]]$id <- "dataTable3_length"
+doc$dataset$dataTable[[3]]$attributeList$attribute[[18]]$annotation <-  list(
+  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
+       valueURI = list(label = "Mid-orbit to fork of tail length", valueURI = "http://purl.dataone.org/odo/salmon_000133"))
+)
+
+#------------------------------
+# dataTable 4 (NortonSound_ASL.csv) 
+#------------------------------
+
+# attribute 18, length = Mid-orbit to fork of tail, Fork length, Post-orbit to fork of tail, Mid-orbit to hypural plate
+doc$dataset$dataTable[[4]]$attributeList$attribute[[18]]$id <- "dataTable4_length"
+doc$dataset$dataTable[[4]]$attributeList$attribute[[18]]$annotation <-  list(
+  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
+       valueURI = list(label = "Fork length", valueURI = "http://purl.dataone.org/odo/salmon_000128")),
+  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
+       valueURI = list(label = "Mid-orbit to fork of tail length", valueURI = "http://purl.dataone.org/odo/salmon_000133")),
+  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
+       valueURI = list(label = "Post-orbit to fork of tail length", valueURI = "http://purl.dataone.org/odo/salmon_000129")),
+  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
+       valueURI = list(label = "Mid-orbit to hypural plate length", valueURI = "http://purl.dataone.org/odo/salmon_000131"))
+)
+
+#------------------------------
+# dataTable 5 (Yukon_ASL.csv) 
+#------------------------------
+
+# attribute 18, length = Mid-orbit to fork of tail, Fork length, Post-orbit to fork of tail, Mid-orbit to hypural plate, Post-orbit to hypural plate
+doc$dataset$dataTable[[5]]$attributeList$attribute[[18]]$id <- "dataTable5_length"
+doc$dataset$dataTable[[5]]$attributeList$attribute[[18]]$annotation <-  list(
+  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
+       valueURI = list(label = "Fork length", valueURI = "http://purl.dataone.org/odo/salmon_000128")),
+  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
+       valueURI = list(label = "Mid-orbit to fork of tail length", valueURI = "http://purl.dataone.org/odo/salmon_000133")),
+  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
+       valueURI = list(label = "Post-orbit to fork of tail length", valueURI = "http://purl.dataone.org/odo/salmon_000129")),
+  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
+       valueURI = list(label = "Mid-orbit to hypural plate length", valueURI = "http://purl.dataone.org/odo/salmon_000131")),
+  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
+       valueURI = list(label = "Post-orbit to hypural plate length", valueURI = "http://purl.dataone.org/odo/salmon_000130"))
+)
+
+#------------------------------
+# dataTable 6 (YukonCanada_ASL.csv) 
+#------------------------------
+
+# attribute 18, length = Mid-orbit to fork of tail, Mid-orbit to hypural plate, Fork length, Post-orbit to hypural plate, Post-orbit to fork of tail
+doc$dataset$dataTable[[6]]$attributeList$attribute[[18]]$id <- "dataTable6_length"
+doc$dataset$dataTable[[6]]$attributeList$attribute[[18]]$annotation <-  list(
+  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
+       valueURI = list(label = "Fork length", valueURI = "http://purl.dataone.org/odo/salmon_000128")),
+  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
+       valueURI = list(label = "Mid-orbit to fork of tail length", valueURI = "http://purl.dataone.org/odo/salmon_000133")),
+  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
+       valueURI = list(label = "Post-orbit to fork of tail length", valueURI = "http://purl.dataone.org/odo/salmon_000129")),
+  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
+       valueURI = list(label = "Mid-orbit to hypural plate length", valueURI = "http://purl.dataone.org/odo/salmon_000131")),
+  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
+       valueURI = list(label = "Post-orbit to hypural plate length", valueURI = "http://purl.dataone.org/odo/salmon_000130"))
+)
+
+#------------------------------
+# dataTable 8 (ASL_formatted_YukonCanada.csv) 
+#------------------------------
+
+# attribute 15, Length = Mid-orbit to fork of tail, Mid-orbit to hypural plate, Fork length, Post-orbit to hypural plate, Post-orbit to fork of tail
+doc$dataset$dataTable[[8]]$attributeList$attribute[[15]]$id <- "dataTable8_length"
+doc$dataset$dataTable[[8]]$attributeList$attribute[[15]]$annotation <-  list(
+  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
+       valueURI = list(label = "Fork length", valueURI = "http://purl.dataone.org/odo/salmon_000128")),
+  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
+       valueURI = list(label = "Mid-orbit to fork of tail length", valueURI = "http://purl.dataone.org/odo/salmon_000133")),
+  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
+       valueURI = list(label = "Post-orbit to fork of tail length", valueURI = "http://purl.dataone.org/odo/salmon_00129")),
+  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
+       valueURI = list(label = "Mid-orbit to hypural plate length", valueURI = "http://purl.dataone.org/odo/salmon_000131")),
+  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
+       valueURI = list(label = "Post-orbit to hypural plate length", valueURI = "http://purl.dataone.org/odo/salmon_000130"))
+)
+
+#------------------------------
+# dataTable 9 (ASL_formatted_Yukon.csv) 
+#------------------------------
+
+# attribute 15, Length = Mid-orbit to fork of tail, Fork length, Post-orbit to fork of tail, Mid-orbit to hypural plate, Post-orbit to hypural plate
+doc$dataset$dataTable[[9]]$attributeList$attribute[[15]]$id <- "dataTable9_length"
+doc$dataset$dataTable[[9]]$attributeList$attribute[[15]]$annotation <-  list(
+  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
+       valueURI = list(label = "Fork length", valueURI = "http://purl.dataone.org/odo/salmon_000128")),
+  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
+       valueURI = list(label = "Mid-orbit to fork of tail length", valueURI = "http://purl.dataone.org/odo/salmon_000133")),
+  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
+       valueURI = list(label = "Post-orbit to fork of tail length", valueURI = "http://purl.dataone.org/odo/salmon_000129")),
+  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
+       valueURI = list(label = "Mid-orbit to hypural plate length", valueURI = "http://purl.dataone.org/odo/salmon_000131")),
+  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
+       valueURI = list(label = "Post-orbit to hypural plate length", valueURI = "http://purl.dataone.org/odo/salmon_000130"))
+)
+
+#------------------------------
+# dataTable 10 (ASL_formatted_NortonSound.csv) 
+#------------------------------
+
+# attribute 15, Length = Mid-orbit to fork of tail, Fork length, Post-orbit to fork of tail, Mid-orbit to hypural plate
+doc$dataset$dataTable[[10]]$attributeList$attribute[[15]]$id <- "dataTable10_length"
+doc$dataset$dataTable[[10]]$attributeList$attribute[[15]]$annotation <-  list(
+  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
+       valueURI = list(label = "Fork length", valueURI = "http://purl.dataone.org/odo/salmon_000128")),
+  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
+       valueURI = list(label = "Mid-orbit to fork of tail length", valueURI = "http://purl.dataone.org/odo/salmon_000133")),
+  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
+       valueURI = list(label = "Post-orbit to fork of tail length", valueURI = "http://purl.dataone.org/odo/salmon_000129")),
+  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
+       valueURI = list(label = "Mid-orbit to hypural plate length", valueURI = "http://purl.dataone.org/odo/salmon_000131"))
+)
+
+#------------------------------
+# dataTable 11 (ASL_formatted_NorthernArea.csv) 
+#------------------------------
+
+# attribute 15, Length = Mid-orbit to fork of tail
+doc$dataset$dataTable[[11]]$attributeList$attribute[[15]]$id <- "dataTable11_length"
+doc$dataset$dataTable[[11]]$attributeList$attribute[[15]]$annotation <-  list(
+  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
+       valueURI = list(label = "Mid-orbit to fork of tail length", valueURI = "http://purl.dataone.org/odo/salmon_000133"))
+)
+
+#------------------------------
+# dataTable 12 (ASL_formatted_Kuskokwim.csv) 
+#------------------------------
+
+# attribute 15, Length = Fork length, Mid-orbit to fork of tail, Post-orbit to fork of tail
+doc$dataset$dataTable[[12]]$attributeList$attribute[[15]]$id <- "dataTable12_length"
+doc$dataset$dataTable[[12]]$attributeList$attribute[[15]]$annotation <-  list(
+  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
+       valueURI = list(label = "Fork length", valueURI = "http://purl.dataone.org/odo/salmon_00128")),
+  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
+       valueURI = list(label = "Mid-orbit to fork of tail length", valueURI = "http://purl.dataone.org/odo/salmon_00133")),
+  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
+       valueURI = list(label = "Post-orbit to fork of tail length", valueURI = "http://purl.dataone.org/odo/salmon_00129"))
+)
+
+#------------------------------
+# dataTable 13 (ASL_formatted_Kotzebue.csv) 
+#------------------------------
+
+# attribute 15, Length = Mid-orbit to fork of tail, Post-orbit to fork of tail
+doc$dataset$dataTable[[13]]$attributeList$attribute[[15]]$id <- "dataTable13_length"
+doc$dataset$dataTable[[13]]$attributeList$attribute[[15]]$annotation <-  list(
+  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
+       valueURI = list(label = "Mid-orbit to fork of tail length", valueURI = "http://purl.dataone.org/odo/salmon_000133")),
+  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
+       valueURI = list(label = "Post-orbit to fork of tail length", valueURI = "http://purl.dataone.org/odo/salmon_000129"))
+)
+
+
+# validate
+eml_validate(doc)
+
+##############################
+# generate new pid & write eml
+##############################
+
+new_id <- dataone::generateIdentifier(devnceas@mn, "UUID")
+eml_path <- "/Users/samanthacsik/Repositories/NCEAS-DF-SASAP-semantics/eml/SDI_test_portal/Chum_salmon_escapement_Bonanza_METADATA.xml"
+write_eml(doc, eml_path)
+
+##############################
+# publish update
+##############################
+
+doc_name <- current_metadata_pid
+dp <- replaceMember(current_pkg, doc_name, replacement = eml_path, newId = new_id, formatId = "https://eml.ecoinformatics.org/eml-2.2.0") 
+message("Old metadata PID: " , doc_name, " | New metadata PID: ", new_id)
+new_rm <- uploadDataPackage(devnceas, dp, public = TRUE, quiet = FALSE)
+
+# old metadata pid: urn:uuid:afa0f968-968a-4dbc-bee7-948805eaa3b9
+# new metadata pid: urn:uuid:6543892f-d196-4e4f-ab74-c27eabd57fe7
 

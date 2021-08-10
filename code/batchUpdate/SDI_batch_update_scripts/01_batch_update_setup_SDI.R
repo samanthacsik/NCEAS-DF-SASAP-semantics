@@ -69,7 +69,7 @@ duplicate_ids <- c()
 # import data 
 ##############################
 
-source(here::here("code", "annotation_prep", "SalmonDataIntegration_annotation_prep.R"))
+source(here::here("code", "annotation_prep", "SDI_annotation_prep", "SDI_annotation_prep.R"))
 
 # 001: 2021-08-xx@xx:xx ------------------------------------------------------------------------------------------------
 # original rm: resource_map_urn:uuid:fb214067-160a-4f65-a217-00a1b1205c25
@@ -99,10 +99,10 @@ source(here::here("code", "annotation_prep", "SalmonDataIntegration_annotation_p
 # SDI_atts_002 <- SDI_attributes_all %>%
 #   filter(update_id == "002")
 # 
-# SDI_spp_002 <- SDI_species %>% 
+# SDI_spp_002 <- SDI_species %>%
 #   filter(update_id == "002")
 # 
-# SDI_lengths_002 <- SDI_lengths %>% 
+# SDI_lengths_002 <- SDI_lengths %>%
 #   filter(update_id == "002")
 # 
 # rm(SDI_lengths, SDI_species)
@@ -117,27 +117,27 @@ source(here::here("code", "annotation_prep", "SalmonDataIntegration_annotation_p
 # SDI_atts_003 <- SDI_attributes_all %>%
 #   filter(update_id == "003")
 # 
-# SDI_spp_003 <- SDI_species %>% 
+# SDI_spp_003 <- SDI_species %>%
 #   filter(update_id == "003")
 # 
-# SDI_lengths_003 <- SDI_lengths %>% 
+# SDI_lengths_003 <- SDI_lengths %>%
 #   filter(update_id == "003")
 # 
 # rm(SDI_lengths, SDI_species)
 
 # 004: 2021-08-xx@xx:xx ------------------------------------------------------------------------------------------------
-# original rm: resource_map_urn:uuid:8ce56af1-8ae6-4177-8225-c87d4e52d547
-# original URL: https://dev.nceas.ucsb.edu/view/urn%3Auuid%3A1646fd83-e7b8-4876-b695-333dd6d6675b
+# original rm: resource_map_urn:uuid:77bf16c1-2120-466f-8f5e-f5694d56870a
+# original URL: https://dev.nceas.ucsb.edu/view/urn%3Auuid%3A77bf16c1-2120-466f-8f5e-f5694d56870a
 # new rm: 
 # new URL:
 # post-update metadata PID: 
-# 
+ 
 # SDI_atts_004 <- SDI_attributes_all %>%
 #   filter(update_id == "004")
 
 # 005: 2021-08-xx@xx:xx ------------------------------------------------------------------------------------------------
-# original rm: resource_map_urn:uuid:0844d4a8-5306-4f6d-ae61-9ff94b28c57e
-# original URL: https://dev.nceas.ucsb.edu/view/urn%3Auuid%3A379f256c-b3d5-4f66-a76f-a982a2538c59
+# original rm: resource_map_urn:uuid:5624cbc2-9f95-4ddd-a342-c2049dadbf69
+# original URL: https://dev.nceas.ucsb.edu/view/urn%3Auuid%3A5624cbc2-9f95-4ddd-a342-c2049dadbf69
 # new rm: 
 # new URL:
 # post-update metadata PID: 
@@ -146,8 +146,8 @@ source(here::here("code", "annotation_prep", "SalmonDataIntegration_annotation_p
 #   filter(update_id == "005")
 
 # 006: 2021-08-xx@xx:xx ------------------------------------------------------------------------------------------------
-# original rm: resource_map_urn:uuid:138a5075-7622-4e0a-86e6-bced019a2b5c
-# original URL: https://dev.nceas.ucsb.edu/view/urn%3Auuid%3A22464585-00e2-4be2-8ef0-75a2ebc6bcb3
+# original rm: resource_map_urn:uuid:4ad48407-8044-4f4a-9596-18e9cb221656
+# original URL: https://dev.nceas.ucsb.edu/view/urn%3Auuid%3A4ad48407-8044-4f4a-9596-18e9cb221656
 # new rm: 
 # new URL:
 # post-update metadata PID: 
