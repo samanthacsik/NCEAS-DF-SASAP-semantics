@@ -44,7 +44,7 @@ flags <- attributes %>%
 #############################
 
 data_quality_flags <- flags %>% 
-  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/ECSO_00001720"),
+  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/ECSO_00001720"), # verified v0.2.1
          assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"), 
          propertyURI_label = rep("containsMeasurementsOfType"),
          prefName = rep("data quality flag"),

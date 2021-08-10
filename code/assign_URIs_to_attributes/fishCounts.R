@@ -131,10 +131,10 @@ numHarvestedCommercial <- fishCounts %>%
                             "Glennallen District Gear Permit ANS District - 2011-2015.csv"), 
          !attributeUnit %in% c("thousandsOfTonnes", "kilogram"),
          identifier != "doi:10.5063/F1Z899P0") %>% 
-  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_000492"),
+  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_000492"), # verified v0.2.1
          assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
          propertyURI_label = rep("containsMeasurementsOfType"),
-         prefName = rep("Commercial fishery harvest count"),
+         prefName = rep("Commercial harvest count"),
          ontoName = rep("tbd"),
          grouping = rep("numHarvestedCommercial_byRegion"),
          notes = rep("number of fish harvested (commercial) by year"))
@@ -152,7 +152,7 @@ numHarvestedSubsistence <- fishCounts %>%
          entityName %in% c("Glennallen District By Gear and Permit - All Years.csv",
                            "Glennallen District Gear Permit ANS District - 2011-2015.csv")) %>% 
   filter(attributeUnit != "pound") %>% 
-  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_000783"),
+  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_000783"), # NOT VERIFIED (not in this version)
          assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
          propertyURI_label = rep("containsMeasurementsOfType"),
          prefName = rep("Subsistence fishery harvest count"),
@@ -162,7 +162,7 @@ numHarvestedSubsistence <- fishCounts %>%
 
 numHarvestedSport <- fishCounts %>% 
   filter(attributeName %in% c("Sport_Harvest")) %>% 
-  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_000785"),
+  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_000785"), # NOT VERIFIED (not in this version)
          assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
          propertyURI_label = rep("containsMeasurementsOfType"),
          prefName = rep("Sport fishery harvest count"),
@@ -216,7 +216,7 @@ biomassFishHarvested <- fishCounts %>%
 
 total_fishBiomass <- fishCounts %>% 
   filter(attributeName %in% c("TOTAL", "Total all 3 species")) %>% 
-  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_000493"),
+  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_000493"), # verified v0.2.1
          assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
          propertyURI_label = rep("containsMeasurementsOfType"),
          prefName = rep("Fish biomass"),
@@ -262,7 +262,7 @@ weightKG <- fishCounts %>%
          str_detect(attributeDefinition, "(?i)weight in kg")) %>% 
   filter(!attributeName %in% c("NETPOUNDS", "net_lbs")) %>% 
   #filter(attributeUnit == "kilogram") %>% 
-  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_000659"),
+  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_000659"), # verified v0.2.1
          assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
          propertyURI_label = rep("containsMeasurementsOfType"),
          prefName = rep("Wet weight"),
@@ -279,7 +279,7 @@ weightG <- fishCounts %>%
          str_detect(attributeDefinition, "(?i)weight of sampled fish in grams") |
          str_detect(attributeDefinition, "(?i)Weight of fish")) %>% 
   filter(attributeUnit == "gram") %>% 
-  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_000659"),
+  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_000659"), # verified v0.2.1
          assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
          propertyURI_label = rep("containsMeasurementsOfType"),
          prefName = rep("Wet weight"),
@@ -299,7 +299,7 @@ salmon_abundance_counts <- fishCounts %>%
          str_detect(attributeDefinition, "(?i)number of fish in") |
          attributeDefinition %in% c("total number of fish", "number of total salmon (millions of fish)",
                                     "number of total salmon, all three species (millions of fish)"))  %>% 
-  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_000504"),
+  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_000504"), # verified v0.2.1
          assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
          propertyURI_label = rep("containsMeasurementsOfType"),
          prefName = rep("Salmon abundance"), # this needs to be defined in the onto still
@@ -314,7 +314,7 @@ salmon_abundance_counts <- fishCounts %>%
 salmon_abundance_biomass <- fishCounts %>% 
   filter(str_detect(attributeDefinition, "(?i)biomass of")) %>% 
   filter(!attributeName %in% c("TOTAL", "Total all 3 species")) %>% 
-  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_000493"),
+  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_000493"), # verified v0.2.1
          assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
          propertyURI_label = rep("containsMeasurementsOfType"),
          prefName = rep("Fish biomass"), 

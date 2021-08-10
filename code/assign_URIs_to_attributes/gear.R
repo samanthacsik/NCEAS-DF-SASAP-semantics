@@ -62,7 +62,7 @@ meshSize <- gear %>%
 ADFGgearCode <- gear %>% 
   filter(str_detect(attributeDefinition, "(?i)ADFG") |
          attributeName %in% c("gear_type")) %>% 
-  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_000527"),
+  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_000527"), # verified v0.2.1
          assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
          propertyURI_label = rep("containsMeasurementsOfType"),
          prefName = rep("ADF&G gear code"),
@@ -76,7 +76,7 @@ ADFGgearCode <- gear %>%
 
 gearCode <- gear %>% 
   filter(attributeName %in% c("RecGear", "RelGear")) %>% 
-  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_000526"),
+  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_000526"), # verified v0.2.1
          assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
          propertyURI_label = rep("containsMeasurementsOfType"),
          prefName = rep("Fishing gear code"),
@@ -91,7 +91,7 @@ gearCode <- gear %>%
 gearType <- gear %>% 
   filter(attributeName %in% c("gear", "Gear", "GEAR", "Gear_Type_Name", "GearType", "gearTypeID"),
          attributeDefinition != "Name of gear defined by ADFG gear code") %>% 
-  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_00142"),
+  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_000142"), # verified v0.2.1
          assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
          propertyURI_label = rep("containsMeasurementsOfType"),
          prefName = rep("Fishing gear type"),

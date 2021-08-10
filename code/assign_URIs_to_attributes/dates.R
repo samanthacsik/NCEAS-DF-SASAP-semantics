@@ -56,7 +56,7 @@ dates_times <- rbind(dates, times)
 brood_year <- dates_times %>% 
   filter(attributeName %in% c("BroodYear", "Year Brood", "by") |
          attributeDefinition %in% c("Brood year")) %>% 
-  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_000520"),
+  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_000520"), # verified v0.2.1
          assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
          propertyURI_label = rep("containsMeasurementsOfType"),
          prefName = rep("Brood year"),
@@ -103,7 +103,7 @@ sample_year <- dates_times %>%
                                     "The year the salmon escapement data was taken", 
                                     "The year the data was sampled", "The year in which the escapement occurred.",
                                     "The year for which the estimated value applies.")) %>% 
-  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/ECSO_00002050"),
+  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/ECSO_00002050"), # verified v0.2.1
          assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
          propertyURI_label = rep("containsMeasurementsOfType"),
          prefName = rep("year of measurement"),
@@ -117,7 +117,7 @@ sample_year <- dates_times %>%
 
 sample_month <- dates_times %>% 
   filter(attributeName %in% c("month")) %>% 
-  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/ECSO_00002047"),
+  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/ECSO_00002047"), # verified v0.2.1
          assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
          propertyURI_label = rep("containsMeasurementsOfType"),
          prefName = rep("month of year"),
@@ -131,7 +131,7 @@ sample_month <- dates_times %>%
 
 sample_season <- dates_times %>% 
   filter(attributeName %in% c("season")) %>% 
-  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/ECSO_00002366"),
+  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/ECSO_00002366"), # verified v0.2.1
          assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
          propertyURI_label = rep("containsMeasurementsOfType"),
          prefName = rep("season"),
@@ -146,7 +146,7 @@ sample_season <- dates_times %>%
 sample_time <- dates_times %>% 
   filter(attributeName %in% c("sampleTime", "sondeTime_ADT", "HoboTime_ADT") |
          attributeDefinition %in% c("The time the survey was conducted, if available.")) %>% 
-  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/ECSO_00002040"),
+  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/ECSO_00002040"), # verified v0.2.1
          assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
          propertyURI_label = rep("containsMeasurementsOfType"),
          prefName = rep("time of measurement"),
@@ -162,7 +162,7 @@ date <- dates_times %>%
   filter(attributeName %in% c("Date", "sampleDate", "SampleDate", "SAMPLE_DATE", "sample_date", 
                               "Count Date", "catch_date", "yearmonth", "SW_DATE") |
          attributeDefinition %in% c("Date the survey/escapement project was conducted."))%>% 
-  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/ECSO_00002051"),
+  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/ECSO_00002051"), # verified v0.2.1
          assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
          propertyURI_label = rep("containsMeasurementsOfType"),
          prefName = rep("date"),
@@ -192,7 +192,7 @@ numYears <- dates_times %>%
   filter(attributeDefinition %in% c("Number of years data was collected at the site", 
                                     "number of years project was ongoing", "number of years the data covers",
                                     "The number of years of data collected")) %>% 
-  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/ECSO_00001636"),
+  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/ECSO_00001636"), # NOT VERIFIED (not in this version?)
          assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"), # https://www.w3.org/2006/time#hasTemporalDuration
          propertyURI_label = rep("containsMeasurementsOfType"), # hasTemporalDuration
          prefName = rep("number of years"),

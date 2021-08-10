@@ -45,7 +45,7 @@ girth <- attributes %>%
 
 fishGirth <- girth %>% 
   filter(str_detect(attributeDefinition, "(?i)girth")) %>% 
-  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_000777"),
+  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_000777"), # NOT VERIFIED (not in this version)
          assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
          propertyURI_label = rep("containsMeasurementsOfType"),
          prefName = rep("Girth of fish"),

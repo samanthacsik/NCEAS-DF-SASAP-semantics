@@ -251,3 +251,7 @@ unique(dat2014$length_type)
 
 dat2015 <- read_csv(here::here("data", "sorted_attributes", "manual_fish_length_assignments", "SASAP_length_data", "2015.csv"), col_names = TRUE, col_types = cols(.default = col_character()))
 unique(dat2015$length_type)
+
+# ---------------- doi:10.5063/F1GB22B9
+sportfish <- read_csv(here::here("data", "sorted_attributes", "manual_fish_length_assignments", "SASAP_length_data", "SportFish.csv"), col_names = TRUE, col_types = cols(.default = col_character()))
+unique(sportfish$Species)

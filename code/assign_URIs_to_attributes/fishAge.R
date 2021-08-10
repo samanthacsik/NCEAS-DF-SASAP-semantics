@@ -47,7 +47,7 @@ age <- attributes %>%
 
 fishAge <- age %>% 
   filter(attributeName %in% c("age")) %>% 
-  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_00187"),
+  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_000187"), # verified v0.2.1
          assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
          propertyURI_label = rep("containsMeasurementsOfType"),
          prefName = rep("Total age"),
@@ -57,7 +57,7 @@ fishAge <- age %>%
 
 freshwaterAge <- age %>% 
   filter(attributeName %in% c("ageFresh", "Fresh Water Age", "fresh_water_age", "Fresh.Water.Age", "FreshwaterAge", "FW_AGE")) %>% 
-  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_00188"),
+  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_000188"), # verified v0.2.1
          assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
          propertyURI_label = rep("containsMeasurementsOfType"),
          prefName = rep("Freshwater age"),
@@ -67,7 +67,7 @@ freshwaterAge <- age %>%
 
 saltwaterAge<- age %>% 
   filter(attributeName %in% c("ageSalt", "Salt Water Age", "salt_water_age", "Salt.Water.Age", "SW_AGE", "OceanAge")) %>% 
-  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_00189"),
+  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_000189"), # verified v0.2.1
          assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
          propertyURI_label = rep("containsMeasurementsOfType"),
          prefName = rep("Saltwater age"),
@@ -77,7 +77,7 @@ saltwaterAge<- age %>%
 
 fishAgeEuroNotation <- age %>% 
   filter(attributeName %in% c("AGE_EUROPEAN", "AgeEuropean")) %>% 
-  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_00200"),
+  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_000200"), # verified v0.2.1
          assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
          propertyURI_label = rep("containsMeasurementsOfType"),
          prefName = rep("Fish age expressed in European notation"),
@@ -92,7 +92,7 @@ fishAgeEuroNotation <- age %>%
 errorAgeCode <- age %>% 
   filter(attributeName %in% c("Age.Error", "ageError", "AGE_ERROR_CODE", "age_error", "Age Error", "error_code")) %>% 
   filter(attributeDefinition != "Description of age error: Otolith, Inverted, Regenerated, Illegible, Missing, Reabsorbed, Wrong Species, or Not Preferred") %>% 
-  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_000681"),
+  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_000681"), # verified v0.2.1
          assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
          propertyURI_label = rep("containsMeasurementsOfType"),
          prefName = rep("Age error code"),
@@ -116,7 +116,7 @@ errorAgeDescription <- age %>%
 
 circuliDist <- age %>% 
   filter(str_detect(attributeDefinition, "(?i)circuli")) %>% 
-  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_00235"),
+  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_000235"), # verified v0.2.1
          assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
          propertyURI_label = rep("containsMeasurementsOfType"),
          prefName = rep("Distance between scale circuli"),

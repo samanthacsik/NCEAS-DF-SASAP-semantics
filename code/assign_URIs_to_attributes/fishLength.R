@@ -63,7 +63,7 @@ length_notes <- read_csv(here::here("data/sorted_attributes/manual_fish_length_a
 
 length_value <- length %>% 
   filter(attributeName %in% c("length", "Length", "RecLength", "RelLength", "LENGTH_MM")) %>% 
-  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_00127"),
+  mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_000127"), # verified v0.2.1
          assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
          propertyURI_label = rep("containsMeasurementsOfType"),
          prefName = rep("Fish length measurement type"),
