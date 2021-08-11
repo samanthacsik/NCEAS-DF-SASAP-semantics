@@ -39,7 +39,7 @@ library(tidyverse)
 ##############################
 # get token, set nodes
 # change 'devnceas' to 'knb' at the following locations:
-  # 02_batch_update_childORunnested.R (currently line 414)
+  # 02_batch_update_round1_XXX.R (currently line 414)
   # get_datapackage_metadata.R (currently lines 13, 21, 39)
 ##############################
 

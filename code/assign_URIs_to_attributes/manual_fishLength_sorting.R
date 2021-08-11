@@ -226,6 +226,7 @@ unique(ASL_bristol_bay_full$SASAP.Region)
 
 dat2010 <- read_csv(here::here("data", "sorted_attributes", "manual_fish_length_assignments", "SASAP_length_data", "2010.csv"), col_names = TRUE, col_types = cols(.default = col_character()))
 unique(dat2010$length_type)
+unique(dat2010$species_code)
 
 #---------------- doi:10.5063/F1W957GP
 
