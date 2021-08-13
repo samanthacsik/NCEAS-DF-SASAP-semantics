@@ -1,4 +1,4 @@
-# NEEDS ENTITY-LEVEL ANNOTATION
+# Alaska Department of Fish and Game, Division of Commercial Fisheries, Jeanette Clark, Stormy Haught, Stacy Vega, and Rich Brenner. 2018. Salmon age, sex, and length samples from Prince William Sound and Copper River, 1960-2018. Knowledge Network for Biocomplexity.
 
 # title: batch update of datapackages with semantic annotations -- ROUND 1, 023 (Chinook escapement at Copper River)
 # author: "Sam Csik"
@@ -162,7 +162,7 @@ containsMeasurementsofType <- "http://ecoinformatics.org/oboe/oboe.1.2/oboe-core
 # dataTable 1 (escapement_copper-river_chinook_1999-2016_standardized.csv)
 #-----------------------------
 
-# attribute 4, species = sockeye, chum, coho, chinook
+# attribute 4, species =  chinook
 doc$dataset$dataTable[[1]]$attributeList$attribute[[4]]$id <- "dataTable1_spp"
 doc$dataset$dataTable[[1]]$attributeList$attribute[[4]]$annotation <- list(
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),

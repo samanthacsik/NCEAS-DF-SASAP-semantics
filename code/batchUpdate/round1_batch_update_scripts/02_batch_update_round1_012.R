@@ -1,4 +1,4 @@
-# NEEDS ANNOTATIONS AT ENTITY LEVEL
+# Alaska Department of Fish and Game, Division of Commercial Fisheries, Central Region. Sockeye salmon brood tables, Upper Cook Inlet, Alaska, 1968-2016. 
 
 # title: batch update of datapackages with semantic annotations -- ROUND 1, 012 (Sockeye brood tables, Upper Cook Inlet)
 # author: "Sam Csik"
@@ -156,7 +156,7 @@ tryLog(for(dp_num in 1:length(unique_datapackage_ids)){
 # -------------------------------------------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------------------------------------------
 
-# containsMeasurementsofType <- "http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"
+containsOccurrenceDataAbout <- "http://purl.dataone.org/odo/salmon_000828"
 
 #-----------------------------
 # dataTable 1 (Kenai_sockeye.csv) 
@@ -165,7 +165,7 @@ tryLog(for(dp_num in 1:length(unique_datapackage_ids)){
 # entity1 level -- Species = sockeye
 doc$dataset$dataTable[[1]]$id <- "dataTable1_spp"
 doc$dataset$dataTable[[1]]$annotation <- list(
-  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType), # CHANGE THIS OUT
+  list(propertyURI = list(label = "contains occurrence data about", propertyURI = containsOccurrenceDataAbout),
        valueURI = list(label = "Sockeye salmon", valueURI = "http://purl.dataone.org/odo/salmon_000242"))
 )
 
@@ -176,7 +176,7 @@ doc$dataset$dataTable[[1]]$annotation <- list(
 # entity2 level -- Species = sockeye
 doc$dataset$dataTable[[2]]$id <- "dataTable2_spp"
 doc$dataset$dataTable[[2]]$annotation <- list(
-  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType), # CHANGE THIS OUT
+  list(propertyURI = list(label = "contains occurrence data about", propertyURI = containsOccurrenceDataAbout), 
        valueURI = list(label = "Sockeye salmon", valueURI = "http://purl.dataone.org/odo/salmon_000242"))
 )
 
@@ -188,6 +188,8 @@ doc$dataset$dataTable[[2]]$annotation <- list(
 # -------------------------------------------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------------------------------------------
+
+eml_validate(doc)
 
 ##############################
 # update 'list_of_docs_to_publish_update' with updated version of doc

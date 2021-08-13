@@ -1,4 +1,4 @@
-# NEEDS ENTITY-LEVEL ANNOTATION
+# Alaska Department of Fish and Game, Division of Commercial Fisheries, Arctic-Yukon-Kuskokwim Region. 2018. Sockeye and chinook salmon brood tables, Goodnews River, Alaska, 1981-2015. Knowledge Network for Biocomplexity.
 
 # title: batch update of datapackages with semantic annotations -- ROUND 1, 026 (Sockeye & chinook brood tables, Goodnews River)
 # author: "Sam Csik"
@@ -156,7 +156,7 @@ tryLog(for(dp_num in 1:length(unique_datapackage_ids)){
 # -------------------------------------------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------------------------------------------
 
-containsMeasurementsofType <- "http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"
+containsOccurrenceDataAbout <- "http://purl.dataone.org/odo/salmon_000728"
 
 #-----------------------------
 # dataTable 1 (Goodnews_sockeye.csv) 
@@ -165,7 +165,7 @@ containsMeasurementsofType <- "http://ecoinformatics.org/oboe/oboe.1.2/oboe-core
 # entity-level, Species = sockeye
 doc$dataset$dataTable[[1]]$id <- "dataTable1_spp"
 doc$dataset$dataTable[[1]]$annotation <- list(
-  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
+  list(propertyURI = list(label = "contains occurrence data about", propertyURI = containsOccurrenceDataAbout),
        valueURI = list(label = "Sockeye salmon", valueURI = "http://purl.dataone.org/odo/salmon_000242"))
 )
 
@@ -176,7 +176,7 @@ doc$dataset$dataTable[[1]]$annotation <- list(
 # entity-level, Species = chinook
 doc$dataset$dataTable[[2]]$id <- "dataTable2_spp"
 doc$dataset$dataTable[[2]]$annotation <- list(
-  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
+  list(propertyURI = list(label = "contains occurrence data about", propertyURI = containsOccurrenceDataAbout),
        valueURI = list(label = "Chinook salmon", valueURI = "http://purl.dataone.org/odo/salmon_000239"))
 )
 
@@ -187,6 +187,8 @@ doc$dataset$dataTable[[2]]$annotation <- list(
 # -------------------------------------------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------------------------------------------
+
+eml_validate(doc)
 
 ##############################
 # update 'list_of_docs_to_publish_update' with updated version of doc

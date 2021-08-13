@@ -1,3 +1,5 @@
+# Kevin Schaberg and Zachary Liller. 2018. Coho salmon brood table, Kuskokwim River, Alaska, 2000-2012. Knowledge Network for Biocomplexity.
+
 # title: batch update of datapackages with semantic annotations -- ROUND 1, 040 (Cohoh brood table, Kuskokwim River)
 # author: "Sam Csik"
 # date created: "2021-08-xx"
@@ -374,7 +376,7 @@ tryLog(for(doc_num in 1:length(publish_update_docs)){
   
   # publish update
   message("Publishing update for the following data package: ", doc_name)
-  # new_rm <- uploadDataPackage(knb, dp, public = TRUE, quiet = FALSE)
+  new_rm <- uploadDataPackage(knb, dp, public = TRUE, quiet = FALSE)
   message("Old metadata PID: " , doc_name, " | New metadata PID: ", new_id)
   message("-------------- Datapackage ", doc_num, " has been updated! --------------")
   

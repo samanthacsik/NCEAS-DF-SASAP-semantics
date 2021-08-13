@@ -81,16 +81,16 @@ rm(round1)
 # 001: 2021-08-xx@xx:xx ------------------------------------------------------------------------------------------------
 # original metadata PID: doi:10.5063/F1416VB4
 # original URL: https://search.dataone.org/view/doi:10.5063/F1416VB4
-round1_001 <- attributes %>%
-  filter(ID == "001")
-
-round1_spp_001 <- round1_species %>%
-  filter(ID == "001")
-
-round1_lengths_001 <- round1_fishLengths_TYPES %>%
-  filter(ID == "001")
-
-rm(round1_fishLengths_TYPES, round1_species)
+# round1_001 <- attributes %>%
+#   filter(ID == "001")
+# 
+# round1_spp_001 <- round1_species %>%
+#   filter(ID == "001")
+# 
+# round1_lengths_001 <- round1_fishLengths_TYPES %>%
+#   filter(ID == "001")
+# 
+# rm(round1_fishLengths_TYPES, round1_species)
 
 
 # 002: 2021-08-xx@xx:xx ------------------------------------------------------------------------------------------------
@@ -107,12 +107,11 @@ rm(round1_fishLengths_TYPES, round1_species)
 # 
 # rm(round1_fishLengths_TYPES, round1_species)
 
-
 # 003: 2021-08-xx@xx:xx ------------------------------------------------------------------------------------------------
 # original metadata PID: doi:10.5063/F14Q7S94
 # original URL: https://search.dataone.org/view/doi:10.5063/F14Q7S94
 # round1_003 <- attributes %>%
-#   filter(ID == "003")
+#  filter(ID == "003")
 # 
 # round1_spp_003 <- round1_species %>%
 #   filter(ID == "003")
@@ -237,16 +236,16 @@ rm(round1_fishLengths_TYPES, round1_species)
 # 012: 2021-08-xx@xx:xx ------------------------------------------------------------------------------------------------
 # original metadata PID: doi:10.5063/F11834SM
 # # original URL: https://search.dataone.org/view/doi:10.5063/F11834SM
-# round1_012 <- attributes %>%
-#   filter(ID == "012")
-# 
-# round1_spp_012 <- round1_species %>%
-#   filter(ID == "012")
-# 
-# round1_lengths_012 <- round1_fishLengths_TYPES %>%
-#   filter(ID == "012")
-# 
-# rm(round1_fishLengths_TYPES, round1_species)
+round1_012 <- attributes %>%
+  filter(ID == "012")
+
+round1_spp_012 <- round1_species %>%
+  filter(ID == "012")
+
+round1_lengths_012 <- round1_fishLengths_TYPES %>%
+  filter(ID == "012")
+
+rm(round1_fishLengths_TYPES, round1_species)
 
 # 013: 2021-08-xx@xx:xx ------------------------------------------------------------------------------------------------
 # original metadata PID: doi:10.5063/F11R6NSS
@@ -632,16 +631,16 @@ rm(round1_fishLengths_TYPES, round1_species)
 # 040: 2021-08-xx@xx:xx ------------------------------------------------------------------------------------------------
 # original metadata PID: doi:10.5063/F1X63K76
 # original URL: https://search.dataone.org/view/doi:10.5063/F1X63K76
-round1_040 <- attributes %>%
-  filter(ID == "040")
-
-round1_spp_040 <- round1_species %>%
-  filter(ID == "040")
-
-round1_lengths_0340 <- round1_fishLengths_TYPES %>%
-  filter(ID == "040")
-
-rm(round1_fishLengths_TYPES, round1_species)
+# round1_040 <- attributes %>%
+#   filter(ID == "040")
+# 
+# round1_spp_040 <- round1_species %>%
+#   filter(ID == "040")
+# 
+# round1_lengths_0340 <- round1_fishLengths_TYPES %>%
+#   filter(ID == "040")
+# 
+# rm(round1_fishLengths_TYPES, round1_species)
 
 
 

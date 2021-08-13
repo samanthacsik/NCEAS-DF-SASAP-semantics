@@ -1,4 +1,4 @@
-# NEEDS ENTITY-LEVEL ANNOTATION
+# Washington Department of Fish and Wildlife. 2018. Sockeye salmon brood tables, Washington, 1967-2011. Knowledge Network for Biocomplexity.
 
 # title: batch update of datapackages with semantic annotations -- ROUND 1, 028 (Sockeye brood tables, WA)
 # author: "Sam Csik"

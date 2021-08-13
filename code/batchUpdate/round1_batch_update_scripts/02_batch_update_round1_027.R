@@ -1,4 +1,4 @@
-# NEEDS ENTITY-LEVEL ANNOTATION
+# Sue Grant, Bronwyn MacDonald, and Mike Lapointe. 2018. Sockeye salmon brood tables, Fraser River, Canada, 1948-2015. Knowledge Network for Biocomplexity.
 
 # title: batch update of datapackages with semantic annotations -- ROUND 1, 027 (Sockeye brood tables, Fraser River)
 # author: "Sam Csik"
@@ -156,7 +156,7 @@ tryLog(for(dp_num in 1:length(unique_datapackage_ids)){
 # -------------------------------------------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------------------------------------------
 
-containsMeasurementsofType <- "http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"
+containsOccurrenceDataAbout <- "http://purl.dataone.org/odo/salmon_000728"
 
 #-----------------------------
 # dataTable 1 (GFraserRiver_sockeye_multipleStocks.csv) 
@@ -165,7 +165,7 @@ containsMeasurementsofType <- "http://ecoinformatics.org/oboe/oboe.1.2/oboe-core
 # entity-level, Species = sockeye
 doc$dataset$dataTable$id <- "dataTable1_spp"
 doc$dataset$dataTable$annotation <- list(
-  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
+  list(propertyURI = list(label = "contains occurrence data about", propertyURI = containsOccurrenceDataAbout),
        valueURI = list(label = "Sockeye salmon", valueURI = "http://purl.dataone.org/odo/salmon_000242"))
 )
 

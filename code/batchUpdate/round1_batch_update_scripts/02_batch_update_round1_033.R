@@ -1,4 +1,4 @@
-# NEEDS ENTITY-LEVEL ANNOTATION
+# 
 
 # title: batch update of datapackages with semantic annotations -- ROUND 1, 033 (Sockeye brood tables Bristol Bay)
 # author: "Sam Csik"

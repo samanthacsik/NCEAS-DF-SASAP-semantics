@@ -80,7 +80,7 @@ fishAgeEuroNotation <- age %>%
   mutate(assigned_valueURI = rep("http://purl.dataone.org/odo/salmon_000200"), # verified v0.2.1
          assigned_propertyURI = rep("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"),
          propertyURI_label = rep("containsMeasurementsOfType"),
-         prefName = rep("Fish age expressed in European notation"),
+         prefName = rep("Fish Age (European Notation)"),
          ontoName = rep("tbd"),
          grouping = rep("fishAgeEuroNotation"),
          notes = rep("age of salmon in European notation"))
