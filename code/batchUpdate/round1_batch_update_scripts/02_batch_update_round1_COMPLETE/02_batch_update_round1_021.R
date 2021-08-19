@@ -398,3 +398,117 @@ write_csv(old_new_PIDs, here::here("data", "updated_pkgs", "round1", "round1_021
 # new metadata pid: doi:10.5063/RV0M3P
 # old rm: resource_map_doi:10.5063/F1DF6PHX
 # new rm: resource_map_doi:10.5063/RV0M3P
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#------------------------------------------------------------------------------------------------------
+# update property URI
+#------------------------------------------------------------------------------------------------------
+
+# set node
+knb <- dataone::D1Client("PROD", "urn:node:KNB")
+
+# get package using metadata pid
+pkg <- get_package(knb@mn, 
+                   "doi:10.5063/RV0M3P", 
+                   file_names = TRUE)
+
+# extract resource map
+resource_pid <-  pkg$resource_map
+
+# get pkg using resource map 
+current_pkg <- getDataPackage(knb, identifier = resource_pid, lazyLoad = TRUE, quiet = FALSE)
+
+# get current_metadata_pid
+current_metadata_pid  <- selectMember(current_pkg, name = "sysmeta@formatId", value = "https://eml.ecoinformatics.org/eml-2.2.0")
+
+# get doc
+doc <- read_eml(getObject(knb@mn, current_metadata_pid)) 
+
+eml_validate(doc)
+
+##############################
+# manually add annotations
+##############################
+
+# -------------------------------------------------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------------------------------------------------
+# ANNOTATE BY HAND 
+# -------------------------------------------------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------------------------------------------------
+
+containsOccurrenceDataAbout <- "http://purl.dataone.org/odo/salmon_000828"
+
+#-----------------------------
+# dataTable 1 (Meziadin_sockeye.csv)
+#-----------------------------
+
+# entity-level, Species = sockeye
+doc$dataset$dataTable$id <- "dataTable1_spp"
+doc$dataset$dataTable$annotation <- list(
+  list(propertyURI = list(label = "contains occurrence data about", propertyURI = containsOccurrenceDataAbout), 
+       valueURI = list(label = "Sockeye salmon", valueURI = "http://purl.dataone.org/odo/salmon_000242"))
+)
+
+# -------------------------------------------------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------------------------------------------------
+# END
+# -------------------------------------------------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------------------------------------------------
+
+# validate
+eml_validate(doc)
+
+##############################
+# generate new pid & write eml
+##############################
+
+new_id <- dataone::generateIdentifier(knb@mn, "DOI")
+eml_path <- "/Users/samanthacsik/Repositories/NCEAS-DF-SASAP-semantics/eml/round1/METADATA.xml"
+write_eml(doc, eml_path)
+
+##############################
+# publish update
+##############################
+
+doc_name <- current_metadata_pid
+dp <- replaceMember(current_pkg, doc_name, replacement = eml_path, newId = new_id, formatId = "https://eml.ecoinformatics.org/eml-2.2.0") 
+message("Old metadata PID: " , doc_name, " | New metadata PID: ", new_id)
+new_rm <- uploadDataPackage(knb, dp, public = TRUE, quiet = FALSE)
+
+
+# recreate table
+old_new_PIDs <- data.frame(
+  old_metadataPID = "doi:10.5063/RV0M3P",
+  old_resource_map = "resource_map_doi:10.5063/RV0M3P",
+  new_metadataPID = "doi:10.5063/FB51BQ",
+  new_resource_map = "resource_map_doi:10.5063/FB51BQ"
+)
+
+write_csv(old_new_PIDs, here::here("data", "updated_pkgs", "round1", "round1_021.csv"))
+
+
+

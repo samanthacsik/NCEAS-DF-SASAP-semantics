@@ -1,6 +1,6 @@
-# Alaska Department of Fish and Game, Division of Commercial Fisheries, Central Region. Sockeye salmon brood tables, Upper Cook Inlet, Alaska, 1968-2016. 
+# Kevin Schaberg and Zachary Liller. 2018. Coho salmon brood table, Kuskokwim River, Alaska, 2000-2012. Knowledge Network for Biocomplexity.
 
-# title: batch update of datapackages with semantic annotations -- ROUND 1, 012 (Sockeye brood tables, Upper Cook Inlet)
+# title: batch update of datapackages with semantic annotations -- ROUND 1, 040 (Cohoh brood table, Kuskokwim River)
 # author: "Sam Csik"
 # date created: "2021-08-xx"
 # date edited: "2021-08-xx"
@@ -27,9 +27,9 @@ source(here::here("code", "batchUpdate_functions", "all_batchUpdate_functions.R"
 ##############################
 
 # >>>>>>>> UPDATE 01_batch_update_setup_round1.R BEFORE RUNNING <<<<<<<<<< 
-attributes <- round1_012 %>% 
+attributes <- round1_040 %>% 
   filter(!attributeName %in% c()) %>% 
-  drop_na(assigned_valueURI)
+drop_na(assigned_valueURI)
 # -----------------------------------------------
 
 ##############################
@@ -159,25 +159,25 @@ tryLog(for(dp_num in 1:length(unique_datapackage_ids)){
 containsOccurrenceDataAbout <- "http://purl.dataone.org/odo/salmon_000828"
 
 #-----------------------------
-# dataTable 1 (Kenai_sockeye.csv) 
+# dataTable 1 (KuskokwimRiver_coho_reformatted.csv) 
 #-----------------------------
 
-# entity1 level -- Species = sockeye
-doc$dataset$dataTable[[1]]$id <- "dataTable1_spp"
+# entity-level, Species = coho
+doc$dataset$dataTable[[1]]$id <- "dataTable1_species"
 doc$dataset$dataTable[[1]]$annotation <- list(
   list(propertyURI = list(label = "contains occurrence data about", propertyURI = containsOccurrenceDataAbout),
-       valueURI = list(label = "Sockeye salmon", valueURI = "http://purl.dataone.org/odo/salmon_000242"))
+       valueURI = list(label = "Coho salmon", valueURI = "http://purl.dataone.org/odo/salmon_000243"))
 )
 
 #-----------------------------
-# dataTable 2 (Kasilof_sockeye.csv) 
+# dataTable 2 (KuskokwimRiverCoho_original.csv) 
 #-----------------------------
 
-# entity2 level -- Species = sockeye
-doc$dataset$dataTable[[2]]$id <- "dataTable2_spp"
+# entity-level, Species = coho
+doc$dataset$dataTable[[2]]$id <- "dataTable2_species"
 doc$dataset$dataTable[[2]]$annotation <- list(
-  list(propertyURI = list(label = "contains occurrence data about", propertyURI = containsOccurrenceDataAbout), 
-       valueURI = list(label = "Sockeye salmon", valueURI = "http://purl.dataone.org/odo/salmon_000242"))
+  list(propertyURI = list(label = "contains occurrence data about", propertyURI = containsOccurrenceDataAbout),
+       valueURI = list(label = "Coho salmon", valueURI = "http://purl.dataone.org/odo/salmon_000243"))
 )
 
 
@@ -378,7 +378,7 @@ tryLog(for(doc_num in 1:length(publish_update_docs)){
   
   # publish update
   message("Publishing update for the following data package: ", doc_name)
-  # new_rm <- uploadDataPackage(knb, dp, public = TRUE, quiet = FALSE)
+  new_rm <- uploadDataPackage(knb, dp, public = TRUE, quiet = FALSE)
   message("Old metadata PID: " , doc_name, " | New metadata PID: ", new_id)
   message("-------------- Datapackage ", doc_num, " has been updated! --------------")
   
@@ -402,11 +402,11 @@ tryLog(for(doc_num in 1:length(publish_update_docs)){
 # ---------------------------------------------------------------
 
 # >>>>>>>> UPDATE HERE BEFORE EACH RUN <<<<<<<<<< 
-write_csv(old_new_PIDs, here::here("data", "updated_pkgs", "round1", "round1_012.csv"))
+write_csv(old_new_PIDs, here::here("data", "updated_pkgs", "round1", "round1_040.csv"))
 # ------------------------------------------------
 
 
-# old metadata pid: 
-# new metadata pid:
-# old rm: 
-# new rm: 
+# old metadata pid: doi:10.5063/F1X63K76
+# new metadata pid: doi:10.5063/9K48NF
+# old rm: resource_map_doi:10.5063/F1X63K76
+# new rm: resource_map_doi:10.5063/9K48NF

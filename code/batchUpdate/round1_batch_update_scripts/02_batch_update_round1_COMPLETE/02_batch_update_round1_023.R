@@ -1,6 +1,6 @@
-# 
+# Alaska Department of Fish and Game, Division of Commercial Fisheries, Jeanette Clark, Stormy Haught, Stacy Vega, and Rich Brenner. 2018. Salmon age, sex, and length samples from Prince William Sound and Copper River, 1960-2018. Knowledge Network for Biocomplexity.
 
-# title: batch update of datapackages with semantic annotations -- ROUND 1, 033 (Sockeye brood tables Bristol Bay)
+# title: batch update of datapackages with semantic annotations -- ROUND 1, 023 (Chinook escapement at Copper River)
 # author: "Sam Csik"
 # date created: "2021-08-xx"
 # date edited: "2021-08-xx"
@@ -27,8 +27,8 @@ source(here::here("code", "batchUpdate_functions", "all_batchUpdate_functions.R"
 ##############################
 
 # >>>>>>>> UPDATE 01_batch_update_setup_round1.R BEFORE RUNNING <<<<<<<<<< 
-attributes <- round1_033 %>% 
-  filter(!attributeName %in% c()) %>% 
+attributes <- round1_023 %>% 
+  filter(!attributeName %in% c("species")) %>% 
   drop_na(assigned_valueURI)
 # -----------------------------------------------
 
@@ -157,104 +157,28 @@ tryLog(for(dp_num in 1:length(unique_datapackage_ids)){
 # -------------------------------------------------------------------------------------------------------------------------
 
 containsMeasurementsofType <- "http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"
+containsOccurrenceDataAbout <- "http://purl.dataone.org/odo/salmon_000828"
 
 #-----------------------------
-# dataTable 1 (Naknek_sockeye.csv) 
+# dataTable 1 (escapement_copper-river_chinook_1999-2016_standardized.csv)
 #-----------------------------
 
-# entity-level, Species = sockeye
-doc$dataset$dataTable[[1]]$id <- "dataTable1_spp"
-doc$dataset$dataTable[[1]]$annotation <- list(
+# attribute 4, species =  chinook
+doc$dataset$dataTable[[1]]$attributeList$attribute[[4]]$id <- "dataTable1_spp"
+doc$dataset$dataTable[[1]]$attributeList$attribute[[4]]$annotation <- list(
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Sockeye salmon", valueURI = "http://purl.dataone.org/odo/salmon_000242"))
+       valueURI = list(label = "Chinook salmon", valueURI = "http://purl.dataone.org/odo/salmon_000239"))
 )
 
 #-----------------------------
-# dataTable 2 (Egegik_sockeye.csv)
+# dataTable 2 (escapement_copper-river_chinook_1975-2016_excel-sheet-1.csv)
 #-----------------------------
 
-# entity-level, Species = sockeye
+# entity-level, species = chinook
 doc$dataset$dataTable[[2]]$id <- "dataTable2_spp"
 doc$dataset$dataTable[[2]]$annotation <- list(
-  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Sockeye salmon", valueURI = "http://purl.dataone.org/odo/salmon_000242"))
-)
-
-#-----------------------------
-# dataTable 3 (Kvichak_sockeye.csv) 
-#-----------------------------
-
-# entity-level, Species = sockeye
-doc$dataset$dataTable[[3]]$id <- "dataTable3_spp"
-doc$dataset$dataTable[[3]]$annotation <- list(
-  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Sockeye salmon", valueURI = "http://purl.dataone.org/odo/salmon_000242"))
-)
-
-#-----------------------------
-# dataTable 4 (Ugashik_sockeye.csv)
-#-----------------------------
-
-# entity-level, Species = sockeye
-doc$dataset$dataTable[[4]]$id <- "dataTable4_spp"
-doc$dataset$dataTable[[4]]$annotation <- list(
-  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Sockeye salmon", valueURI = "http://purl.dataone.org/odo/salmon_000242"))
-)
-
-#-----------------------------
-# dataTable 5 (Alagnak_sockeye.csv)
-#-----------------------------
-
-# entity-level, Species = sockeye
-doc$dataset$dataTable[[5]]$id <- "dataTable5_spp"
-doc$dataset$dataTable[[5]]$annotation <- list(
-  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Sockeye salmon", valueURI = "http://purl.dataone.org/odo/salmon_000242"))
-)
-
-#-----------------------------
-# dataTable 6 (Togiak_sockeye.csv)
-#-----------------------------
-
-# entity-level, Species = sockeye
-doc$dataset$dataTable[[6]]$id <- "dataTable6_spp"
-doc$dataset$dataTable[[6]]$annotation <- list(
-  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Sockeye salmon", valueURI = "http://purl.dataone.org/odo/salmon_000242"))
-)
-
-#-----------------------------
-# dataTable 7 (Wood_sockeye.csv)
-#-----------------------------
-
-# entity-level, Species = sockeye
-doc$dataset$dataTable[[7]]$id <- "dataTable7_spp"
-doc$dataset$dataTable[[7]]$annotation <- list(
-  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Sockeye salmon", valueURI = "http://purl.dataone.org/odo/salmon_000242"))
-)
-
-#-----------------------------
-# dataTable 8 (Nushagak_sockeye.csv)
-#-----------------------------
-
-# entity-level, Species = sockeye
-doc$dataset$dataTable[[8]]$id <- "dataTable8_spp"
-doc$dataset$dataTable[[8]]$annotation <- list(
-  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Sockeye salmon", valueURI = "http://purl.dataone.org/odo/salmon_000242"))
-)
-
-#-----------------------------
-# dataTable 9 (Igushik_sockeye.csv)
-#-----------------------------
-
-# entity-level, Species = sockeye
-doc$dataset$dataTable[[9]]$id <- "dataTable9_spp"
-doc$dataset$dataTable[[9]]$annotation <- list(
-  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Sockeye salmon", valueURI = "http://purl.dataone.org/odo/salmon_000242"))
+  list(propertyURI = list(label = "contains occurrence data about", propertyURI = containsOccurrenceDataAbout),
+       valueURI = list(label = "Chinook salmon", valueURI = "http://purl.dataone.org/odo/salmon_000239"))
 )
 
 # -------------------------------------------------------------------------------------------------------------------------
@@ -264,6 +188,8 @@ doc$dataset$dataTable[[9]]$annotation <- list(
 # -------------------------------------------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------------------------------------------
+
+eml_validate(doc)
 
 ##############################
 # update 'list_of_docs_to_publish_update' with updated version of doc
@@ -452,7 +378,7 @@ tryLog(for(doc_num in 1:length(publish_update_docs)){
   
   # publish update
   message("Publishing update for the following data package: ", doc_name)
-  # new_rm <- uploadDataPackage(knb, dp, public = TRUE, quiet = FALSE)
+  new_rm <- uploadDataPackage(knb, dp, public = TRUE, quiet = FALSE)
   message("Old metadata PID: " , doc_name, " | New metadata PID: ", new_id)
   message("-------------- Datapackage ", doc_num, " has been updated! --------------")
   
@@ -476,11 +402,115 @@ tryLog(for(doc_num in 1:length(publish_update_docs)){
 # ---------------------------------------------------------------
 
 # >>>>>>>> UPDATE HERE BEFORE EACH RUN <<<<<<<<<< 
-write_csv(old_new_PIDs, here::here("data", "updated_pkgs", "round1", "round1_033.csv"))
+write_csv(old_new_PIDs, here::here("data", "updated_pkgs", "round1", "round1_023.csv"))
 # ------------------------------------------------
 
 
-# old metadata pid: 
-# new metadata pid:
-# old rm: 
-# new rm: 
+# old metadata pid: doi:10.5063/F1G15Z4D
+# new metadata pid: doi:10.5063/5T3HXQ
+# old rm: resource_map_doi:10.5063/F1G15Z
+# new rm: resource_map_doi:10.5063/5T3HXQ
+
+
+
+
+
+
+
+
+
+
+
+
+#------------------------------------------------------------------------------------------------------
+# remove 'tbd' annotations
+#------------------------------------------------------------------------------------------------------
+
+# set node
+knb <- dataone::D1Client("PROD", "urn:node:KNB")
+
+# get package using metadata pid
+pkg <- get_package(knb@mn, 
+                   "doi:10.5063/5T3HXQ", 
+                   file_names = TRUE)
+
+# extract resource map
+resource_pid <-  pkg$resource_map
+
+# get pkg using resource map 
+current_pkg <- getDataPackage(knb, identifier = resource_pid, lazyLoad = TRUE, quiet = FALSE)
+
+# get current_metadata_pid
+current_metadata_pid  <- selectMember(current_pkg, name = "sysmeta@formatId", value = "https://eml.ecoinformatics.org/eml-2.2.0")
+
+# get doc
+doc <- read_eml(getObject(knb@mn, current_metadata_pid)) 
+
+eml_validate(doc)
+
+##############################
+# remove annotations
+##############################
+
+# -------------------------------------------------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------------------------------------------------
+# BY HAND 
+# -------------------------------------------------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------------------------------------------------
+
+# attribute 10
+doc$dataset$dataTable[[2]]$attributeList$attribute[[10]]$id <- NULL
+doc$dataset$dataTable[[2]]$attributeList$attribute[[10]]$annotation <- NULL
+
+# attribute 15
+doc$dataset$dataTable[[2]]$attributeList$attribute[[15]]$id <- NULL
+doc$dataset$dataTable[[2]]$attributeList$attribute[[15]]$annotation <- NULL
+
+# attribute 21
+doc$dataset$dataTable[[2]]$attributeList$attribute[[21]]$id <- NULL
+doc$dataset$dataTable[[2]]$attributeList$attribute[[21]]$annotation <- NULL
+
+# attribute 22
+doc$dataset$dataTable[[2]]$attributeList$attribute[[22]]$id <- NULL
+doc$dataset$dataTable[[2]]$attributeList$attribute[[22]]$annotation <- NULL
+
+# -------------------------------------------------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------------------------------------------------
+# END
+# -------------------------------------------------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------------------------------------------------
+
+# validate
+eml_validate(doc)
+
+##############################
+# generate new pid & write eml
+##############################
+
+new_id <- dataone::generateIdentifier(knb@mn, "DOI")
+eml_path <- "/Users/samanthacsik/Repositories/NCEAS-DF-SASAP-semantics/eml/round1/METADATA.xml"
+write_eml(doc, eml_path)
+
+##############################
+# publish update
+##############################
+
+doc_name <- current_metadata_pid
+dp <- replaceMember(current_pkg, doc_name, replacement = eml_path, newId = new_id, formatId = "https://eml.ecoinformatics.org/eml-2.2.0") 
+message("Old metadata PID: " , doc_name, " | New metadata PID: ", new_id)
+new_rm <- uploadDataPackage(knb, dp, public = TRUE, quiet = FALSE)
+
+
+# recreate table
+old_new_PIDs <- data.frame(
+  old_metadataPID = "doi:10.5063/5T3HXQ",
+  old_resource_map = "resource_map_doi:10.5063/5T3HXQ",
+  new_metadataPID = "doi:10.5063/251GKK",
+  new_resource_map = "resource_map_doi:10.5063/251GKK"
+)
+
+write_csv(old_new_PIDs, here::here("data", "updated_pkgs", "round1", "round1_023.csv")) # I think 002 was overwritten
+

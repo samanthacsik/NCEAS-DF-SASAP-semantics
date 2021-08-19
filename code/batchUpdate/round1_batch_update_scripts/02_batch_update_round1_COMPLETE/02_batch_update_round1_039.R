@@ -414,3 +414,12 @@ write_csv(old_new_PIDs, here::here("data", "updated_pkgs", "round1", "round1_039
 # new metadata pid: doi:10.5063/PZ5777
 # old rm: resource_map_doi:10.5063/F1W957GP
 # new rm: resource_map_doi:10.5063/PZ5777
+
+
+
+
+
+
+
+
+

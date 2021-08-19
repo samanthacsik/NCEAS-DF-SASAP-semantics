@@ -413,3 +413,106 @@ write_csv(old_new_PIDs, here::here("data", "updated_pkgs", "round1", "round1_032
 # new metadata pid: doi:10.5063/707ZV2
 # old rm: resource_map_doi:10.5063/F1NV9GHW
 # new rm: resource_map_doi:10.5063/707ZV2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#------------------------------------------------------------------------------------------------------
+# remove 'tbd' annotations
+#------------------------------------------------------------------------------------------------------
+
+# set node
+knb <- dataone::D1Client("PROD", "urn:node:KNB")
+
+# get package using metadata pid
+pkg <- get_package(knb@mn, 
+                   "doi:10.5063/707ZV2", 
+                   file_names = TRUE)
+
+# extract resource map
+resource_pid <-  pkg$resource_map
+
+# get pkg using resource map 
+current_pkg <- getDataPackage(knb, identifier = resource_pid, lazyLoad = TRUE, quiet = FALSE)
+
+# get current_metadata_pid
+current_metadata_pid  <- selectMember(current_pkg, name = "sysmeta@formatId", value = "https://eml.ecoinformatics.org/eml-2.2.0")
+
+# get doc
+doc <- read_eml(getObject(knb@mn, current_metadata_pid)) 
+
+eml_validate(doc)
+
+##############################
+# remove annotations
+##############################
+
+# -------------------------------------------------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------------------------------------------------
+# BY HAND 
+# -------------------------------------------------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------------------------------------------------
+
+# attribute 12
+doc$dataset$dataTable$attributeList$attribute[[12]]$id <- NULL
+doc$dataset$dataTable$attributeList$attribute[[12]]$annotation <- NULL
+
+# -------------------------------------------------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------------------------------------------------
+# END
+# -------------------------------------------------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------------------------------------------------
+
+# validate
+eml_validate(doc)
+
+##############################
+# generate new pid & write eml
+##############################
+
+new_id <- dataone::generateIdentifier(knb@mn, "DOI")
+eml_path <- "/Users/samanthacsik/Repositories/NCEAS-DF-SASAP-semantics/eml/round1/METADATA.xml"
+write_eml(doc, eml_path)
+
+##############################
+# publish update
+##############################
+
+doc_name <- current_metadata_pid
+dp <- replaceMember(current_pkg, doc_name, replacement = eml_path, newId = new_id, formatId = "https://eml.ecoinformatics.org/eml-2.2.0") 
+message("Old metadata PID: " , doc_name, " | New metadata PID: ", new_id)
+new_rm <- uploadDataPackage(knb, dp, public = TRUE, quiet = FALSE)
+
+
+# recreate table
+old_new_PIDs <- data.frame(
+  old_metadataPID = "doi:10.5063/707ZV2",
+  old_resource_map = "resource_map_doi:10.5063/707ZV2",
+  new_metadataPID = "doi:10.5063/NV9GNP",
+  new_resource_map = "resource_map_doi:10.5063/NV9GNP"
+)
+
+write_csv(old_new_PIDs, here::here("data", "updated_pkgs", "round1", "round1_032.csv"))

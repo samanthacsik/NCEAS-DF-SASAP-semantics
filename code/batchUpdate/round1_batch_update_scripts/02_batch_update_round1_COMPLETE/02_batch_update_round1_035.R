@@ -190,6 +190,7 @@ doc$dataset$dataTable[[3]]$attributeList$attribute[[2]]$annotation <- list(
   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
        valueURI = list(label = "Coho salmon", valueURI = "http://purl.dataone.org/odo/salmon_000243"))
 )
+
 # -------------------------------------------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------------------------------------------

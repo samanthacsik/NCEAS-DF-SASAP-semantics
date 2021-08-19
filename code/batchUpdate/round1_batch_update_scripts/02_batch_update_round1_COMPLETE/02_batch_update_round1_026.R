@@ -156,7 +156,7 @@ tryLog(for(dp_num in 1:length(unique_datapackage_ids)){
 # -------------------------------------------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------------------------------------------
 
-containsOccurrenceDataAbout <- "http://purl.dataone.org/odo/salmon_000728"
+containsOccurrenceDataAbout <- "http://purl.dataone.org/odo/salmon_000828"
 
 #-----------------------------
 # dataTable 1 (Goodnews_sockeye.csv) 
@@ -170,7 +170,7 @@ doc$dataset$dataTable[[1]]$annotation <- list(
 )
 
 #-----------------------------
-# dataTable 1 (Goodnews_chinook.csv)
+# dataTable 2 (Goodnews_chinook.csv)
 #-----------------------------
 
 # entity-level, Species = chinook
@@ -377,7 +377,7 @@ tryLog(for(doc_num in 1:length(publish_update_docs)){
   
   # publish update
   message("Publishing update for the following data package: ", doc_name)
-  # new_rm <- uploadDataPackage(knb, dp, public = TRUE, quiet = FALSE)
+  new_rm <- uploadDataPackage(knb, dp, public = TRUE, quiet = FALSE)
   message("Old metadata PID: " , doc_name, " | New metadata PID: ", new_id)
   message("-------------- Datapackage ", doc_num, " has been updated! --------------")
   
@@ -405,7 +405,7 @@ write_csv(old_new_PIDs, here::here("data", "updated_pkgs", "round1", "round1_026
 # ------------------------------------------------
 
 
-# old metadata pid: 
-# new metadata pid:
-# old rm: 
-# new rm: 
+# old metadata pid: doi:10.5063/F1J38QTX
+# new metadata pid: doi:10.5063/ZC818Z
+# old rm: resource_map_doi:10.5063/F1J38QTX
+# new rm: resource_map_doi:10.5063/ZC818Z

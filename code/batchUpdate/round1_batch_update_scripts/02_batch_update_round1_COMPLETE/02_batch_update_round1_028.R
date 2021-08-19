@@ -1,6 +1,6 @@
-# Alaska Department of Fish and Game, Division of Commercial Fisheries, Jeanette Clark, Stormy Haught, Stacy Vega, and Rich Brenner. 2018. Salmon age, sex, and length samples from Prince William Sound and Copper River, 1960-2018. Knowledge Network for Biocomplexity.
+# Washington Department of Fish and Wildlife. 2018. Sockeye salmon brood tables, Washington, 1967-2011. Knowledge Network for Biocomplexity.
 
-# title: batch update of datapackages with semantic annotations -- ROUND 1, 023 (Chinook escapement at Copper River)
+# title: batch update of datapackages with semantic annotations -- ROUND 1, 028 (Sockeye brood tables, WA)
 # author: "Sam Csik"
 # date created: "2021-08-xx"
 # date edited: "2021-08-xx"
@@ -27,8 +27,8 @@ source(here::here("code", "batchUpdate_functions", "all_batchUpdate_functions.R"
 ##############################
 
 # >>>>>>>> UPDATE 01_batch_update_setup_round1.R BEFORE RUNNING <<<<<<<<<< 
-attributes <- round1_023 %>% 
-  filter(!attributeName %in% c("species")) %>% 
+attributes <- round1_028 %>% 
+  filter(!attributeName %in% c()) %>% 
   drop_na(assigned_valueURI)
 # -----------------------------------------------
 
@@ -156,28 +156,17 @@ tryLog(for(dp_num in 1:length(unique_datapackage_ids)){
 # -------------------------------------------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------------------------------------------
 
-containsMeasurementsofType <- "http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"
+containsOccurrenceDataAbout <- "http://purl.dataone.org/odo/salmon_000828"
 
 #-----------------------------
-# dataTable 1 (escapement_copper-river_chinook_1999-2016_standardized.csv)
+# dataTable 1 (GFraserRiver_sockeye_multipleStocks.csv) 
 #-----------------------------
 
-# attribute 4, species =  chinook
-doc$dataset$dataTable[[1]]$attributeList$attribute[[4]]$id <- "dataTable1_spp"
-doc$dataset$dataTable[[1]]$attributeList$attribute[[4]]$annotation <- list(
-  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Chinook salmon", valueURI = "http://purl.dataone.org/odo/salmon_000239"))
-)
-
-#-----------------------------
-# dataTable 2 (escapement_copper-river_chinook_1975-2016_excel-sheet-1.csv)
-#-----------------------------
-
-# entity-level, species = chinook
-doc$dataset$dataTable[[2]]$id <- "dataTable2_spp"
-doc$dataset$dataTable[[2]]$annotation <- list(
-  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-       valueURI = list(label = "Chinook salmon", valueURI = "http://purl.dataone.org/odo/salmon_000239"))
+# entity-level, Species = sockeye
+doc$dataset$dataTable$id <- "dataTable1_spp"
+doc$dataset$dataTable$annotation <- list(
+  list(propertyURI = list(label = "contains occurrence data about", propertyURI = containsOccurrenceDataAbout),
+       valueURI = list(label = "Sockeye salmon", valueURI = "http://purl.dataone.org/odo/salmon_000242"))
 )
 
 # -------------------------------------------------------------------------------------------------------------------------
@@ -187,6 +176,8 @@ doc$dataset$dataTable[[2]]$annotation <- list(
 # -------------------------------------------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------------------------------------------
+
+eml_validate(doc)
 
 ##############################
 # update 'list_of_docs_to_publish_update' with updated version of doc
@@ -375,7 +366,7 @@ tryLog(for(doc_num in 1:length(publish_update_docs)){
   
   # publish update
   message("Publishing update for the following data package: ", doc_name)
-  # new_rm <- uploadDataPackage(knb, dp, public = TRUE, quiet = FALSE)
+  new_rm <- uploadDataPackage(knb, dp, public = TRUE, quiet = FALSE)
   message("Old metadata PID: " , doc_name, " | New metadata PID: ", new_id)
   message("-------------- Datapackage ", doc_num, " has been updated! --------------")
   
@@ -399,11 +390,11 @@ tryLog(for(doc_num in 1:length(publish_update_docs)){
 # ---------------------------------------------------------------
 
 # >>>>>>>> UPDATE HERE BEFORE EACH RUN <<<<<<<<<< 
-write_csv(old_new_PIDs, here::here("data", "updated_pkgs", "round1", "round1_023.csv"))
+write_csv(old_new_PIDs, here::here("data", "updated_pkgs", "round1", "round1_028.csv"))
 # ------------------------------------------------
 
 
-# old metadata pid: 
-# new metadata pid:
-# old rm: 
-# new rm: 
+# old metadata pid: doi:10.5063/F1K35RXV
+# new metadata pid: doi:10.5063/PV6HS2
+# old rm: resource_map_doi:10.5063/F1K35RXV
+# new rm: resource_map_doi:10.5063/PV6HS2
