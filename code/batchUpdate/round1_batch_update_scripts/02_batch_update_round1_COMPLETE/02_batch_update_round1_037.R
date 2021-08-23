@@ -156,20 +156,93 @@ tryLog(for(dp_num in 1:length(unique_datapackage_ids)){
 # -------------------------------------------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------------------------------------------
 
-containsMeasurementsofType <- "http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"
+containsOccurrenceDataAbout <- "http://purl.dataone.org/odo/salmon_000828"
+
+#-----------------------------
+# dataTable 1 (2014 Tanada Creek Weir counts.xlsx)
+#-----------------------------
+
+# entity-level, species = sockeye, chinook
+doc$dataset$dataTable[[1]]$id <- "dataTable1_spp"
+doc$dataset$dataTable[[1]]$annotation <- list(
+  list(propertyURI = list(label = "contains occurrence data about", propertyURI = containsOccurrenceDataAbout),
+       valueURI = list(label = "Sockeye salmon", valueURI = "http://purl.dataone.org/odo/salmon_000242")),
+  list(propertyURI = list(label = "contains occurrence data about", propertyURI = containsOccurrenceDataAbout),
+       valueURI = list(label = "Chinook salmon", valueURI = "http://purl.dataone.org/odo/salmon_000239"))
+)
+
+#-----------------------------
+# dataTable 2 (2014 Long Lake Weir counts.xlsx) 
+#-----------------------------
+
+# entity-level, species = sockeye
+doc$dataset$dataTable[[2]]$id <- "dataTable2_spp"
+doc$dataset$dataTable[[2]]$annotation <- list(
+  list(propertyURI = list(label = "contains occurrence data about", propertyURI = containsOccurrenceDataAbout),
+       valueURI = list(label = "Sockeye salmon", valueURI = "http://purl.dataone.org/odo/salmon_000242"))
+)
+
+#-----------------------------
+# dataTable 3 (2013 Long Lake Weir counts.xlsx) 
+#-----------------------------
+
+# entity-level, species = sockeye
+doc$dataset$dataTable[[3]]$id <- "dataTable3_spp"
+doc$dataset$dataTable[[3]]$annotation <- list(
+  list(propertyURI = list(label = "contains occurrence data about", propertyURI = containsOccurrenceDataAbout),
+       valueURI = list(label = "Sockeye salmon", valueURI = "http://purl.dataone.org/odo/salmon_000242"))
+)
+
+#-----------------------------
+# dataTable 4 (2013 Tanada Creek Weir counts.xlsx) 
+#-----------------------------
+
+# entity-level, species = sockeye
+doc$dataset$dataTable[[4]]$id <- "dataTable4_spp"
+doc$dataset$dataTable[[4]]$annotation <- list(
+  list(propertyURI = list(label = "contains occurrence data about", propertyURI = containsOccurrenceDataAbout),
+       valueURI = list(label = "Sockeye salmon", valueURI = "http://purl.dataone.org/odo/salmon_000242"))
+)
+
+#-----------------------------
+# dataTable 5 (2012 Tanada Creek Weir daily counts.xlsx) 
+#-----------------------------
+
+# entity-level, species = sockeye, chinook
+doc$dataset$dataTable[[5]]$id <- "dataTable5_spp"
+doc$dataset$dataTable[[5]]$annotation <- list(
+  list(propertyURI = list(label = "contains occurrence data about", propertyURI = containsOccurrenceDataAbout),
+       valueURI = list(label = "Sockeye salmon", valueURI = "http://purl.dataone.org/odo/salmon_000242")),
+  list(propertyURI = list(label = "contains occurrence data about", propertyURI = containsOccurrenceDataAbout),
+       valueURI = list(label = "Chinook salmon", valueURI = "http://purl.dataone.org/odo/salmon_000239"))
+)
+
+#-----------------------------
+# dataTable 6 (2012 Long Lake Weir fish counts.xls) 
+#-----------------------------
+
+# entity-level, species = sockeye, coho
+doc$dataset$dataTable[[6]]$id <- "dataTable6_spp"
+doc$dataset$dataTable[[6]]$annotation <- list(
+  list(propertyURI = list(label = "contains occurrence data about", propertyURI = containsOccurrenceDataAbout),
+       valueURI = list(label = "Sockeye salmon", valueURI = "http://purl.dataone.org/odo/salmon_000242")),
+  list(propertyURI = list(label = "contains occurrence data about", propertyURI = containsOccurrenceDataAbout),
+       valueURI = list(label = "Coho salmon", valueURI = "http://purl.dataone.org/odo/salmon_000243"))
+)
+
 
 #-----------------------------
 # dataTable 7 (tandalonglake.csv) 
 #-----------------------------
 
 # attribute 2, Species = sockeye, coho, chinook
-doc$dataset$dataTable[[7]]$attributeList$attribute[[2]]$id <- "dataTable7_species"
+doc$dataset$dataTable[[7]]$attributeList$attribute[[2]]$id <- "dataTable7_spp"
 doc$dataset$dataTable[[7]]$attributeList$attribute[[2]]$annotation <- list(
-  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
+  list(propertyURI = list(label = "contains occurrence data about", propertyURI = containsOccurrenceDataAbout),
        valueURI = list(label = "Sockeye salmon", valueURI = "http://purl.dataone.org/odo/salmon_000242")),
-  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
+  list(propertyURI = list(label = "contains occurrence data about", propertyURI = containsOccurrenceDataAbout),
        valueURI = list(label = "Coho salmon", valueURI = "http://purl.dataone.org/odo/salmon_000243")),
-  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
+  list(propertyURI = list(label = "contains occurrence data about", propertyURI = containsOccurrenceDataAbout),
        valueURI = list(label = "Chinook salmon", valueURI = "http://purl.dataone.org/odo/salmon_000239"))
 )
 
@@ -180,6 +253,8 @@ doc$dataset$dataTable[[7]]$attributeList$attribute[[2]]$annotation <- list(
 # -------------------------------------------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------------------------------------------
+
+eml_validate(doc)
 
 ##############################
 # update 'list_of_docs_to_publish_update' with updated version of doc
@@ -368,7 +443,7 @@ tryLog(for(doc_num in 1:length(publish_update_docs)){
   
   # publish update
   message("Publishing update for the following data package: ", doc_name)
-  # new_rm <- uploadDataPackage(knb, dp, public = TRUE, quiet = FALSE)
+  new_rm <- uploadDataPackage(knb, dp, public = TRUE, quiet = FALSE)
   message("Old metadata PID: " , doc_name, " | New metadata PID: ", new_id)
   message("-------------- Datapackage ", doc_num, " has been updated! --------------")
   
@@ -396,7 +471,119 @@ write_csv(old_new_PIDs, here::here("data", "updated_pkgs", "round1", "round1_037
 # ------------------------------------------------
 
 
-# old metadata pid: 
-# new metadata pid:
-# old rm: 
-# new rm: 
+# old metadata pid: doi:10.5063/F1TH8JZ8
+# new metadata pid: doi:10.5063/RN3681
+# old rm: resource_map_doi:10.5063/F1TH8JZ8
+# new rm: resource_map_doi:10.5063/RN3681
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#------------------------------------------------------------------------------------------------------
+# change predicate in dataTable 7, attribute 2 "Species" to 'containsMeasurementsOfType'
+#------------------------------------------------------------------------------------------------------
+
+# set node
+knb <- dataone::D1Client("PROD", "urn:node:KNB")
+
+# get package using metadata pid
+pkg <- get_package(knb@mn, 
+                   "doi:10.5063/RN3681", 
+                   file_names = TRUE)
+
+# extract resource map
+resource_pid <-  pkg$resource_map
+
+# get pkg using resource map 
+current_pkg <- getDataPackage(knb, identifier = resource_pid, lazyLoad = TRUE, quiet = FALSE)
+
+# get current_metadata_pid
+current_metadata_pid  <- selectMember(current_pkg, name = "sysmeta@formatId", value = "https://eml.ecoinformatics.org/eml-2.2.0")
+
+# get doc
+doc <- read_eml(getObject(knb@mn, current_metadata_pid)) 
+
+eml_validate(doc)
+
+##############################
+# remove annotations
+##############################
+
+# -------------------------------------------------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------------------------------------------------
+# BY HAND 
+# -------------------------------------------------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------------------------------------------------
+
+containsMeasurementsofType <- "http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"
+
+# dataTable 7, attribute 2
+# attribute 2, Species = sockeye, coho, chinook
+doc$dataset$dataTable[[7]]$attributeList$attribute[[2]]$id <- "dataTable7_spp"
+doc$dataset$dataTable[[7]]$attributeList$attribute[[2]]$annotation <- list(
+  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
+       valueURI = list(label = "Sockeye salmon", valueURI = "http://purl.dataone.org/odo/salmon_000242")),
+  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
+       valueURI = list(label = "Coho salmon", valueURI = "http://purl.dataone.org/odo/salmon_000243")),
+  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
+       valueURI = list(label = "Chinook salmon", valueURI = "http://purl.dataone.org/odo/salmon_000239"))
+)
+
+
+# -------------------------------------------------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------------------------------------------------
+# END
+# -------------------------------------------------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------------------------------------------------
+
+# validate
+eml_validate(doc)
+
+##############################
+# generate new pid & write eml
+##############################
+
+new_id <- dataone::generateIdentifier(knb@mn, "DOI")
+eml_path <- "/Users/samanthacsik/Repositories/NCEAS-DF-SASAP-semantics/eml/round1/METADATA.xml"
+write_eml(doc, eml_path)
+
+##############################
+# publish update
+##############################
+
+doc_name <- current_metadata_pid
+dp <- replaceMember(current_pkg, doc_name, replacement = eml_path, newId = new_id, formatId = "https://eml.ecoinformatics.org/eml-2.2.0") 
+message("Old metadata PID: " , doc_name, " | New metadata PID: ", new_id)
+new_rm <- uploadDataPackage(knb, dp, public = TRUE, quiet = FALSE)
+
+
+# recreate table
+old_new_PIDs <- data.frame(
+  old_metadataPID = "doi:10.5063/RN3681",
+  old_resource_map = "resource_map_doi:10.5063/RN3681",
+  new_metadataPID = "doi:10.5063/MW2FJ9",
+  new_resource_map = "resource_map_doi:10.5063/MW2FJ9"
+)
+
+write_csv(old_new_PIDs, here::here("data", "updated_pkgs", "round1", "round1_037.csv"))

@@ -157,7 +157,7 @@ tryLog(for(dp_num in 1:length(unique_datapackage_ids)){
 # -------------------------------------------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------------------------------------------
 
-containsMeasurementsofType <- "http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType"
+containsOccurrenceDataAbout <- "http://purl.dataone.org/odo/salmon_000828"
 
 #-----------------------------
 # dataTable 1 (Enhanced-ret_pink.csv) 
@@ -166,7 +166,7 @@ containsMeasurementsofType <- "http://ecoinformatics.org/oboe/oboe.1.2/oboe-core
 # entity-level, Species = pink
 doc$dataset$dataTable[[1]]$id <- "dataTable1_spp"
 doc$dataset$dataTable[[1]]$annotation <- list(
-  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType), # CHANGE THIS OUT
+  list(propertyURI = list(label = "contains occurrence data about", propertyURI = containsOccurrenceDataAbout), 
        valueURI = list(label = "Pink salmon", valueURI = "http://purl.dataone.org/odo/salmon_000241"))
 )
 
@@ -174,10 +174,10 @@ doc$dataset$dataTable[[1]]$annotation <- list(
 # dataTable 2 (Enhanced-ret_chum.csv) 
 #-----------------------------
 
-# entity-level, Species = pink
+# entity-level, Species = chum
 doc$dataset$dataTable[[2]]$id <- "dataTable2_spp"
 doc$dataset$dataTable[[2]]$annotation <- list(
-  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType), # CHANGE THIS OUT
+  list(propertyURI = list(label = "contains occurrence data about", propertyURI = containsOccurrenceDataAbout), 
        valueURI = list(label = "Chum salmon", valueURI = "http://purl.dataone.org/odo/salmon_000240"))
 )
 
@@ -188,7 +188,7 @@ doc$dataset$dataTable[[2]]$annotation <- list(
 # entity-level, Species = sockeye
 doc$dataset$dataTable[[3]]$id <- "dataTable3_spp"
 doc$dataset$dataTable[[3]]$annotation <- list(
-  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType), # CHANGE THIS OUT
+  list(propertyURI = list(label = "contains occurrence data about", propertyURI = containsOccurrenceDataAbout), 
        valueURI = list(label = "Sockeye salmon", valueURI = "http://purl.dataone.org/odo/salmon_000242"))
 )
 
@@ -196,126 +196,77 @@ doc$dataset$dataTable[[3]]$annotation <- list(
 # dataTable 4 (Enhanced-ret_total.csv) 
 #-----------------------------
 
-# # attribute 2, Pink = pink
-# doc$dataset$dataTable[[4]]$attributeList$attribute[[2]]$id <- "dataTable4_spp1"
-# doc$dataset$dataTable[[4]]$attributeList$attribute[[2]]$annotation <- list(
-#   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-#        valueURI = list(label = "Pink salmon", valueURI = "http://purl.dataone.org/odo/salmon_000241"))
-# )
-# 
-# # attribute 3, Chum = chum
-# doc$dataset$dataTable[[4]]$attributeList$attribute[[3]]$id <- "dataTable4_spp2"
-# doc$dataset$dataTable[[4]]$attributeList$attribute[[3]]$annotation <- list(
-#   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-#        valueURI = list(label = "Chum salmon", valueURI = "http://purl.dataone.org/odo/salmon_000240"))
-# )
-# 
-# # attribute 4, Sockeye = sockeye
-# doc$dataset$dataTable[[4]]$attributeList$attribute[[4]]$id <- "dataTable4_spp3"
-# doc$dataset$dataTable[[4]]$attributeList$attribute[[4]]$annotation <- list(
-#   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-#        valueURI = list(label = "Sockeye salmon", valueURI = "http://purl.dataone.org/odo/salmon_000242"))
-# )
+# entity-level, species = pink, chum, sockeye
+doc$dataset$dataTable[[4]]$id <- "dataTable4_spp"
+doc$dataset$dataTable[[4]]$annotation <- list(
+  list(propertyURI = list(label = "contains occurrence data about", propertyURI = containsOccurrenceDataAbout),
+       valueURI = list(label = "Pink salmon", valueURI = "http://purl.dataone.org/odo/salmon_000241")),
+  list(propertyURI = list(label = "contains occurrence data about", propertyURI = containsOccurrenceDataAbout),
+       valueURI = list(label = "Chum salmon", valueURI = "http://purl.dataone.org/odo/salmon_000240")),
+  list(propertyURI = list(label = "contains occurrence data about", propertyURI = containsOccurrenceDataAbout),
+       valueURI = list(label = "Sockeye salmon", valueURI = "http://purl.dataone.org/odo/salmon_000242"))
+)
+
 
 #-----------------------------
 # dataTable 5 (Longterm_abundance_biom.csv) 
 #-----------------------------
 
-# # attribute 2, Pink = pink
-# doc$dataset$dataTable[[5]]$attributeList$attribute[[2]]$id <- "dataTable5_spp1"
-# doc$dataset$dataTable[[5]]$attributeList$attribute[[2]]$annotation <- list(
-#   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-#        valueURI = list(label = "Pink salmon", valueURI = "http://purl.dataone.org/odo/salmon_000241"))
-# )
-# 
-# # attribute 3, Chum = chum
-# doc$dataset$dataTable[[5]]$attributeList$attribute[[3]]$id <- "dataTable5_spp2"
-# doc$dataset$dataTable[[5]]$attributeList$attribute[[3]]$annotation <- list(
-#   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-#        valueURI = list(label = "Chum salmon", valueURI = "http://purl.dataone.org/odo/salmon_000240"))
-# )
-# 
-# # attribute 4, Sockeye = sockeye
-# doc$dataset$dataTable[[5]]$attributeList$attribute[[4]]$id <- "dataTable5_spp3"
-# doc$dataset$dataTable[[5]]$attributeList$attribute[[4]]$annotation <- list(
-#   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-#        valueURI = list(label = "Sockeye salmon", valueURI = "http://purl.dataone.org/odo/salmon_000242"))
-# )
+# entity-level, species = pink, chum, sockeye
+doc$dataset$dataTable[[5]]$id <- "dataTable5_spp"
+doc$dataset$dataTable[[5]]$annotation <- list(
+  list(propertyURI = list(label = "contains occurrence data about", propertyURI = containsOccurrenceDataAbout),
+       valueURI = list(label = "Pink salmon", valueURI = "http://purl.dataone.org/odo/salmon_000241")),
+  list(propertyURI = list(label = "contains occurrence data about", propertyURI = containsOccurrenceDataAbout),
+       valueURI = list(label = "Chum salmon", valueURI = "http://purl.dataone.org/odo/salmon_000240")),
+  list(propertyURI = list(label = "contains occurrence data about", propertyURI = containsOccurrenceDataAbout),
+       valueURI = list(label = "Sockeye salmon", valueURI = "http://purl.dataone.org/odo/salmon_000242"))
+)
 
 #-----------------------------
 # dataTable 6 (Longterm_avg_adult_wt.csv) 
 #-----------------------------
 
-# # attribute 2, Pink = pink
-# doc$dataset$dataTable[[6]]$attributeList$attribute[[2]]$id <- "dataTable6_spp1"
-# doc$dataset$dataTable[[6]]$attributeList$attribute[[2]]$annotation <- list(
-#   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-#        valueURI = list(label = "Pink salmon", valueURI = "http://purl.dataone.org/odo/salmon_000241"))
-# )
-# 
-# # attribute 3, Chum = chum
-# doc$dataset$dataTable[[6]]$attributeList$attribute[[3]]$id <- "dataTable6_spp2"
-# doc$dataset$dataTable[[6]]$attributeList$attribute[[3]]$annotation <- list(
-#   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-#        valueURI = list(label = "Chum salmon", valueURI = "http://purl.dataone.org/odo/salmon_000240"))
-# )
-# 
-# # attribute 4, Sockeye = sockeye
-# doc$dataset$dataTable[[6]]$attributeList$attribute[[4]]$id <- "dataTable6_spp3"
-# doc$dataset$dataTable[[6]]$attributeList$attribute[[4]]$annotation <- list(
-#   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-#        valueURI = list(label = "Sockeye salmon", valueURI = "http://purl.dataone.org/odo/salmon_000242"))
-# )
+# entity-level, species = pink, chum, sockeye
+doc$dataset$dataTable[[6]]$id <- "dataTable6_spp"
+doc$dataset$dataTable[[6]]$annotation <- list(
+  list(propertyURI = list(label = "contains occurrence data about", propertyURI = containsOccurrenceDataAbout),
+       valueURI = list(label = "Pink salmon", valueURI = "http://purl.dataone.org/odo/salmon_000241")),
+  list(propertyURI = list(label = "contains occurrence data about", propertyURI = containsOccurrenceDataAbout),
+       valueURI = list(label = "Chum salmon", valueURI = "http://purl.dataone.org/odo/salmon_000240")),
+  list(propertyURI = list(label = "contains occurrence data about", propertyURI = containsOccurrenceDataAbout),
+       valueURI = list(label = "Sockeye salmon", valueURI = "http://purl.dataone.org/odo/salmon_000242"))
+)
 
 #-----------------------------
 # dataTable 7 (Longterm_returns_biom.csv) 
 #-----------------------------
 
-# # attribute 2, Pink = pink
-# doc$dataset$dataTable[[7]]$attributeList$attribute[[2]]$id <- "dataTable7_spp1"
-# doc$dataset$dataTable[[7]]$attributeList$attribute[[2]]$annotation <- list(
-#   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-#        valueURI = list(label = "Pink salmon", valueURI = "http://purl.dataone.org/odo/salmon_000241"))
-# )
-# 
-# # attribute 3, Chum = chum
-# doc$dataset$dataTable[[7]]$attributeList$attribute[[3]]$id <- "dataTable7_spp2"
-# doc$dataset$dataTable[[7]]$attributeList$attribute[[3]]$annotation <- list(
-#   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-#        valueURI = list(label = "Chum salmon", valueURI = "http://purl.dataone.org/odo/salmon_000240"))
-# )
-# 
-# # attribute 4, Sockeye = sockeye
-# doc$dataset$dataTable[[7]]$attributeList$attribute[[4]]$id <- "dataTable7_spp3"
-# doc$dataset$dataTable[[7]]$attributeList$attribute[[4]]$annotation <- list(
-#   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-#        valueURI = list(label = "Sockeye salmon", valueURI = "http://purl.dataone.org/odo/salmon_000242"))
-# )
+# entity-level, species = pink, chum, sockeye
+doc$dataset$dataTable[[7]]$id <- "dataTable7_spp"
+doc$dataset$dataTable[[7]]$annotation <- list(
+  list(propertyURI = list(label = "contains occurrence data about", propertyURI = containsOccurrenceDataAbout),
+       valueURI = list(label = "Pink salmon", valueURI = "http://purl.dataone.org/odo/salmon_000241")),
+  list(propertyURI = list(label = "contains occurrence data about", propertyURI = containsOccurrenceDataAbout),
+       valueURI = list(label = "Chum salmon", valueURI = "http://purl.dataone.org/odo/salmon_000240")),
+  list(propertyURI = list(label = "contains occurrence data about", propertyURI = containsOccurrenceDataAbout),
+       valueURI = list(label = "Sockeye salmon", valueURI = "http://purl.dataone.org/odo/salmon_000242"))
+)
 
 #-----------------------------
 # dataTable 8 (Longterm_returns_num.csv) 
 #-----------------------------
 
-# # attribute 2, Pink = pink
-# doc$dataset$dataTable[[8]]$attributeList$attribute[[2]]$id <- "dataTable8_spp1"
-# doc$dataset$dataTable[[8]]$attributeList$attribute[[2]]$annotation <- list(
-#   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-#        valueURI = list(label = "Pink salmon", valueURI = "http://purl.dataone.org/odo/salmon_000241"))
-# )
-# 
-# # attribute 3, Chum = chum
-# doc$dataset$dataTable[[8]]$attributeList$attribute[[3]]$id <- "dataTable8_spp2"
-# doc$dataset$dataTable[[8]]$attributeList$attribute[[3]]$annotation <- list(
-#   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-#        valueURI = list(label = "Chum salmon", valueURI = "http://purl.dataone.org/odo/salmon_000240"))
-# )
-# 
-# # attribute 4, Sockeye = sockeye
-# doc$dataset$dataTable[[8]]$attributeList$attribute[[4]]$id <- "dataTable8_spp3"
-# doc$dataset$dataTable[[8]]$attributeList$attribute[[4]]$annotation <- list(
-#   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-#        valueURI = list(label = "Sockeye salmon", valueURI = "http://purl.dataone.org/odo/salmon_000242"))
-# )
+# entity-level, species = pink, chum, sockeye
+doc$dataset$dataTable[[8]]$id <- "dataTable8_spp"
+doc$dataset$dataTable[[8]]$annotation <- list(
+  list(propertyURI = list(label = "contains occurrence data about", propertyURI = containsOccurrenceDataAbout),
+       valueURI = list(label = "Pink salmon", valueURI = "http://purl.dataone.org/odo/salmon_000241")),
+  list(propertyURI = list(label = "contains occurrence data about", propertyURI = containsOccurrenceDataAbout),
+       valueURI = list(label = "Chum salmon", valueURI = "http://purl.dataone.org/odo/salmon_000240")),
+  list(propertyURI = list(label = "contains occurrence data about", propertyURI = containsOccurrenceDataAbout),
+       valueURI = list(label = "Sockeye salmon", valueURI = "http://purl.dataone.org/odo/salmon_000242"))
+)
 
 #-----------------------------
 # dataTable 9 (Nat-origin-ret_chum.csv) 
@@ -324,7 +275,7 @@ doc$dataset$dataTable[[3]]$annotation <- list(
 # entity-level, Species = chum,
 doc$dataset$dataTable[[9]]$id <- "dataTable9_spp"
 doc$dataset$dataTable[[9]]$annotation <- list(
-  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType), # CHANGE THIS OUT
+  list(propertyURI = list(label = "contains occurrence data about", propertyURI = containsOccurrenceDataAbout), 
        valueURI = list(label = "Chum salmon", valueURI = "http://purl.dataone.org/odo/salmon_000240"))
 )
 
@@ -335,7 +286,7 @@ doc$dataset$dataTable[[9]]$annotation <- list(
 # entity-level, Species = pink,
 doc$dataset$dataTable[[10]]$id <- "dataTable10_spp"
 doc$dataset$dataTable[[10]]$annotation <- list(
-  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType), # CHANGE THIS OUT
+  list(propertyURI = list(label = "contains occurrence data about", propertyURI = containsOccurrenceDataAbout), 
        valueURI = list(label = "Pink salmon", valueURI = "http://purl.dataone.org/odo/salmon_000241"))
 )
 
@@ -346,7 +297,7 @@ doc$dataset$dataTable[[10]]$annotation <- list(
 # entity-level, Species = sockeye,
 doc$dataset$dataTable[[11]]$id <- "dataTable11_spp"
 doc$dataset$dataTable[[11]]$annotation <- list(
-  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType), # CHANGE THIS OUT
+  list(propertyURI = list(label = "contains occurrence data about", propertyURI = containsOccurrenceDataAbout),
        valueURI = list(label = "Sockeye salmon", valueURI = "http://purl.dataone.org/odo/salmon_000242"))
 )
 
@@ -354,26 +305,16 @@ doc$dataset$dataTable[[11]]$annotation <- list(
 # dataTable 12 (Nat-origin-ret_total.csv) 
 #-----------------------------
 
-# # attribute 2, Pink = pink
-# doc$dataset$dataTable[[12]]$attributeList$attribute[[2]]$id <- "dataTable12_spp1"
-# doc$dataset$dataTable[[12]]$attributeList$attribute[[2]]$annotation <- list(
-#   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-#        valueURI = list(label = "Pink salmon", valueURI = "http://purl.dataone.org/odo/salmon_000241"))
-# )
-# 
-# # attribute 3, Chum = chum
-# doc$dataset$dataTable[[12]]$attributeList$attribute[[3]]$id <- "dataTable12_spp2"
-# doc$dataset$dataTable[[12]]$attributeList$attribute[[3]]$annotation <- list(
-#   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-#        valueURI = list(label = "Chum salmon", valueURI = "http://purl.dataone.org/odo/salmon_000240"))
-# )
-# 
-# # attribute 4, Sockeye = sockeye
-# doc$dataset$dataTable[[12]]$attributeList$attribute[[4]]$id <- "dataTable12_spp3"
-# doc$dataset$dataTable[[12]]$attributeList$attribute[[4]]$annotation <- list(
-#   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-#        valueURI = list(label = "Sockeye salmon", valueURI = "http://purl.dataone.org/odo/salmon_000242"))
-# )
+# entity-level, species = pink, chum, sockeye
+doc$dataset$dataTable[[12]]$id <- "dataTable12_spp"
+doc$dataset$dataTable[[12]]$annotation <- list(
+  list(propertyURI = list(label = "contains occurrence data about", propertyURI = containsOccurrenceDataAbout),
+       valueURI = list(label = "Pink salmon", valueURI = "http://purl.dataone.org/odo/salmon_000241")),
+  list(propertyURI = list(label = "contains occurrence data about", propertyURI = containsOccurrenceDataAbout),
+       valueURI = list(label = "Chum salmon", valueURI = "http://purl.dataone.org/odo/salmon_000240")),
+  list(propertyURI = list(label = "contains occurrence data about", propertyURI = containsOccurrenceDataAbout),
+       valueURI = list(label = "Sockeye salmon", valueURI = "http://purl.dataone.org/odo/salmon_000242"))
+)
 
 #-----------------------------
 # dataTable 13 (Total-biom-mat-plus-young_chum.csv) 
@@ -382,7 +323,7 @@ doc$dataset$dataTable[[11]]$annotation <- list(
 # entity-level, Species = chum
 doc$dataset$dataTable[[13]]$id <- "dataTable13_spp"
 doc$dataset$dataTable[[13]]$annotation <- list(
-  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType), # CHANGE THIS OUT
+  list(propertyURI = list(label = "contains occurrence data about", propertyURI = containsOccurrenceDataAbout), 
        valueURI = list(label = "Chum salmon", valueURI = "http://purl.dataone.org/odo/salmon_000240"))
 )
 
@@ -393,7 +334,7 @@ doc$dataset$dataTable[[13]]$annotation <- list(
 # entity-level, Species = pink
 doc$dataset$dataTable[[14]]$id <- "dataTable14_spp"
 doc$dataset$dataTable[[14]]$annotation <- list(
-  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType), # CHANGE THIS OUT
+  list(propertyURI = list(label = "contains occurrence data about", propertyURI = containsOccurrenceDataAbout), 
        valueURI = list(label = "Pink salmon", valueURI = "http://purl.dataone.org/odo/salmon_000241"))
 )
 
@@ -404,7 +345,7 @@ doc$dataset$dataTable[[14]]$annotation <- list(
 # entity-level, Species = pink
 doc$dataset$dataTable[[15]]$id <- "dataTable15_spp"
 doc$dataset$dataTable[[15]]$annotation <- list(
-  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType), # CHANGE THIS OUT
+  list(propertyURI = list(label = "contains occurrence data about", propertyURI = containsOccurrenceDataAbout),
        valueURI = list(label = "Sockeye salmon", valueURI = "http://purl.dataone.org/odo/salmon_000242"))
 )
 
@@ -412,26 +353,16 @@ doc$dataset$dataTable[[15]]$annotation <- list(
 # dataTable 16 (Total-biom-mat-plus-young_total.csv) 
 #-----------------------------
 
-# # attribute 2, Pink = pink
-# doc$dataset$dataTable[[16]]$attributeList$attribute[[2]]$id <- "dataTable16_spp1"
-# doc$dataset$dataTable[[16]]$attributeList$attribute[[2]]$annotation <- list(
-#   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-#        valueURI = list(label = "Pink salmon", valueURI = "http://purl.dataone.org/odo/salmon_000241"))
-# )
-# 
-# # attribute 3, Chum = chum
-# doc$dataset$dataTable[[16]]$attributeList$attribute[[3]]$id <- "dataTable16_spp2"
-# doc$dataset$dataTable[[16]]$attributeList$attribute[[3]]$annotation <- list(
-#   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-#        valueURI = list(label = "Chum salmon", valueURI = "http://purl.dataone.org/odo/salmon_000240"))
-# )
-# 
-# # attribute 4, Sockeye = sockeye
-# doc$dataset$dataTable[[16]]$attributeList$attribute[[4]]$id <- "dataTable16_spp3"
-# doc$dataset$dataTable[[16]]$attributeList$attribute[[4]]$annotation <- list(
-#   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-#        valueURI = list(label = "Sockeye salmon", valueURI = "http://purl.dataone.org/odo/salmon_000242"))
-# )
+# entity-level, species = pink, chum, sockeye
+doc$dataset$dataTable[[16]]$id <- "dataTable16_spp"
+doc$dataset$dataTable[[16]]$annotation <- list(
+  list(propertyURI = list(label = "contains occurrence data about", propertyURI = containsOccurrenceDataAbout),
+       valueURI = list(label = "Pink salmon", valueURI = "http://purl.dataone.org/odo/salmon_000241")),
+  list(propertyURI = list(label = "contains occurrence data about", propertyURI = containsOccurrenceDataAbout),
+       valueURI = list(label = "Chum salmon", valueURI = "http://purl.dataone.org/odo/salmon_000240")),
+  list(propertyURI = list(label = "contains occurrence data about", propertyURI = containsOccurrenceDataAbout),
+       valueURI = list(label = "Sockeye salmon", valueURI = "http://purl.dataone.org/odo/salmon_000242"))
+)
 
 #-----------------------------
 # dataTable 17 (Total-ret-biomass_chum.csv) 
@@ -440,7 +371,7 @@ doc$dataset$dataTable[[15]]$annotation <- list(
 # entity-level, Species = chum
 doc$dataset$dataTable[[17]]$id <- "dataTable17_spp"
 doc$dataset$dataTable[[17]]$annotation <- list(
-  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType), # CHANGE THIS OUT
+  list(propertyURI = list(label = "contains occurrence data about", propertyURI = containsOccurrenceDataAbout), 
        valueURI = list(label = "Chum salmon", valueURI = "http://purl.dataone.org/odo/salmon_000240"))
 )
 
@@ -451,7 +382,7 @@ doc$dataset$dataTable[[17]]$annotation <- list(
 # entity-level, Species = pink
 doc$dataset$dataTable[[18]]$id <- "dataTable18_spp"
 doc$dataset$dataTable[[18]]$annotation <- list(
-  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType), # CHANGE THIS OUT
+  list(propertyURI = list(label = "contains occurrence data about", propertyURI = containsOccurrenceDataAbout),
        valueURI = list(label = "Pink salmon", valueURI = "http://purl.dataone.org/odo/salmon_000241"))
 )
 
@@ -462,7 +393,7 @@ doc$dataset$dataTable[[18]]$annotation <- list(
 # entity-level, Species = sockeye
 doc$dataset$dataTable[[19]]$id <- "dataTable19_spp"
 doc$dataset$dataTable[[19]]$annotation <- list(
-  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType), # CHANGE THIS OUT
+  list(propertyURI = list(label = "contains occurrence data about", propertyURI = containsOccurrenceDataAbout), 
        valueURI = list(label = "Sockeye salmon", valueURI = "http://purl.dataone.org/odo/salmon_000242"))
 )
 
@@ -470,26 +401,16 @@ doc$dataset$dataTable[[19]]$annotation <- list(
 # dataTable 20 (Total-ret-biomass_total.csv) 
 #-----------------------------
 
-# # attribute 2, Pink = pink
-# doc$dataset$dataTable[[20]]$attributeList$attribute[[2]]$id <- "dataTable20_spp1"
-# doc$dataset$dataTable[[20]]$attributeList$attribute[[2]]$annotation <- list(
-#   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-#        valueURI = list(label = "Pink salmon", valueURI = "http://purl.dataone.org/odo/salmon_000241"))
-# )
-# 
-# # attribute 3, Chum = chum
-# doc$dataset$dataTable[[20]]$attributeList$attribute[[3]]$id <- "dataTable20_spp2"
-# doc$dataset$dataTable[[20]]$attributeList$attribute[[3]]$annotation <- list(
-#   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-#        valueURI = list(label = "Chum salmon", valueURI = "http://purl.dataone.org/odo/salmon_000240"))
-# )
-# 
-# # attribute 4, Sockeye = sockeye
-# doc$dataset$dataTable[[20]]$attributeList$attribute[[4]]$id <- "dataTable20_spp3"
-# doc$dataset$dataTable[[20]]$attributeList$attribute[[4]]$annotation <- list(
-#   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-#        valueURI = list(label = "Sockeye salmon", valueURI = "http://purl.dataone.org/odo/salmon_000242"))
-# )
+# entity-level, species = pink, chum, sockeye
+doc$dataset$dataTable[[20]]$id <- "dataTable20_spp"
+doc$dataset$dataTable[[20]]$annotation <- list(
+  list(propertyURI = list(label = "contains occurrence data about", propertyURI = containsOccurrenceDataAbout),
+       valueURI = list(label = "Pink salmon", valueURI = "http://purl.dataone.org/odo/salmon_000241")),
+  list(propertyURI = list(label = "contains occurrence data about", propertyURI = containsOccurrenceDataAbout),
+       valueURI = list(label = "Chum salmon", valueURI = "http://purl.dataone.org/odo/salmon_000240")),
+  list(propertyURI = list(label = "contains occurrence data about", propertyURI = containsOccurrenceDataAbout),
+       valueURI = list(label = "Sockeye salmon", valueURI = "http://purl.dataone.org/odo/salmon_000242"))
+)
 
 #-----------------------------
 # dataTable 21 (Total-ret_chum.csv) 
@@ -498,7 +419,7 @@ doc$dataset$dataTable[[19]]$annotation <- list(
 # entity-level, Species = chum
 doc$dataset$dataTable[[21]]$id <- "dataTable21_spp"
 doc$dataset$dataTable[[21]]$annotation <- list(
-  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType), # CHANGE THIS OUT
+  list(propertyURI = list(label = "contains occurrence data about", propertyURI = containsOccurrenceDataAbout), 
        valueURI = list(label = "Chum salmon", valueURI = "http://purl.dataone.org/odo/salmon_000240"))
 )
 
@@ -509,7 +430,7 @@ doc$dataset$dataTable[[21]]$annotation <- list(
 # entity-level, Species = pink
 doc$dataset$dataTable[[22]]$id <- "dataTable22_spp"
 doc$dataset$dataTable[[22]]$annotation <- list(
-  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType), # CHANGE THIS OUT
+  list(propertyURI = list(label = "contains occurrence data about", propertyURI = containsOccurrenceDataAbout), 
        valueURI = list(label = "Pink salmon", valueURI = "http://purl.dataone.org/odo/salmon_000241"))
 )
 
@@ -520,7 +441,7 @@ doc$dataset$dataTable[[22]]$annotation <- list(
 # entity-level, Species = sockeye
 doc$dataset$dataTable[[23]]$id <- "dataTable23_spp"
 doc$dataset$dataTable[[23]]$annotation <- list(
-  list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType), # CHANGE THIS OUT
+  list(propertyURI = list(label = "contains occurrence data about", propertyURI = containsOccurrenceDataAbout), 
        valueURI = list(label = "Sockeye salmon", valueURI = "http://purl.dataone.org/odo/salmon_000242"))
 )
 
@@ -528,26 +449,16 @@ doc$dataset$dataTable[[23]]$annotation <- list(
 # dataTable 24 (Total-ret-_total.csv) 
 #-----------------------------
 
-# # attribute 2, Pink = pink
-# doc$dataset$dataTable[[24]]$attributeList$attribute[[2]]$id <- "dataTable24_spp1"
-# doc$dataset$dataTable[[24]]$attributeList$attribute[[2]]$annotation <- list(
-#   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-#        valueURI = list(label = "Pink salmon", valueURI = "http://purl.dataone.org/odo/salmon_000241"))
-# )
-# 
-# # attribute 3, Chum = chum
-# doc$dataset$dataTable[[24]]$attributeList$attribute[[3]]$id <- "dataTable24_spp2"
-# doc$dataset$dataTable[[24]]$attributeList$attribute[[3]]$annotation <- list(
-#   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-#        valueURI = list(label = "Chum salmon", valueURI = "http://purl.dataone.org/odo/salmon_000240"))
-# )
-# 
-# # attribute 4, Sockeye = sockeye
-# doc$dataset$dataTable[[240]]$attributeList$attribute[[4]]$id <- "dataTable24_spp3"
-# doc$dataset$dataTable[[24]]$attributeList$attribute[[4]]$annotation <- list(
-#   list(propertyURI = list(label = "contains measurements of type", propertyURI = containsMeasurementsofType),
-#        valueURI = list(label = "Sockeye salmon", valueURI = "http://purl.dataone.org/odo/salmon_000242"))
-# )
+# entity-level, species = pink, chum, sockeye
+doc$dataset$dataTable[[24]]$id <- "dataTable24_spp"
+doc$dataset$dataTable[[24]]$annotation <- list(
+  list(propertyURI = list(label = "contains occurrence data about", propertyURI = containsOccurrenceDataAbout),
+       valueURI = list(label = "Pink salmon", valueURI = "http://purl.dataone.org/odo/salmon_000241")),
+  list(propertyURI = list(label = "contains occurrence data about", propertyURI = containsOccurrenceDataAbout),
+       valueURI = list(label = "Chum salmon", valueURI = "http://purl.dataone.org/odo/salmon_000240")),
+  list(propertyURI = list(label = "contains occurrence data about", propertyURI = containsOccurrenceDataAbout),
+       valueURI = list(label = "Sockeye salmon", valueURI = "http://purl.dataone.org/odo/salmon_000242"))
+)
 
 # -------------------------------------------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------------------------------------------
@@ -556,6 +467,8 @@ doc$dataset$dataTable[[23]]$annotation <- list(
 # -------------------------------------------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------------------------------------------
+
+eml_validate(doc)
 
 ##############################
 # update 'list_of_docs_to_publish_update' with updated version of doc
@@ -744,7 +657,7 @@ tryLog(for(doc_num in 1:length(publish_update_docs)){
   
   # publish update
   message("Publishing update for the following data package: ", doc_name)
-  # new_rm <- uploadDataPackage(knb, dp, public = TRUE, quiet = FALSE)
+  new_rm <- uploadDataPackage(knb, dp, public = TRUE, quiet = FALSE)
   message("Old metadata PID: " , doc_name, " | New metadata PID: ", new_id)
   message("-------------- Datapackage ", doc_num, " has been updated! --------------")
   
@@ -772,7 +685,7 @@ write_csv(old_new_PIDs, here::here("data", "updated_pkgs", "round1", "round1_017
 # ------------------------------------------------
 
 
-# old metadata pid: 
-# new metadata pid:
-# old rm: 
-# new rm: 
+# old metadata pid: doi:10.5063/F1Z899P0
+# new metadata pid: doi:10.5063/154FGN
+# old rm: resource_map_doi:10.5063/F1Z899P0
+# new rm: resource_map_doi:10.5063/154FGN

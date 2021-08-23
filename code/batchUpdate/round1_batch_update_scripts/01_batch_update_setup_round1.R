@@ -589,16 +589,16 @@ rm(round1)
 # 037: 2021-08-xx@xx:xx ------------------------------------------------------------------------------------------------
 # original metadata PID: doi:10.5063/F1TH8JZ8
 # original URL: https://search.dataone.org/view/doi:10.5063/F1TH8JZ8
-# round1_037 <- attributes %>%
-#   filter(ID == "037")
-# 
-# round1_spp_037 <- round1_species %>%
-#   filter(ID == "037")
-# 
-# round1_lengths_037 <- round1_fishLengths_TYPES %>%
-#   filter(ID == "037")
-# 
-# rm(round1_fishLengths_TYPES, round1_species)
+round1_037 <- attributes %>%
+  filter(ID == "037")
+
+round1_spp_037 <- round1_species %>%
+  filter(ID == "037")
+
+round1_lengths_037 <- round1_fishLengths_TYPES %>%
+  filter(ID == "037")
+
+rm(round1_fishLengths_TYPES, round1_species)
 
 # 038: 2021-08-xx@xx:xx ------------------------------------------------------------------------------------------------
 # original metadata PID: doi:10.5063/F1VT1QB1
